@@ -1,0 +1,36 @@
+<h1>모트모트 재고/ 판매 추이</h1>
+<%= link_to "메인", root_path %>
+<%= link_to "RAW", products_raw_path %>
+<%= link_to "재고등록", new_product_path %>
+
+<div class="row">
+  <div class="col-md-12 margin-top">
+    <table class="table hover">
+      <thead>
+        <th>품목</th>
+        <th>상품코드</th>
+        <th>상품명</th>
+        <th>재고</th>
+        <th>재고가치</th>
+      </thead>
+      <tbody>
+        <% @products.each_with_index do |p, index| %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= p.code %></td>
+            <td><%= p.name %></td>
+            <td><%=  p.counts.present? ? p.counts.last.count :  "" %></td>
+            <td><%= p.counts.present? ? number_with_delimiter(p.counts.last.count * p.price, delimiter: ",") : "" %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>총합</td>
+          <td><%= number_with_delimiter(@count, delimiter: ",") %></td>
+          <td><%= number_with_delimiter(@price, delimiter: ",") %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

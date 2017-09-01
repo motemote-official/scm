@@ -1,0 +1,26 @@
+<h1>모트모트 재고/ 판매 추이</h1>
+<%= link_to "메인", root_path %>
+<%= link_to "재고등록", new_product_path %>
+
+<div class="row">
+  <div class="col-md-12 margin-top">
+    <table class="table hover">
+      <thead>
+        <th>품목</th>
+        <% for i in 0..6 do %>
+          <th style="text-align:center"><%= Date.today - 6 + i %></th>
+        <% end %>
+      </thead>
+      <tbody>
+        <% @products.each do |p| %>
+          <tr>
+            <td><%= p.name %></td>
+            <% @count.where(product_id: p.id).all.each do |c| %>
+              <td style="text-align:center"><%= c.count %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
