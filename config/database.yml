@@ -21,5 +21,11 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: mysql2
+  database: scm
+  username: motemote
+  host: scm.ciznelqrrjyc.ap-northeast-2.rds.amazonaws.com
+  password: <%= ENV['RDSADMIN_PASSWORD'] %>
+  port: 3306
+  pool: 5
+  timeout: 5000
