@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   require 'mechanize'
   require 'json'
-  require 'Date'
+  require 'date'
 
   def index
     @products = Product.all.order(:name)
