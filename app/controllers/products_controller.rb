@@ -62,6 +62,21 @@ class ProductsController < ApplicationController
       @ratio[p.id] = ((@average[0][p.id] * p.price)*100).to_f/@total
     end
 
+    datasets = []
+    for i in 0..(@products.count-1) do
+      datasets << {
+        label: Product.find(i+1).name,
+        backgroundColor: "rgba(#{i*7},#{i*7},#{i*7},0.2)",
+        borderColor: "rgba(#{i*7},#{i*7},#{i*7},1)",
+        data: Product.find(i+1).counts.pluck(:count)
+      }
+    end
+    @data = {
+      labels: (("2017-05-22").to_date..Date.today).map{ |date| date.strftime("%y-%m-%d") },
+      datasets: datasets
+    }
+    @options = { width: "1000px", height: "400px" }
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render xml: @productss }
