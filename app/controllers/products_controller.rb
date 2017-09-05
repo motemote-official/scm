@@ -68,13 +68,13 @@ class ProductsController < ApplicationController
     @count = Count.find(params[:id])
 
     respond_to do |format|
-      if @model_class_name.update(model_class_name_params)
+      if @count.update(buffer: params[:buffer])
         flash[:notice] = 'ModelClassName was successfully updated.'
-        format.html { redirect_to(@model_class_name) }
+        format.html { redirect_to products_raw_path }
         format.xml  { head :ok }
       else
         format.html { render action: 'edit' }
-        format.xml  { render xml: @model_class_name.errors, status: :unprocessable_entity }
+        format.xml  { render xml: @count.errors, status: :unprocessable_entity }
       end
     end
   end
