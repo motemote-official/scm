@@ -10,7 +10,7 @@
                 <%= label_tag(:count, "제품코드") %>
               </td>
               <td>
-                <%= text_field_tag(:count, @count.product.code) %><br />
+                <%= text_field_tag(:count, @count.product.code, disabled: true) %><br />
               </td>
             </tr>
             <tr>
@@ -18,7 +18,7 @@
                 <%= label_tag(:count, "상품명") %>
               </td>
               <td>
-                <%= text_field_tag(:count, @count.product.name) %><br />
+                <%= text_field_tag(:count, @count.product.name, disabled: true) %><br />
               </td>
             </tr>
             <tr>
@@ -26,7 +26,7 @@
                 <%= label_tag(:count, "재고량") %>
               </td>
               <td>
-                <%= number_field_tag(:count, @count.count) %><br />
+                <%= number_field_tag(:count, @count.count, disabled: true) %><br />
               </td>
             </tr>
             <tr>
