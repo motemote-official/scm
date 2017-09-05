@@ -1,5 +1,5 @@
 <h1>모트모트 재고/ 판매 추이</h1>
-<%= link_to "메인", root_path %>
+<%= link_to "홈", root_path %>
 <%= link_to "RAW", products_raw_path %>
 <%= link_to "재고등록", new_product_path %>
 
@@ -10,8 +10,13 @@
         <th>품목</th>
         <th>상품코드</th>
         <th>상품명</th>
+        <th>지지지난 7일간 평균판매량</th>
+        <th>지지난 7일간 평균판매량</th>
+        <th>지난 7일간 평균판매량</th>
         <th>재고</th>
+        <th>판매가능일 수</th>
         <th>재고가치</th>
+        <th>매출의 비중</th>
       </thead>
       <tbody>
         <% @products.each_with_index do |p, index| %>
@@ -19,16 +24,20 @@
             <td><%= index + 1 %></td>
             <td><%= p.code %></td>
             <td><%= p.name %></td>
-            <td><%=  p.counts.present? ? p.counts.last.count :  "" %></td>
+            <td><%= @average[2][p.id] %></td>
+            <td><%= @average[1][p.id] %></td>
+            <td><%= @average[0][p.id] %></td>
+            <td><%= p.counts.present? ? p.counts.last.count :  "" %></td>
+            <td><%= @sell[p.id] %></td>
             <td><%= p.counts.present? ? number_with_delimiter(p.counts.last.count * p.price, delimiter: ",") : "" %></td>
+            <td><%= @ratio[p.id] %>%</td>
           </tr>
         <% end %>
         <tr>
-          <td></td>
-          <td></td>
-          <td>총합</td>
+          <td colspan="8" class="text-center">총합</td>
           <td><%= number_with_delimiter(@count, delimiter: ",") %></td>
           <td><%= number_with_delimiter(@price, delimiter: ",") %></td>
+          <td>100%</td>
         </tr>
       </tbody>
     </table>
