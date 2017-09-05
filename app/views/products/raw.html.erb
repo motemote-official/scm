@@ -7,16 +7,20 @@
     <table class="table hover">
       <thead>
         <th>품목</th>
-        <% for i in 0..6 do %>
-          <th style="text-align:center"><%= Date.today - 6 + i %></th>
+        <% for i in 0..@date do %>
+          <th style="text-align:center"><%= Date.today - @date + i %></th>
         <% end %>
       </thead>
       <tbody>
         <% @products.each do |p| %>
           <tr>
-            <td><%= p.name %></td>
+            <td class="name"><%= p.name %></td>
             <% @count.where(product_id: p.id).all.each do |c| %>
-              <td style="text-align:center"><%= c.count %></td>
+              <td class=<%= c.buffer > 0 ? "red" : "" %> style="text-align:center">
+                <%= link_to count_edit_path(c.id) do %>
+                  <%= c.count %>
+                <% end %>
+              </td>
             <% end %>
           </tr>
         <% end %>
