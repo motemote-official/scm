@@ -1,7 +1,7 @@
 <h1>모트모트 재고/ 판매 추이</h1>
-<%= link_to "홈", root_path %>
-<%= link_to "RAW", products_raw_path %>
-<%= link_to "재고등록", new_product_path %>
+<%= link_to "홈", root_path, class: "main-link" %>
+<%= link_to "RAW", products_raw_path, class: "main-link"  %>
+<%= link_to "재고등록", new_product_path, class: "main-link"  %>
 
 <div class="row">
   <div class="col-md-12 margin-top">
@@ -35,7 +35,7 @@
         <% end %>
         <tr>
           <td colspan="5" class="text-center">총합</td>
-          <td><%= @total %></td>
+          <td><%= number_with_delimiter(@total, delimiter: ",") %></td>
           <td><%= number_with_delimiter(@count, delimiter: ",") %></td>
           <td></td>
           <td><%= number_with_delimiter(@price, delimiter: ",") %></td>
