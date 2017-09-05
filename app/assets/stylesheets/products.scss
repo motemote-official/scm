@@ -14,8 +14,11 @@
 form.edit-count-form {
   display: inline-block;
 }
+table {
+  margin: 0 10px;
+}
 table.edit-count {
-  margin: 30px 0 0 0;
+  margin: 30px 0 0 0px;
   td.td-label {
     width: 80px;
     text-align: center;
