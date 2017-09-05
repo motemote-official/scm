@@ -62,6 +62,8 @@ class ProductsController < ApplicationController
       @ratio[p.id] = (@average[0][p.id] * p.price)/@total*100
     end
 
+    puts @average[0]
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render xml: @productss }
@@ -129,7 +131,5 @@ class ProductsController < ApplicationController
     @products = Product.all
     @count = Count.all
     @date =  Count.all.pluck(:date).uniq.count
-
-    puts @date
   end
 end
