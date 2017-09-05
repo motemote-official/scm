@@ -114,7 +114,7 @@ class ProductsController < ApplicationController
     @count = Count.find(params[:id])
 
     respond_to do |format|
-      if @count.update(buffer: params[:buffer])
+      if @count.update(count: params[:count], buffer: params[:buffer])
         flash[:notice] = 'ModelClassName was successfully updated.'
         format.html { redirect_to products_raw_path }
         format.xml  { head :ok }
