@@ -60,9 +60,30 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+    @count = Count.find(params[:id])
+  end
+
+  def update
+    @count = Count.find(params[:id])
+
+    respond_to do |format|
+      if @model_class_name.update(model_class_name_params)
+        flash[:notice] = 'ModelClassName was successfully updated.'
+        format.html { redirect_to(@model_class_name) }
+        format.xml  { head :ok }
+      else
+        format.html { render action: 'edit' }
+        format.xml  { render xml: @model_class_name.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def raw
-    date = Date.today - 7
     @products = Product.all
-    @count = Count.where("date > ?", date).all
+    @count = Count.all
+    @date =  Count.all.pluck(:date).uniq.count
+
+    puts @date
   end
 end
