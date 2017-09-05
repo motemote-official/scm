@@ -34,8 +34,10 @@
           </tr>
         <% end %>
         <tr>
-          <td colspan="8" class="text-center">총합</td>
+          <td colspan="5" class="text-center">총합</td>
+          <td><%= @total %></td>
           <td><%= number_with_delimiter(@count, delimiter: ",") %></td>
+          <td></td>
           <td><%= number_with_delimiter(@price, delimiter: ",") %></td>
           <td>100%</td>
         </tr>
