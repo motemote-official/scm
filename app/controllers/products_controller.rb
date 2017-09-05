@@ -72,7 +72,7 @@ class ProductsController < ApplicationController
       }
     end
     @data = {
-      labels: (("2017-05-22").to_date..Date.today).map{ |date| date.strftime("%y-%m-%d") },
+      labels: (("2017-05-22").to_date..Count.last.date.to_date).map{ |date| date.strftime("%y-%m-%d") },
       datasets: datasets
     }
     @options = { width: "1000px", height: "400px" }
