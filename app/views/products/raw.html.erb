@@ -8,7 +8,7 @@
     <table class="table hover">
       <thead>
         <th>품목</th>
-        <% for i in 0..@date do %>
+        <% for i in 1..@date do %>
           <th style="text-align:center"><%= Date.today - @date + i %></th>
         <% end %>
       </thead>
