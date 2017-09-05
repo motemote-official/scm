@@ -30,7 +30,7 @@
             <td><%= p.counts.present? ? p.counts.last.count :  "" %></td>
             <td><%= @sell[p.id] %></td>
             <td><%= p.counts.present? ? number_with_delimiter(p.counts.last.count * p.price, delimiter: ",") : "" %></td>
-            <td><%= @ratio[p.id] %>%</td>
+            <td><%= number_with_precision(@ratio[p.id], precision: 2) %>%</td>
           </tr>
         <% end %>
         <tr>

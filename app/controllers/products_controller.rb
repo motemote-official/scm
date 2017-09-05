@@ -59,7 +59,7 @@ class ProductsController < ApplicationController
       @total += @average[0][p.id] * p.price
     end
     @products.each do |p|
-      @ratio[p.id] = (@average[0][p.id] * p.price)*100/@total
+      @ratio[p.id] = ((@average[0][p.id] * p.price)*100).to_f/@total
     end
 
     respond_to do |format|
