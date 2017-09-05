@@ -16,6 +16,52 @@ class ProductsController < ApplicationController
       @price += p.counts.last.count * p.price
     end
 
+    # 7일간 판매 평균 계산
+
+    @average = []
+
+    for i in 0..2 do
+      sum = []
+      @products.each do |p|
+        for j in (7*i+1)..(7*i+7) do
+          date = p.counts.last.date
+          if sum[p.id].nil?
+            sum[p.id] = 0
+          end
+          sum[p.id] = sum[p.id] + p.counts.where(date: (date.to_date - j + 1).to_s).take.buffer + p.counts.where(date: (date.to_date - j).to_s).take.count - p.counts.where(date: (date.to_date - j + 1).to_s).take.count
+        end
+      end
+
+      avg = []
+      sum.each_with_index do |s, index|
+        if s.nil?
+          s = 0
+        end
+        avg[index] = s/7
+      end
+
+      @average[i] = avg
+    end
+
+    @sell = []
+    @products.each do |p|
+      if @average[0][p.id] != 0
+        @sell[p.id] = p.counts.last.count/@average[0][p.id]
+      else
+        @sell[p.id] = "-"
+      end
+    end
+
+    # 판매 비중
+    @ratio = []
+    total = 0
+    @products.each do |p|
+      total += @average[0][p.id] * p.price
+    end
+    @products.each do |p|
+      @ratio[p.id] = (@average[0][p.id] * p.price)/total*100
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render xml: @productss }
