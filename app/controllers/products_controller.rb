@@ -81,6 +81,7 @@ class ProductsController < ApplicationController
       format.html # index.html.erb
       format.xml  { render xml: @productss }
     end
+
   end
 
   def new
@@ -112,7 +113,13 @@ class ProductsController < ApplicationController
 
   def create
     Product.all.each do |p|
-      Count.create(count: params[:"#{p.id}"], product_id: p.id, date: Date.today)
+      if Count.where(product_id: p.id).where(date: (Date.today - 1).to_s).take.present?
+        if params[:"#{p.id}"].to_i > Count.where(product_id: p.id).where(date: (Date.today - 1).to_s).take.count
+          Count.create(count: params[:"#{p.id}"], product_id: p.id, date: Date.today, goods: true)
+        else
+          Count.create(count: params[:"#{p.id}"], product_id: p.id, date: Date.today, goods: false)
+        end
+      end
     end
 
     respond_to do |format|
@@ -143,6 +150,9 @@ class ProductsController < ApplicationController
   def raw
     @products = Product.all
     @count = Count.all
-    @date =  Count.all.pluck(:date).uniq.count
+    @date = Date.today - ("2017-05-22").to_date + 1
+
+    # 입력을 못했을 경우 빈칸
+    @diff = Date.today - Count.last.date.to_date
   end
 end
