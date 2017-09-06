@@ -17,11 +17,18 @@
           <tr>
             <td class="name"><%= p.name %></td>
             <% @count.where(product_id: p.id).all.each do |c| %>
-              <td class=<%= c.buffer > 0 ? "red" : "" %> style="text-align:center">
-                <%= link_to count_edit_path(c.id) do %>
-                  <%= c.count %>
+                <% if c.goods? %>
+                  <td class=<%= c.buffer > 0 ? "green" : "red" %> style="text-align:center">
+                <% else %>
+                  <td style="text-align:center">
                 <% end %>
-              </td>
+                    <%= link_to count_edit_path(c.id) do %>
+                      <%= c.count %>
+                    <% end %>
+                  </td>
+            <% end %>
+            <% for i in 0..(@diff-1) do %>
+              <td></td>
             <% end %>
           </tr>
         <% end %>
