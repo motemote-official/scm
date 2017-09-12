@@ -10,6 +10,10 @@ gem 'devise'
 gem 'figaro'
 gem 'jquery-turbolinks'
 gem 'chartjs-ror'
+gem 'fog'
+gem 'carrierwave'
+gem "simple_calendar"
+gem 'will_paginate'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'

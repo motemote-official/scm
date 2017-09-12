@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>인스타그램 > 태그관리</h1>
+  <%= link_to "홈", root_path, class: "main-link" %>
+  <%= link_to "스케줄", regrams_path, class: "main-link" %>
+  <%= link_to "회원 정보", members_path, class: "main-link" %>
+  <div class="row">
+    <div class="btn-wrapper">
+      <%= link_to "신규 등록", new_tag_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table table-hover table-regram-index">
+      <colgroup>
+        <col span="1" style="width: 15%;">
+        <col span="1" style="width: 50%;">
+        <col span="1" style="width: 35%;">
+      </colgroup>
+      <thead>
+        <th class="text-center">No</th>
+        <th class="text-center">제목</th>
+        <th class="text-center">종류</th>
+      </thead>
+      <tbody>
+        <% @tags.each_with_index do |t, index| %>
+          <tr onclick="location.href='../../tags/<%= t.id %>/edit'">
+            <td class="text-center"><%= index + 1 %></td>
+            <td class="text-center"><%= t.title %></td>
+            <td class="text-center"><%= t.category == 1 ? "제품 태그" : "인스타그램 태그" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @tags %>
+  </div>
+</div>

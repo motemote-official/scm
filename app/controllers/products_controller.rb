@@ -3,6 +3,8 @@ class ProductsController < ApplicationController
   require 'json'
   require 'date'
 
+  before_action :authenticate_user!
+
   def index
     @products = Product.all.order(:name)
 

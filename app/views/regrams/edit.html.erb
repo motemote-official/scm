@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <h1>리그램 상세보기</h1>
+    <%= form_for @regram, html: { class: "form-group form-regram" } do |f| %>
+      <%= f.label :date, "일정" %>
+      <%= f.date_field :date, class: "form-control" %>
+      <%= f.label :timepool_id, "시간" %>
+      <%= f.select :timepool_id, options_from_collection_for_select(Timepool.all, :id, :time, @regram.timepool_id), {include_blank: true}, {class: 'form-control select-time'} %>
+      <%= f.label :member_id, "ID" %>
+      <%= f.text_field :member_id, value: @member, class: "form-control" %>
+      <%= f.label :product_id, "사용 제품" %>
+      <%= f.select :product_id, options_from_collection_for_select(Product.all, :id, :name, @regram.product_id), {include_blank: true}, {class: 'form-control'} %>
+      <%= f.label :content, "내용", class: "label-top" %>
+      <%= f.text_area :content, class: "form-control" %>
+      <div class="content-btn">
+        <span class="btn btn-success">사용자 태그 <br/> 삽입</span>
+        <span class="btn btn-success">제품 태그 <br/> 삽입</span>
+        <span class="btn btn-success">인스타그램 <br/>태그 삽입</span>
+      </div>
+      <%= f.label :img, "이미지", class: "label-top" %>
+      <div class="input-image">
+        <%= image_tag @regram.nil? ? asset_path("link.svg") : ( (@regram.img.nil?) ? asset_path("link.svg") : @regram.img.url ), class: "preview" %>
+        <%= f.file_field :img, class: "from-control" %>
+      </div>
+      <%= f.label :url, "URL" %>
+      <%= f.text_field :url, class: "form-control" %>
+      <div class="btn-wrapper">
+        <%= f.submit "수정", class: "btn btn-primary" %>
+        <%= link_to "취소", :back, class: "btn btn-warning" %>
+      </div>
+    <% end %>
+  </div>
+</div>
