@@ -1,0 +1,168 @@
+// Place all the styles related to the regrams controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+form.form-regram {
+  width: 1080px;
+  margin: auto;
+  label {
+    width: 120px;
+    text-align: center;
+  }
+  input.form-control, select.form-control {
+    width: 410px;
+    margin-bottom: 10px;
+  }
+  select.select-time {
+    width: 200px;
+    margin-right: 210px;
+  }
+  label.label-top {
+    vertical-align: top;
+  }
+  textarea.form-control {
+    width: 830px;
+    height: 330px;
+    margin-bottom: 10px;
+  }
+  div.content-btn {
+    display: inline-block;
+    padding-left: 10px;
+    width: 110px;
+    height: 330px;
+    vertical-align: top;
+    span.btn {
+      width: 100px;
+      padding: 30px 0;
+      margin-bottom: 10px;
+    }
+  }
+  div.input-image {
+    position: relative;
+    display: inline-block;
+    width: 910px;
+    margin-bottom: 20px;
+    img.preview {
+      width: 100px;
+      height: auto;
+    }
+    input#regram_img {
+      position: absolute;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      opacity: 0;
+    }
+  }
+  .btn-wrapper {
+    text-align: right;
+    margin-bottom: 30px;
+    .btn {
+      width: 100px;
+    }
+  }
+}
+
+/* Regram Index */
+div.buffer {
+  height: 20px;
+  width: 0;
+}
+
+div.calendar-heading {
+  margin-bottom: 10px;
+  a.prev {
+    margin-right: 20px;
+    font-size: 15px;
+  }
+  span.calendar-title {
+    font-family: NotoSansCJKkr;
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 1.5;
+  }
+  a.next {
+    margin-left: 20px;
+    font-size: 15px;
+  }
+}
+
+ul.dayofweek, ul.calendar {
+  margin-bottom: 0;
+  text-align: center;
+  li {
+    display: inline-block;
+    width: 140px;
+  }
+}
+ul.dayofweek {
+  li {
+    border: 1px solid #ccc;
+    text-align: center;
+    p {
+      margin: 0;
+      padding: 5px 0;
+    }
+    p.dayofweek_0 {
+      color: red;
+    }
+    p.dayofweek_6 {
+      color: blue;
+    }
+  }
+}
+ul.calendar {
+  li {
+    margin-bottom: 5px;
+    p {
+      margin: 0;
+      padding: 5px 0;
+      span {
+        padding: 5px 10px 5px 5px;
+      }
+      span.content, a.content {
+        border: none !important;
+        width: 100px;
+        padding: 0;
+        display: inline-block;
+      }
+      a.content {
+        cursor: pointer;
+      }
+    }
+  }
+  li.past {
+    background: #eee;
+    p {
+      text-align: left;
+      span {
+        border-right: 1px solid #aaa;
+      }
+    }
+    p.day-title {
+      text-align: center;
+      background: #ccc;
+    }
+  }
+  li.today {
+    background: #C2DFFF;
+    p {
+      span {
+        border-right: 1px solid #82A8F8;
+      }
+    }
+    p.day-title {
+      background: #82A8F8;
+    }
+  }
+  li.future {
+    background: #A4F3F0;
+    p {
+      span {
+        border-right: 1px solid #06E7C8;
+      }
+    }
+    p.day-title {
+      background: #06E7C8;
+    }
+  }
+}

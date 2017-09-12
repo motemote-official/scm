@@ -1,0 +1,6 @@
+<%= f.label :title, "제목" %>
+<%= f.text_field :title, class: "form-control" %>
+<%= f.label :category, "종류" %>
+<%= f.select :category, options_for_select([["제품 태그", 1], ["인스타그램 태그", 2]], "제품 태그"), {}, class: "form-control" %>
+<%= f.label :content, "내용", class: "label-comment" %>
+<%= f.text_area :content, class: "form-control" %>

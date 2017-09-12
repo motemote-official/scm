@@ -1,3 +1,14 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+h1 {
+  margin-bottom: 30px !important;
+  padding: 0 20px;
+  font-family: NotoSansCJKkr;
+  font-size: 35px;
+  font-weight: 500;
+  line-height: 1.33;
+}
+input, select, textarea {
+  display: inline-block !important;
+}

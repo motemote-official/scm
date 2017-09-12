@@ -1,0 +1,75 @@
+// Place all the styles related to the members controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+table.table {
+  margin: 30px 0 0 0;
+}
+form.form-member, form.form-tag {
+  width: 1080px;
+  margin: auto;
+  label {
+    width: 120px;
+    text-align: center;
+  }
+  label.label-comment {
+    vertical-align: top;
+  }
+  input.form-control, select.form-control {
+    width: 410px;
+    margin-bottom: 10px;
+  }
+  input.input-follower {
+    width: 100px;
+  }
+  textarea.form-control {
+    width: 950px;
+    margin-bottom: 10px;
+  }
+  .radio {
+    display: inline-block;
+    label {
+      width: 80px;
+    }
+  }
+  .btn-wrapper {
+    text-align: right;
+    .btn {
+      width: 100px;
+    }
+  }
+}
+label.regram-info {
+  width: 120px;
+  text-align: center;
+}
+input.regram-info {
+  margin-bottom: 10px;
+  width: 200px;
+  display: inline-block;
+}
+input.regram-info-top {
+  margin-top: 68px;
+}
+a.new-regram-btn {
+  margin-top: 20px;
+  float: right;
+}
+
+table.table-regram {
+  tbody > tr {
+    cursor: pointer;
+  }
+}
+
+table.table-regram-index {
+  tbody > tr > td {
+    vertical-align: middle;
+  }
+}
+.btn-wrapper {
+    text-align: right;
+    .btn {
+      width: 100px;
+    }
+  }
+

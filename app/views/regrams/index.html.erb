@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <h1>인스타그램 > 스케줄</h1>
+    <%= link_to "홈", root_path, class: "main-link" %>
+    <%= link_to "회원 정보", members_path, class: "main-link" %>
+    <%= link_to "태그 관리", tags_path, class: "main-link" %>
+  </div>
+  <div class="buffer"></div>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= month_calendar do |date| %>
+        <p class="day-title text-center"><%= date.day %></p>
+        <% @timepool.all.each do |t| %>
+          <p>
+            <span><%= t.time %></span>
+            <% if Regram.where(date: date, timepool_id: t.id).take.nil? %>
+              <% if date > Date.today %>
+                <%= link_to "+", new_regram_path(date: date, time: t.time), class: "content text-center" %>
+              <% end %>
+            <% else %>
+              <%= link_to Regram.where(date:date, timepool_id: t.id).take.member.email, edit_regram_path(Regram.where(date:date, timepool_id: t.id).take.id), class: "content text-center" %>
+            <% end %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

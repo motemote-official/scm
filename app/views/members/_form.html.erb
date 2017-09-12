@@ -1,0 +1,29 @@
+<%= f.label :email, "ID" %>
+<%= f.text_field :email, class: "form-control" %>
+<%= f.label :before, "이전 ID" %>
+<%= f.text_field :before, value: @before, disabled: true, class: "form-control" %>
+<%= f.label :rocket, "로켓단" %>
+<%= f.number_field :rocket, class: "form-control" %>
+<%= f.label :name, "이름" %>
+<%= f.text_field :name, class: "form-control" %>
+<%= f.label :date, "등록일" %>
+<%= f.date_field :date, class: "form-control" %>
+<%= f.label :permit, "허락일" %>
+<%= f.date_field :permit, class: "form-control" %><br />
+<%= f.label :comment, "코멘트", class: "label-comment" %>
+<%= f.text_area :comment, class: "form-control" %>
+<%= f.label :active, "계정 활성" %>
+<div class="radio">
+  <%= f.label :active do %>
+    <%= f.radio_button :active, true %>
+    On
+  <% end %>
+</div>
+<div class="radio">
+  <%= f.label :active do %>
+    <%= f.radio_button :active, false %>
+    Off
+  <% end %>
+</div>
+<%= f.label :follower, "팔로워" %>
+<%= f.number_field :follower, class: "form-control input-follower" %>

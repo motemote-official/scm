@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170906053054) do
+ActiveRecord::Schema.define(version: 20170912033430) do
+
+  create_table "befores", force: :cascade do |t|
+    t.string "email"
+    t.integer "member_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_befores_on_member_id"
+  end
 
   create_table "counts", force: :cascade do |t|
     t.integer "count"
@@ -28,11 +36,56 @@ ActiveRecord::Schema.define(version: 20170906053054) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "members", force: :cascade do |t|
+    t.string "email"
+    t.string "before"
+    t.string "name"
+    t.integer "rocket"
+    t.string "phone"
+    t.integer "follower"
+    t.string "comment"
+    t.date "date"
+    t.date "permit"
+    t.boolean "active"
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "code"
     t.string "kind"
     t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "regrams", force: :cascade do |t|
+    t.date "date"
+    t.text "content"
+    t.string "img"
+    t.string "url"
+    t.integer "member_id"
+    t.integer "product_id"
+    t.integer "timepool_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_regrams_on_member_id"
+    t.index ["product_id"], name: "index_regrams_on_product_id"
+    t.index ["timepool_id"], name: "index_regrams_on_timepool_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "timepools", force: :cascade do |t|
+    t.string "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

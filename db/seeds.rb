@@ -87,3 +87,28 @@ for i in 0..35 do
     Count.create(count: arr[i][j], product_id: (i+1), date: Date.new(2017,5,22) + j)
   end
 end
+
+Member.create([
+  { email: "georgia", rocket: 1, date: "2017-03-21" },
+  { email: "coffee", rocket: 2, date: "2017-05-30" },
+  { email: "smartphone", rocket: 1, date: "2017-07-28"},
+  { email: "kakao", rocket: 1, date: "2017-07-28"},
+  { email: "naver", rocket: 1, date: "2017-07-28"},
+  { email: "pen", rocket: 1, date: "2017-07-28"},
+  { email: "note", rocket: 1, date: "2017-07-28"},
+  { email: "motemote", rocket: 1, date: "2017-07-28"},
+  { email: "smart", rocket: 1, date: "2017-07-28"},
+  { email: "phone", rocket: 1, date: "2017-07-28"},
+  { email: "mart", rocket: 1, date: "2017-07-28"},
+  { email: "one", rocket: 1, date: "2017-07-28"},
+])
+
+Timepool.create([
+  { time: "08" },
+  { time: "12" },
+  { time: "18" },
+  { time: "22" },
+  { time: "24" }
+])
+
+puts "DB:seed Success!!"

@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>회원정보 > 상세</h1>
+      <%= form_for @member, html: { class: "form-group form-member" } do |f| %>
+        <%= render partial: 'form', locals: { f: f } %>
+        <div class="btn-wrapper">
+          <%= f.submit "수정", class: "btn btn-primary" %>
+          <%= link_to "메뉴", members_path, class: "btn btn-warning" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-4">
+      <%= label_tag :count, "총 횟수", class: "regram-info" %>
+      <%= number_field_tag :count, @count, disabled: "true", class: "regram-info regram-info-top form-control" %><br />
+      <%= label_tag :date, "최근 일자", class: "regram", class: "regram-info" %>
+      <%= date_field_tag :date, @date, disabled: "true", disabled: "true", class: "regram-info form-control" %>
+    </div>
+    <div class="col-xs-12 col-md-8">
+      <table class="table table-hover table-regram">
+        <thead>
+          <th class="text-center">No</th>
+          <th class="text-center">리그램 상세 일자</th>
+          <th class="text-center">시간</th>
+        </thead>
+        <tbody>
+          <% @member.regrams.all.each_with_index do |r, index| %>
+            <tr onclick="location.href='../../regrams/<%= r.id %>/edit'">
+              <td class="text-center"><%= index + 1 %></td>
+              <td class="text-center"><%= r.date %></td>
+              <td class="text-center"><%= Timepool.find(r.timepool_id).time %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to "리그램 등록", new_regram_path(id: @member.id), class: "btn btn-primary new-regram-btn" %>
+    </div>
+  </div>
+</div>
