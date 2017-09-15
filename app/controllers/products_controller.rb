@@ -141,7 +141,7 @@ class ProductsController < ApplicationController
   def all
     @products = Product.all
     @count = Count.all
-    @all = Date.today - ("2017-05-22").to_Date + 1 # 총 날짜 수
+    @all = Date.today - ("2017-05-22").to_date  # 총 날짜 수
 
     # 입력을 못했을 경우 빈칸
     @diff = Date.today - Count.last.date.to_date
