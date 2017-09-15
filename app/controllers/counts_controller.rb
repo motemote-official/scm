@@ -40,6 +40,8 @@ class CountsController < ApplicationController
         else
           Count.create(count: params[:"#{p.id}"], product_id: p.id, date: Date.today, goods: false)
         end
+      else
+        Count.create(count: params[:"#{p.id}"], product_id: p.id, date: Date.today, goods: true)
       end
     end
 
