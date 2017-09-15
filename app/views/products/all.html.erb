@@ -13,10 +13,10 @@
       <tbody>
         <% @products.each do |p| %>
           <tr>
+            <td class="name"><%= p.name %></td>
             <% for i in 0..(p.date.to_date - Date.today + @all - 2) do %>
               <td style="text-align:center"><a href="">0</a></td>
             <% end %>
-            <td class="name"><%= p.name %></td>
             <% @count.where(product_id: p.id).all.each do |c| %>
               <% if c.goods? %>
                 <td class=<%= c.buffer > 0 ? "green" : "red" %> style="text-align:center">
