@@ -1,0 +1,44 @@
+<table class="edit-count">
+  <tbody>
+    <tr>
+      <td class="td-label">
+        <%= f.label(:code, "제품코드") %>
+      </td>
+      <td>
+        <%= f.text_field(:code)%><br />
+      </td>
+    </tr>
+    <tr>
+      <td class="td-label">
+        <%= f.label(:name, "상품명") %>
+      </td>
+      <td>
+        <%= f.text_field(:name) %><br />
+      </td>
+    </tr>
+    <tr>
+      <td class="td-label">
+        <%= f.label(:kind, "종류") %>
+      </td>
+      <td>
+        <%= f.select(:kind, options_for_select(["note", "planner", "accessory"]), {}, class: 'form-control') %>
+      </td>
+    </tr>
+    <tr>
+      <td class="td-label">
+        <%= f.label(:price, "가격") %>
+      </td>
+      <td>
+        <%= f.number_field(:price) %>
+      </td>
+    </tr>
+    <tr>
+      <td class="td-label">
+        <%= f.label(:date, "출시일") %>
+      </td>
+      <td>
+        <%= f.date_field(:date) %>
+      </td>
+    </tr>
+  </tbody>
+</table>

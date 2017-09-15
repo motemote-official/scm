@@ -1,0 +1,15 @@
+<%= link_to "홈", root_path, class: "main-link"  %>
+<% unless params[:action] == "index" %>
+  <%= link_to "메인", products_path, class: "main-link"  %>
+<% end %>
+<%= link_to "재고등록", new_count_path, class: "main-link" %>
+<% unless params[:action] == "raw" %>
+  <%= link_to "RAW", products_raw_path, class: "main-link" %>
+<% end %>
+<%= link_to "상품등록", new_product_path, class: "main-link" %>
+<% unless params[:action] == "list" %>
+  <%= link_to "상품목록", products_list_path, class: "main-link" %>
+<% end %>
+<% if params[:action] == "raw" %>
+  <%= link_to "All", products_all_path, class: "main-link" %>
+<% end %>

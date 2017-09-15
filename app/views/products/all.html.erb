@@ -1,20 +1,23 @@
 <h1>모트모트 재고/ 판매 추이</h1>
-<%= render partial: 'nav', locals: { } %>
+<%= link_to "홈", root_path, class: "main-link"  %>
+<%= link_to "메인", products_path, class: "main-link"  %>
+<%= link_to "재고등록", new_count_path, class: "main-link" %>
+<%= link_to "상품등록", new_product_path, class: "main-link" %>
 
 <div class="row">
   <div class="col-md-12 margin-top">
     <table class="table hover">
       <thead>
         <th>품목</th>
-        <% for i in 1..@date do %>
-          <th style="text-align:center"><%= Date.today - @date + i %></th>
+        <% for i in 1..@all do %>
+          <th style="text-align:center"><%= Date.today - @all + i %></th>
         <% end %>
       </thead>
       <tbody>
         <% @products.each do |p| %>
           <tr>
             <td class="name"><%= p.name %></td>
-            <% @count.where(product_id: p.id).where('date > ?', (Date.today-31)).each do |c| %>
+            <% @count.where(product_id: p.id).all.each do |c| %>
               <% if c.goods? %>
                 <td class=<%= c.buffer > 0 ? "green" : "red" %> style="text-align:center">
               <% else %>
@@ -25,7 +28,7 @@
                   <% end %>
                 </td>
             <% end %>
-            <% for i in 0..(p.created_at.to_date - Date.today + 31 - 1) do %>
+            <% for i in 0..(p.created_at.to_date - Date.today + @all - 1) do %>
               <td style="text-align:center">0</td>
             <% end %>
             <% for i in 0..(@diff-1) do %>
