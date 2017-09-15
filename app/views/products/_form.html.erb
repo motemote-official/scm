@@ -5,7 +5,7 @@
         <%= f.label(:code, "제품코드") %>
       </td>
       <td>
-        <%= f.text_field(:code)%><br />
+        <%= f.text_field(:code, required: true) %><br />
       </td>
     </tr>
     <tr>
@@ -13,7 +13,7 @@
         <%= f.label(:name, "상품명") %>
       </td>
       <td>
-        <%= f.text_field(:name) %><br />
+        <%= f.text_field(:name, required: true) %><br />
       </td>
     </tr>
     <tr>
@@ -21,7 +21,7 @@
         <%= f.label(:kind, "종류") %>
       </td>
       <td>
-        <%= f.select(:kind, options_for_select(["note", "planner", "accessory"]), {}, class: 'form-control') %>
+        <%= f.select(:kind, options_for_select(["note", "planner", "accessory"]), {}, class: 'form-control', required: true) %>
       </td>
     </tr>
     <tr>
@@ -29,7 +29,7 @@
         <%= f.label(:price, "가격") %>
       </td>
       <td>
-        <%= f.number_field(:price) %>
+        <%= f.number_field(:price, required: true) %>
       </td>
     </tr>
     <tr>
@@ -37,7 +37,7 @@
         <%= f.label(:date, "출시일") %>
       </td>
       <td>
-        <%= f.date_field(:date) %>
+        <%= f.date_field(:date, required: true) %>
       </td>
     </tr>
   </tbody>
