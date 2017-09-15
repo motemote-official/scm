@@ -29,12 +29,16 @@ table.edit-count {
     width: 80px;
     text-align: center;
   }
-  td input {
+  td input, td select {
     width: 300px;
     padding: 5px 10px;
+    margin-bottom: 5px;
   }
 }
 .button {
   margin: 10px 0 0 0px;
   padding: 5px 25px !important;
+}
+.row {
+  padding: 0 20px !important;
 }

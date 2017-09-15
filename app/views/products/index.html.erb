@@ -1,7 +1,5 @@
 <h1>모트모트 재고/ 판매 추이</h1>
-<%= link_to "홈", root_path, class: "main-link" %>
-<%= link_to "RAW", products_raw_path, class: "main-link"  %>
-<%= link_to "재고등록", new_product_path, class: "main-link"  %>
+<%= render partial: 'nav', locals: { } %>
 
 <div class="row">
   <div class="col-md-12 margin-top">
@@ -27,15 +25,17 @@
             <td><%= @average[2][p.id] %></td>
             <td><%= @average[1][p.id] %></td>
             <td><%= @average[0][p.id] %></td>
-            <td><%= p.counts.present? ? p.counts.last.count :  "" %></td>
+            <td><%= p.counts.present? ? p.counts.last.count : 0 %></td>
             <td><%= @sell[p.id] %></td>
-            <td><%= p.counts.present? ? number_with_delimiter(p.counts.last.count * p.price, delimiter: ",") : "" %></td>
+            <td><%= p.counts.present? ? number_with_delimiter(p.counts.last.count * p.price, delimiter: ",") : 0 %></td>
             <td><%= number_with_precision(@ratio[p.id], precision: 2) %>%</td>
           </tr>
         <% end %>
         <tr>
-          <td colspan="5" class="text-center">총합</td>
-          <td><%= number_with_delimiter(@total, delimiter: ",") %></td>
+          <td colspan="3" class="text-center">총합</td>
+          <td><%= number_with_delimiter(@total[2], delimiter: ",") %></td>
+          <td><%= number_with_delimiter(@total[1], delimiter: ",") %></td>
+          <td><%= number_with_delimiter(@total[0], delimiter: ",") %></td>
           <td><%= number_with_delimiter(@count, delimiter: ",") %></td>
           <td></td>
           <td><%= number_with_delimiter(@price, delimiter: ",") %></td>
