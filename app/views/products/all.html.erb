@@ -28,7 +28,7 @@
                   <% end %>
                 </td>
             <% end %>
-            <% for i in 0..(p.created_at.to_date - Date.today + @all - 1) do %>
+            <% for i in 0..(p.date.to_date - Date.today + @all - 1) do %>
               <td style="text-align:center">0</td>
             <% end %>
             <% for i in 0..(@diff-1) do %>
