@@ -13,6 +13,9 @@
       <tbody>
         <% @products.each do |p| %>
           <tr>
+            <% for i in 0..(p.date.to_date - Date.today + 30 - 1) do %>
+              <td style="text-align:center"><a href="">0</a></td>
+            <% end %>
             <td class="name"><%= p.name %></td>
             <% @count.where(product_id: p.id).where('date > ?', (Date.today-31)).each do |c| %>
               <% if c.goods? %>
@@ -24,9 +27,6 @@
                     <%= c.count %>
                   <% end %>
                 </td>
-            <% end %>
-            <% for i in 0..(p.date.to_date - Date.today + 30 - 1) do %>
-              <td style="text-align:center"><a href="">0</a></td>
             <% end %>
             <% for i in 0..(@diff-1) do %>
               <td></td>
