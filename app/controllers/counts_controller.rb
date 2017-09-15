@@ -32,7 +32,7 @@ class CountsController < ApplicationController
     end
   end
 
-   create
+  def create
     Product.all.each do |p|
       if Count.where(product_id: p.id).where(date: (Date.today - 1).to_s).take.present?
         if params[:"#{p.id}"].to_i > Count.where(product_id: p.id).where(date: (Date.today - 1).to_s).take.count
@@ -53,7 +53,7 @@ class CountsController < ApplicationController
     @count = Count.find(params[:id])
   end
 
-  ded 0 (delta 0)f update
+  def update
     @count = Count.find(params[:id])
 
     respond_to do |format|
