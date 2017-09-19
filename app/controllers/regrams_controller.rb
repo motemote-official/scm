@@ -42,6 +42,8 @@ class RegramsController < ApplicationController
   def edit
     @regram = Regram.find(params[:id])
     @member = Member.find(@regram.member_id).email
+    @date = @regram.date
+    @time = @regram.timepool_id
   end
 
   def update
@@ -70,10 +72,20 @@ class RegramsController < ApplicationController
     end
   end
 
+  def tag
+    type = params[:type]
+    val = params[:val]
+
+    if type == "user-tag"
+      render json: { text: "\n\nfrom @#{val}" }
+    else
+      render json: { text: "\n\n#{Tag.find(val).content}" }
+    end
+  end
+
   private
 
   def regram_params
     params.require(:regram).permit(:date, :content, :img, :url, :member_id, :product_id, :timepool_id)
   end
-
 end

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'products/list' => 'products#list'
   get 'tag/:id/destroy' => 'tags#destroy', as: :tag_destroy
 
+  post 'regrams/tag' => 'regrams#tag'
+
   resources :homes
   resources :products
   resources :members

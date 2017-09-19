@@ -10,7 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery-3.2.1.js
+//= require jquery
+//= require jquery_ujs
 //= require jquery.turbolinks
 //= require bootstrap/dist/js/bootstrap
 //= require html5-3.6-respond-1.1.0.min
@@ -19,4 +20,3 @@
 //= require_tree .
 //= require turbolinks
 $.turbo.use('turbolinks:load');
-

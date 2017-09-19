@@ -14,7 +14,7 @@
           <p>
             <span><%= t.time %></span>
             <% if Regram.where(date: date, timepool_id: t.id).take.nil? %>
-              <% if date > Date.today %>
+              <% if date >= Date.today %>
                 <%= link_to "+", new_regram_path(date: date, time: t.time), class: "content text-center" %>
               <% end %>
             <% else %>
