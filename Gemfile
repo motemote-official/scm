@@ -8,6 +8,7 @@ end
 gem 'mechanize'
 gem 'devise'
 gem 'figaro'
+gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'chartjs-ror'
 gem 'fog'

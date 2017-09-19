@@ -1,6 +1,30 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+inputTag = (e) ->
+  id = e.target.id
+  if id == "user-tag"
+    val = $("#user_tag").val()
+  else if id == "product-tag"
+    val = $("#product_tag").val()
+  else
+    val = $("#instagram_tag").val()
+
+  $.ajax({
+    method: "POST",
+    url: "/regrams/tag",
+    data: { type: id, val: val },
+    dataType: "json",
+    success: (data) ->
+      $("#regram_content").append(data.text)
+      return
+    ,
+    error: ->
+      alert("Failed")
+      return
+  })
+  return
+
 $ ->
   $(document).on 'change', 'input#regram_img', (event)->
     preview = $(".preview")
@@ -14,4 +38,8 @@ $ ->
     reader.readAsDataURL(file)
     preview.attr("style", "opacity:1;")
     return
+
+  $(".btn-tag").click (e)->
+    inputTag(e)
+
   return
