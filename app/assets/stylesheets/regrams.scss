@@ -192,6 +192,12 @@ ul.calendar {
     input.form-control, select.select-time, select.form-control, textarea.form-control {
       width: 100%;
     }
+    select.select-time {
+      margin-right: 0;
+    }
+    div.input-image {
+      width: 100%;
+    }
     div.content-btn {
       width: 100%;
       height: auto;
