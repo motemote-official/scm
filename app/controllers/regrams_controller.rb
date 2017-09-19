@@ -41,23 +41,25 @@ class RegramsController < ApplicationController
 
   def edit
     @regram = Regram.find(params[:id])
-    @member = Member.find(@regram.member_id).email
+    @member = Member.find(@regram.member_id)
     @date = @regram.date
     @time = @regram.timepool_id
   end
 
   def update
     @regram = Regram.find(params[:id])
+    @regram.member_id = Member.where(email: params[:regram][:member_id]).take.id
 
     respond_to do |format|
-      if @regram.update(regram_params)
+      if @regram.save
         @regram.update(member_id: Member.where(email: params[:regram][:member_id]).take.id)
         flash[:notice] = 'Regram was successfully updated.'
-        format.html { redirect_to(@regram) }
+        format.html { redirect_to(edit_regram_path(@regram)) }
         format.xml  { head :ok }
       else
         format.html { render action: 'edit' }
         format.xml  { render xml: @regram.errors, status: :unprocessable_entity }
+        puts @regram.errors.full_messages
       end
     end
   end

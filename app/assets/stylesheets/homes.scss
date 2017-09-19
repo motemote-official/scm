@@ -35,3 +35,12 @@ div.login-wrapper {
     width: 100px;
   }
 }
+
+@media (max-width: 767px) {
+  h1 {
+    font-size: 25px;
+  }
+  ul {
+    padding: 0;
+  }
+}
