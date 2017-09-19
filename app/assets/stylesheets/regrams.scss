@@ -58,7 +58,7 @@ form.form-regram {
   }
   .btn-wrapper {
     text-align: right;
-    margin-bottom: 30px;
+    margin: 20px 0;
     .btn {
       width: 100px;
     }
@@ -166,6 +166,49 @@ ul.calendar {
     }
     p.day-title {
       background: #06E7C8;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  ul.dayofweek {
+    display: none;
+  }
+  ul.calendar li {
+    width: 100%;
+    p a.content {
+      width: 80%;
+    }
+  }
+  ul.calendar li.past {
+    display: none;
+  }
+  form.form-regram {
+    width: 100%;
+    label {
+      width: 30%;
+      text-align: left;
+    }
+    input.form-control, select.select-time, select.form-control, textarea.form-control {
+      width: 100%;
+    }
+    div.content-btn {
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+      padding: 0;
+      input.form-control, select.form-control {
+        width: 49%;
+        vertical-align: top;
+      }
+      span.btn-tag {
+        width: 49%;
+        padding: 6px 0;
+      }
+    }
+    div.btn-wrapper .btn {
+      width: 49%;
+      margin: 0 0 5px 0;
     }
   }
 }

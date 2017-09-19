@@ -73,3 +73,35 @@ table.table-regram-index {
     }
   }
 
+@media (max-width: 767px) {
+  .pc {
+    display: none;
+  }
+  form.form-member {
+    width: auto;
+    label {
+      width: 30%;
+    }
+    input.form-control, select.form-control {
+      width: 65%;
+    }
+    textarea.form-control {
+      width: 100%;
+    }
+    .btn-wrapper {
+      margin: 20px 0;
+    }
+  }
+  label.regram-info {
+    width: 30%;
+  }
+  input.regram-info {
+    width: 65%;
+  }
+  input.regram-info-top {
+    margin-top: 0;
+  }
+  a.new-regram-btn {
+    margin-bottom: 20px;
+  }
+}

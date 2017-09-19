@@ -16,13 +16,24 @@ inputTag = (e) ->
     data: { type: id, val: val },
     dataType: "json",
     success: (data) ->
-      $("#regram_content").append(data.text)
+      console.log(data.text)
+      $("#regram_content").val($("#regram_content").val() + data.text)
       return
     ,
     error: ->
       alert("Failed")
       return
   })
+  return
+
+$ ->
+  $(".btn-copy").click ->
+    $temp = $("<input>")
+    $("body").append($temp)
+    $temp.val($("#regram_content").text()).select()
+    document.execCommand("copy")
+    $temp.remove()
+    return
   return
 
 $ ->
@@ -38,8 +49,10 @@ $ ->
     reader.readAsDataURL(file)
     preview.attr("style", "opacity:1;")
     return
+  return
 
+$ ->
   $(".btn-tag").click (e)->
     inputTag(e)
-
   return
+
