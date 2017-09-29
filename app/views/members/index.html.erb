@@ -4,6 +4,31 @@
   <%= link_to "스케줄", regrams_path, class: "main-link" %>
   <%= link_to "태그 관리", tags_path, class: "main-link" %>
   <div class="row">
+    <%= form_tag(members_path, method: "GET", class: "form-grop form-search") do %>
+      <div class="search-input">
+        <%= label_tag :email, "ID" %>
+        <%= text_field_tag :email, "", class: "form-control input-text" %>
+        <%= label_tag :date, "등록 일자" %>
+        <%= date_field_tag :start_date, "", class: "form-control input-date" %>
+        <%= date_field_tag :end_date, "", class: "form-control input-date" %>
+        <%= label_tag :regram_date, "리그램 일자" %>
+        <%= date_field_tag :start_regram_date, "", class: "form-control input-date" %>
+        <%= date_field_tag :end_regram_date, "", class: "form-control input-date" %>
+      </div>
+      <div class="search-input">
+        <%= label_tag :rocket, "로켓단 기수" %>
+        <%= number_field_tag :start_rocket, "", class: "form-control input-number" %>
+        <%= number_field_tag :end_rocket, "", class: "form-control input-number" %>
+        <%= label_tag :regram, "리그램 횟수" %>
+        <%= number_field_tag :from_regram, "", class: "form-control input-number" %>
+        <%= number_field_tag :to_regram, "", class: "form-control input-number" %>
+      </div>
+      <div class="search-btn">
+        <%= submit_tag "검색", class: "btn btn-default" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
     <div class="btn-wrapper" style="margin-top: 20px;">
       <%= link_to "신규 등록", new_member_path, class: "btn btn-primary" %>
     </div>
@@ -22,15 +47,15 @@
       </thead>
       <tbody>
         <% @members.each_with_index do |m, index| %>
-          <tr onclick="location.href='../../members/<%= m.id %>/edit'">
-            <td class="text-center pc"><%= index + 1 %></td>
-            <td class="text-center pc"><%= m.id %></td>
-            <td class="text-center"><%= m.email %></td>
-            <td class="text-center pc"><%= m.rocket %></td>
-            <td class="text-center pc"><%= m.date %></td>
-            <td class="text-center"><%= m.regrams.present? ? m.regrams.last.date.strftime("%m-%d") : "-" %></td>
-            <td class="text-center"><%= m.regrams.count %></td>
-            <td class="text-center"><%= link_to "접속", "https://www.instagram.com/#{m.email}", class: "btn btn-primary btn-small" %></td>
+          <tr>
+            <td class="text-center pc td-link" data-href="../../members/<%= m.id %>/edit"><%= index + 1 %></td>
+            <td class="text-center pc td-link" data-href="../../members/<%= m.id %>/edit"><%= m.id %></td>
+            <td class="text-center td-link" data-href="../../members/<%= m.id %>/edit"><%= m.email %></td>
+            <td class="text-center pc td-link" data-href="../../members/<%= m.id %>/edit"><%= m.rocket %></td>
+            <td class="text-center pc td-link" data-href="../../members/<%= m.id %>/edit"><%= m.date %></td>
+            <td class="text-center td-link" data-href="../../members/<%= m.id %>/edit"><%= m.regrams.present? ? m.regrams.last.date.to_date.strftime("%m-%d") : "-" %></td>
+            <td class="text-center td-link" data-href="../../members/<%= m.id %>/edit"><%= m.regrams.count %></td>
+            <td class="text-center"><%= link_to "접속", "https://www.instagram.com/#{m.email}", target: :_blank, class: "btn btn-primary btn-small" %></td>
           </tr>
         <% end %>
       </tbody>

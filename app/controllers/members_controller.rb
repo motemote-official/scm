@@ -1,6 +1,16 @@
 class MembersController < ApplicationController
   def index
     members = Member.all.order(id: :desc)
+    params[:email].present? && members = members.where(email: params[:email]).all
+    params[:start_date].present? && members = members.where("date >= ?", params[:start_date]).all
+    params[:end_date].present? && members = members.where("date <= ?", params[:end_date]).all
+    params[:start_regram_date].present? && members = members.joins(:regrams).where("regrams.date >= ?", params[:start_regram_date]).all
+    params[:end_regram_date].present? && members = members.joins(:regrams).where("regrams.date <= ?", params[:end_regram_date]).all
+    params[:start_rocket].present? && members = members.where("rocket >= ?", params[:start_rocket]).all
+    params[:end_rocket].present? && members = members.where("rocket <= ?", params[:end_rocket]).all
+    params[:from_regram].present? && members = members.select{ |m| m.regrams.count >= params[:from_regram].to_i }
+    params[:to_regram].present? && members = members.select{ |m| m.regrams.count <= params[:to_regram].to_i }
+
     @members = members.paginate(page: params[:page], per_page: 10)
 
     respond_to do |format|

@@ -12,6 +12,9 @@ form.form-regram {
     width: 410px;
     margin-bottom: 10px;
   }
+  input#regram_member_id {
+    margin-right: 530px;
+  }
   select.select-time {
     width: 200px;
     margin-right: 210px;
@@ -21,7 +24,7 @@ form.form-regram {
   }
   textarea.form-control {
     width: 730px;
-    height: 330px;
+    height: 400px;
     margin-bottom: 10px;
   }
   div.content-btn {

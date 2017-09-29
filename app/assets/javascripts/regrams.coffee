@@ -7,13 +7,17 @@ inputTag = (e) ->
     val = $("#user_tag").val()
   else if id == "product-tag"
     val = $("#product_tag").val()
-  else
+  else if id == "instagram-tag"
     val = $("#instagram_tag").val()
+  else
+    val1 = $("#user_tag").val()
+    val2 = $("#product_tag").val()
+    val3 = $("#instagram_tag").val()
 
   $.ajax({
     method: "POST",
     url: "/regrams/tag",
-    data: { type: id, val: val },
+    data: { type: id, val: val, val1: val1, val2: val2, val3: val3 },
     dataType: "json",
     success: (data) ->
       console.log(data.text)
@@ -28,11 +32,10 @@ inputTag = (e) ->
 
 $ ->
   $(".btn-copy").click ->
-    $temp = $("<input>")
-    $("body").append($temp)
-    $temp.val($("#regram_content").text()).select()
-    document.execCommand("copy")
-    $temp.remove()
+    text = $("#regram_content").clone().find('br').prepend('\r\n').end().text()
+    element = $('<textarea>').appendTo('body').val(text).select()
+    document.execCommand('copy')
+    element.remove()
     return
   return
 
