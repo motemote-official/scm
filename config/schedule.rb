@@ -18,6 +18,13 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+require 'mecahnize'
+require 'json'
+require 'date'
+
+every 1.min do
+  puts "Whenever woking~!!"
+end
 
 every 1.day, at: '5:30 pm', tz: 'Seoul' do
   mechanize = Mechanize.new
