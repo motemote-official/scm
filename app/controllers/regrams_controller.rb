@@ -15,8 +15,8 @@ class RegramsController < ApplicationController
     @regram = Regram.new
 
     # Date & Time
-    now_date = Date.today.to_s
-    now_time = Time.now.strftime("%H")
+    now_date = Date.today.in_time_zone("Seoul").to_s
+    now_time = Time.now.in_time_zone("Seoul").strftime("%H")
     times = Timepool.all.pluck(:time)
 
     for i in 0..(times.count - 1) do
