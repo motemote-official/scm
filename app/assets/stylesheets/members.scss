@@ -66,12 +66,50 @@ table.table-regram-index {
     vertical-align: middle;
   }
 }
+
 .btn-wrapper {
     text-align: right;
     .btn {
       width: 100px;
     }
   }
+
+form.form-search {
+  margin-top: 30px;
+  div {
+    display: inline-block;
+    label {
+      width: 15%;
+    }
+    input {
+      margin-bottom: 10px;
+    }
+    input.input-text {
+      width: 80%;
+    }
+  }
+  div.search-input {
+    width: 40%;
+    input.input-date {
+      width: 37%;
+    }
+    input.input-number {
+      width: 37%;
+    }
+    input#start_date, input#start_regram_date, input#start_rocket, input#from_regram {
+      margin-right: 5%;
+    }
+  }
+  div.search-btn {
+    vertical-align: top;
+    width: 19%;
+    input.btn {
+      width: 80%;
+      height: 121px;
+      margin-left: 20%
+    }
+  }
+}
 
 @media (max-width: 767px) {
   .pc {
@@ -103,5 +141,32 @@ table.table-regram-index {
   }
   a.new-regram-btn {
     margin-bottom: 20px;
+  }
+
+  form.form-search {
+    div.search-input {
+      width: 100%;
+      display: block;
+      label {
+        width: 28%;
+      }
+      input, input.input-date, input.input-number {
+        width: 70%;
+      }
+      input#start_date, input#start_regram_date, input#start_rocket, input#from_regram {
+        margin-right: 0;
+      }
+      input#end_date, input#end_regram_date, input#end_rocket, input#to_regram {
+        margin-left: 30%;
+      }
+    }
+    div.search-btn {
+      width: 100%;
+      input.btn {
+        height: auto;
+        width: 100px;
+        float: right;
+      }
+    }
   }
 }

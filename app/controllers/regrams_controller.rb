@@ -13,9 +13,48 @@ class RegramsController < ApplicationController
 
   def new
     @regram = Regram.new
+
+    # Date & Time
+    now_date = Date.today.to_s
+    now_time = Time.now.strftime("%H")
+    times = Timepool.all.pluck(:time)
+
+    for i in 0..(times.count - 1) do
+      if now_time.to_i < times[i].to_i
+        time_id = Timepool.where(time: times[i]).take.id
+        time_index = i
+        break
+      end
+    end
+
+    if Regram.where(date: now_date).where(timepool_id: time_id).present?
+      for i in (time_index + 1)..(Timepool.all.count - 1) do
+        unless Regram.where(date: now_date).where(timepool_id: Timepool.where(time: times[i]).take.id).present?
+          date = now_date
+          time = Timepool.where(time: times[i]).take.id
+          break
+        end
+      end
+
+      if date.nil? || time.nil?
+        for i in 0..Float::INFINITY do
+          for j in 0..(Timepool.count - 1) do
+            unless Regram.where(date: (Date.today + i + 1).to_s).where(timepool_id: Timepool.where(time: times[j]).take.id).present?
+              date = (Date.today + i + 1).to_s
+              time = Timepool.where(time: times[j]).take.id
+              break
+            end
+          end
+        end
+      end
+    else
+      date = now_date
+      time = time_id
+    end
+
     params[:id].nil? ? @member = nil : @member = Member.find(params[:id])
-    params[:date].nil? ? @date = nil : @date = params[:date]
-    params[:time].nil? ? @time = nil : @time = Timepool.where(time: params[:time]).take.id
+    params[:date].nil? ? @date = date : @date = params[:date]
+    params[:time].nil? ? @time = time : @time = Timepool.where(time: params[:time]).take.id
 
     respond_to do |format|
       format.html # new.html.erb
@@ -78,10 +117,14 @@ class RegramsController < ApplicationController
     type = params[:type]
     val = params[:val]
 
-    if type == "user-tag"
-      render json: { text: "\n\nfrom @#{val}" }
+    if params[:val].present?
+      if type == "user-tag"
+        render json: { text: "\n-\nfrom @#{val}" }
+      else
+        render json: { text: "\n-\n#{Tag.find(val).content}" }
+      end
     else
-      render json: { text: "\n\n#{Tag.find(val).content}" }
+      render json: { text: "\n-\nfrom @#{params[:val1]}\n-\n#{Tag.find(params[:val2]).content}\n-\n#{Tag.find(params[:val3]).content}" }
     end
   end
 
