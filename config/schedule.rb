@@ -18,7 +18,7 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-require 'mecahnize'
+require 'mechanize'
 require 'json'
 require 'date'
 
