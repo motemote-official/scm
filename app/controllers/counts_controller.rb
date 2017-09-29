@@ -32,14 +32,14 @@ class CountsController < ApplicationController
 
   def create
     Product.all.each do |p|
-      if Count.where(product_id: p.id).where(date: (Date.today - 1).to_s).take.present?
-        if params[:"#{p.id}"].to_i > Count.where(product_id: p.id).where(date: (Date.today - 1).to_s).take.count
-          Count.create(count: params[:"#{p.id}"], product_id: p.id, date: Date.today, goods: true)
+      if Count.where(product_id: p.id).where(date: (Date.today.in_time_zone("Seoul") - 1).to_s).take.present?
+        if params[:"#{p.id}"].to_i > Count.where(product_id: p.id).where(date: (Date.today.in_time_zone("Seoul") - 1).to_s).take.count
+          Count.create(count: params[:"#{p.id}"], product_id: p.id, date: Date.today.in_time_zone("Seoul"), goods: true)
         else
-          Count.create(count: params[:"#{p.id}"], product_id: p.id, date: Date.today, goods: false)
+          Count.create(count: params[:"#{p.id}"], product_id: p.id, date: Date.today.in_time_zone("Seoul"), goods: false)
         end
       else
-        Count.create(count: params[:"#{p.id}"], product_id: p.id, date: Date.today, goods: true)
+        Count.create(count: params[:"#{p.id}"], product_id: p.id, date: Date.today.in_time_zone("Seoul"), goods: true)
       end
     end
 
