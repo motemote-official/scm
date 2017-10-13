@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
     for i in 0..2 do
       sum = []
       @products.each do |p|
-        if p.counts.where(date: Date.today - 21).present?
+        if p.counts.where(date: Date.today - (7*(i+1))).present?
           for j in (7*i+1)..(7*i+7) do
             date = p.counts.last.date
 
