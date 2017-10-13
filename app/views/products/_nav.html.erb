@@ -1,15 +1,46 @@
-<%= link_to "홈", root_path, class: "main-link"  %>
-<% unless params[:action] == "index" %>
-  <%= link_to "메인", products_path, class: "main-link"  %>
+<%= link_to root_path do %>
+  <h2 class="main-title">motemote</h2>
 <% end %>
-<%= link_to "재고등록", new_count_path, class: "main-link" %>
-<% unless params[:action] == "raw" %>
-  <%= link_to "RAW", products_raw_path, class: "main-link" %>
-<% end %>
-<%= link_to "상품등록", new_product_path, class: "main-link" %>
-<% unless params[:action] == "list" %>
-  <%= link_to "상품목록", products_list_path, class: "main-link" %>
-<% end %>
-<% if params[:action] == "raw" %>
-  <%= link_to "All", products_all_path, class: "main-link" %>
+
+<div class="nav">
+  <% if params[:action] == "index" %>
+    <%= link_to "상품메인", products_path, class: "main-link left active" %>
+  <% else %>
+    <%= link_to "상품메인", products_path, class: "main-link left" %>
+  <% end %>
+  <% if params[:controller] == "counts" && params[:action] == "new" %>
+    <%= link_to "재고등록", new_count_path, class: "main-link active" %>
+  <% else %>
+    <%= link_to "재고등록", new_count_path, class: "main-link" %>
+  <% end %>
+  <% if params[:action] == "raw" || params[:action] == "all" %>
+    <%= link_to "재고수량", products_raw_path, class: "main-link active" %>
+  <% else %>
+    <%= link_to "재고수량", products_raw_path, class: "main-link" %>
+  <% end %>
+  <% if params[:controller] == "products" && params[:action] == "new" %>
+    <%= link_to "상품등록", new_product_path, class: "main-link active" %>
+  <% else %>
+    <%= link_to "상품등록", new_product_path, class: "main-link" %>
+  <% end %>
+  <% if params[:action] == "list" %>
+    <%= link_to "상품목록", products_list_path, class: "main-link active" %>
+  <% else %>
+    <%= link_to "상품목록", products_list_path, class: "main-link" %>
+  <% end %>
+</div>
+
+<% if params[:action] == "raw" || params[:action] == "all" %>
+  <div class="sub-nav">
+    <% if params[:action] == "raw" %>
+      <%= link_to "30 DAYS", products_raw_path, class: "main-link sub-left active" %>
+    <% else %>
+      <%= link_to "30 DAYS", products_raw_path, class: "main-link sub-left" %>
+    <% end %>
+    <% if params[:action] == "all" %>
+      <%= link_to "All", products_all_path, class: "main-link active" %>
+    <% else %>
+      <%= link_to "All", products_all_path, class: "main-link" %>
+    <% end %>
+  </div>
 <% end %>

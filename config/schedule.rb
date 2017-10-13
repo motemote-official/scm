@@ -18,12 +18,17 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-# set :environment, "development"
+
+set :environment, "development"
 set :output, {error: "log/cron_error_log.log", standard: "log/cron_log.log"}
 
 every 1.minutes do
   puts "Whenever woking~!!"
-  File.open("log/test.log", 'w') { |file| file.write("test") }
+  File.open("log/test.log", 'a') { |file| file.write(" --test") }
+end
+
+every 1.minutes do
+  runner "Count.test"
 end
 
 every 1.day, at: '5:00 pm', tz: 'Seoul' do
