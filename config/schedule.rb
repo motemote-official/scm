@@ -21,11 +21,16 @@
 # set :environment, "development"
 set :output, {error: "log/cron_error_log.log", standard: "log/cron_log.log"}
 
-every 1.minutes do
-  puts "Whenever woking~!!"
-  File.open("log/test.log", 'w') { |file| file.write("test") }
+#every 1.minutes do
+#  puts "Whenever woking~!!"
+#  File.open("log/test.log", 'a') { |file| file.write("test") }
+#end
+require "tzinfo"
+
+def local(time)
+  TZInfo::Timezone.get('Asia/Seoul').local_to_utc(Time.parse(time))
 end
 
-every 1.day, at: '5:00 pm', tz: 'Seoul' do
+every 1.day, at: local("5:00 pm") do
   runner "Product.whenever_create"
 end
