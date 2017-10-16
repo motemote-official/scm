@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <h1>리그램 상세보기</h1>
-    <%= form_for @regram, html: { class: "form-group form-regram" } do |f| %>
+    <%= form_for @regram, method: "patch", html: { class: "form-group form-regram" } do |f| %>
       <%= render partial: 'form', locals: { f: f, regram: @regram, member: @member, date: @date, time: @time } %>
       <div class="btn-wrapper">
         <a download="<%= @regram.member.email %>_<%= @regram.date %>" href="<%= @regram.img.url%>" class="btn btn-default">그림 다운</a>

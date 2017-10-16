@@ -87,11 +87,15 @@ class RegramsController < ApplicationController
 
   def update
     @regram = Regram.find(params[:id])
-    @regram.member_id = Member.where(email: params[:regram][:member_id]).take.id
 
     respond_to do |format|
-      if @regram.save
-        @regram.update(member_id: Member.where(email: params[:regram][:member_id]).take.id)
+      if @regram.update(member_id: Member.where(email: params[:regram][:member_id]).take.id,
+                        date: params[:regram][:date],
+                        content: params[:regram][:content],
+                        img: params[:regram][:img],
+                        url: params[:regram][:url],
+                        product_id: params[:regram][:product_id],
+                        timepool_id: params[:regram][:timepool_id])
         flash[:notice] = 'Regram was successfully updated.'
         format.html { redirect_to(edit_regram_path(@regram)) }
         format.xml  { head :ok }
