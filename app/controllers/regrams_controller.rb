@@ -39,7 +39,7 @@ class RegramsController < ApplicationController
       if date.nil? || time.nil?
         for i in 0..Float::INFINITY do
           for j in 0..(Timepool.count - 1) do
-            unless Regram.where(date: (Date.today + i + 1).to_s).where(timepool_id: Timepool.where(time: times[j]).take.id).present?
+            if Regram.where(date: (Date.today + i + 1).to_s).where(timepool_id: Timepool.where(time: times[j]).take.id).take.nil?
               date = (Date.today + i + 1).to_s
               time = Timepool.where(time: times[j]).take.id
               break
@@ -53,7 +53,7 @@ class RegramsController < ApplicationController
     end
 
     params[:id].nil? ? @member = nil : @member = Member.find(params[:id])
-    params[:date].nil? ? @date = date : @date = params[:date]
+    params[:date].nil? ? @date = date.to_date : @date = params[:date]
     params[:time].nil? ? @time = time : @time = Timepool.where(time: params[:time]).take.id
 
     respond_to do |format|
