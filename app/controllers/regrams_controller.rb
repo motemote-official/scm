@@ -37,7 +37,7 @@ class RegramsController < ApplicationController
       end
 
       if date.nil? || time.nil?
-        for i in 0..Float::INFINITY do
+        for i in 0..100 do
           for j in 0..(Timepool.count - 1) do
             if Regram.where(date: (Date.today + i + 1).to_s).where(timepool_id: Timepool.where(time: times[j]).take.id).take.nil?
               date = (Date.today + i + 1).to_s
