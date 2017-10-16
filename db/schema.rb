@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170929090007) do
+ActiveRecord::Schema.define(version: 20171016065138) do
 
   create_table "befores", force: :cascade do |t|
     t.string "email"
@@ -68,10 +68,12 @@ ActiveRecord::Schema.define(version: 20170929090007) do
     t.string "img"
     t.string "url"
     t.integer "member_id"
+    t.integer "product_id"
     t.integer "timepool_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_regrams_on_member_id"
+    t.index ["product_id"], name: "index_regrams_on_product_id"
     t.index ["timepool_id"], name: "index_regrams_on_timepool_id"
   end
 
