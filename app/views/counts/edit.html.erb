@@ -31,10 +31,18 @@
             </tr>
             <tr>
               <td class="td-label">
-                <%= label_tag(:count, "입고량") %>
+                <%= label_tag(:buffer, "입고량") %>
               </td>
               <td>
                 <%= number_field_tag(:buffer, @count.buffer) %>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-label">
+                <%= label_tag(:description, "특이사항") %>
+              </td>
+              <td>
+                <%= text_field_tag(:description, @count.description) %>
               </td>
             </tr>
           </tbody>
