@@ -18,7 +18,7 @@
             <% end %>
             <% @count.where(product_id: p.id).where('date > ?', (Date.today-31)).order('id DESC').each do |c| %>
               <% if c.goods? %>
-                <td class=<%= c.buffer > 0 ? "green" : "red" %> style="text-align:center">
+                <td class=<%= c.buffer != 0 ? "green" : "red" %> style="text-align:center">
               <% else %>
                 <td style="text-align:center">
               <% end %>
