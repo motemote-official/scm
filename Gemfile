@@ -17,6 +17,9 @@ gem "simple_calendar"
 gem 'will_paginate'
 gem 'whenever', :require => false
 gem 'seed_dump'
+gem 'nested_form'
+gem 'nokogiri'
+gem 'watir-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'
