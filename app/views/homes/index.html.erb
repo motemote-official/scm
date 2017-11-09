@@ -5,6 +5,8 @@
     <br><br>
     <%= link_to "모트모트 인스타그램", regrams_path, class: "main-link" %>
     <br><br>
+    <%= link_to "모트모트 로켓단", attend_index_path, class: "main-link" %>
+    <br><br>
     <% if user_signed_in? %>
       <%= link_to "로그아웃", destroy_user_session_path, method: :delete, class: "main-link" %>
     <% else %>
