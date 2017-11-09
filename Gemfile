@@ -20,6 +20,8 @@ gem 'seed_dump'
 gem 'nested_form'
 gem 'nokogiri'
 gem 'watir-rails'
+gem 'selenium-webdriver'
+gem 'chromedriver-helper'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'

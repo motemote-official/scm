@@ -17,8 +17,19 @@ class AttendController < ApplicationController
       href = []
       doc.css('img').each do |i|
         if item.count < 5
-          item << i.attr('src')
-          href << i.parent.parent.parent.attr('href')
+          # Index 이미지
+          # item << i.attr('src')
+
+          # Show 이미지
+          img = i.attr('src').split('/')
+          if img.count == 9
+            item << "#{img[0]}/#{img[1]}/#{img[2]}/#{img[3]}/#{img[6]}/#{img[8]}"
+          else
+            item << "#{img[0]}/#{img[1]}/#{img[2]}/#{img[3]}/#{img[6]}/#{img[7]}"
+          end
+
+          url = i.parent.parent.parent.attr('href')
+          href << url
         end
       end
 
