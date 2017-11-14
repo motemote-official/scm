@@ -31,7 +31,7 @@
         </div>
         <div class="attend-list-right">
           <% @img[index].each_with_index do |i, j| %>
-            <%= link_to "https://www.instagram.com#{@url[index][j]}/", target: :_blank do %>
+            <%= link_to @url[index][j], target: :_blank do %>
               <%= image_tag i, class: "attend-image" %>
             <% end %>
           <% end %>
