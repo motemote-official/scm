@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'mechanize'
 gem 'devise'
 gem 'figaro'
 gem 'jquery-rails'
@@ -18,10 +17,14 @@ gem 'will_paginate'
 gem 'whenever', :require => false
 gem 'seed_dump'
 gem 'nested_form'
-gem 'nokogiri'
-gem 'watir-rails'
+gem 'poltergeist'
+gem 'capybara', '~> 2.13'
 gem 'selenium-webdriver'
+gem 'nokogiri'
+gem 'mechanize'
+gem 'watir-rails'
 gem 'chromedriver-helper'
+gem 'phantomjs', :require => 'phantomjs/poltergeist'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'
