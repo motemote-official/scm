@@ -13,6 +13,7 @@ class RegramsController < ApplicationController
 
   def new
     @regram = Regram.new
+    @regram.pics.build
 
     # Date & Time
     now_date = Date.today.in_time_zone("Seoul").to_s
@@ -74,6 +75,7 @@ class RegramsController < ApplicationController
       else
         format.html { render action: 'new' }
         format.xml  { render xml: @regram.errors, status: :unprocessable_entity }
+        puts @regram.errors.full_messages
       end
     end
   end
@@ -87,15 +89,10 @@ class RegramsController < ApplicationController
 
   def update
     @regram = Regram.find(params[:id])
+    rp = regram_params.merge(member_id: Member.where(email: params[:regram][:member_id]).take.id)
 
     respond_to do |format|
-      if @regram.update(member_id: Member.where(email: params[:regram][:member_id]).take.id,
-                        date: params[:regram][:date],
-                        content: params[:regram][:content],
-                        img: params[:regram][:img],
-                        url: params[:regram][:url],
-                        product_id: params[:regram][:product_id],
-                        timepool_id: params[:regram][:timepool_id])
+      if @regram.update(rp)
         flash[:notice] = 'Regram was successfully updated.'
         format.html { redirect_to(edit_regram_path(@regram)) }
         format.xml  { head :ok }
@@ -135,6 +132,6 @@ class RegramsController < ApplicationController
   private
 
   def regram_params
-    params.require(:regram).permit(:date, :content, :img, :url, :member_id, :product_id, :timepool_id)
+    params.require(:regram).permit(:date, :url, :content, :member_id, :product_id, :timepool_id, pics_attributes: [:id, :img, :img_cache, :_destroy])
   end
 end

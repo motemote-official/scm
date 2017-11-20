@@ -1,0 +1,37 @@
+<%= render partial: 'rockets/nav', locals: { } %>
+<%= render partial: 'rockets/nav_sub', locals: { id: @rocket.id } %>
+
+<div class="container">
+  <div class="buffer"></div>
+  <div class="row">
+    <div class="attend-list">
+      <div class="attend-list-left">
+        <div class="attend-user-wrapper">
+          <span class="attend-user-id"><%= @member.email %></span>
+          <%= link_to "접속", "https://www.instagram.com/#{@member.email}/", target: "_blank", class: "attend-user-link" %>
+        </div>
+        <div class="attend-check-wrapper">
+          <%= form_tag(check_rocket_path(@member.id), method: 'POST', class: "flex attend-check-form") do %>
+            <div class="attend-check-btn-wrapper">
+              <%= date_select("attend", "date", order: [:year, :month, :day]) %>
+              <div>
+                <span id="attend-0" class="attend-btn <%= Attend.status_of_attendance(@date, @member.id) == 0 && "status" %>">출석</span>
+                <span id="attend-1" class="attend-btn <%= Attend.status_of_attendance(@date, @member.id) == 1 && "status" %>">지각</span>
+                <span id="attend-2" class="attend-btn <%= Attend.status_of_attendance(@date, @member.id) == 2 && "status" %> last">불출석</span>
+              </div>
+            </div>
+            <%= hidden_field_tag :status %>
+            <%= submit_tag "저장", class: "attend-check-submit" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="attend-list-right">
+        <% @img.each_with_index do |i, j| %>
+          <%= link_to @url[j], target: :_blank do %>
+            <%= image_tag i, class: "attend-image" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

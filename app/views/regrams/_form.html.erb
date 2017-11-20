@@ -17,8 +17,17 @@
 </div>
 <%= f.label :img, "이미지", class: "label-top" %>
 <div class="input-image">
-  <%= image_tag regram.nil? ? asset_path("link.svg") : ( (regram.img.url.nil? ) ? asset_path("link.svg") : regram.img.url ), class: "preview" %>
-  <%= f.file_field :img, class: "from-control" %>
+  <%= f.fields_for :pics do |p| %>
+    <div>
+      <%= p.file_field :img, class: "input-file-field form-control", data: {index_no: p.index} %>
+      <%= p.hidden_field :img_cache %>
+      <%= p.label :img, class: "img_label" do %>
+        <%= image_tag p.object.img.present? ? p.object.img.url : asset_path("link.svg"), class: "preview", id: "preview#{p.index}" %>
+      <% end %>
+      <%= p.link_to_remove '취소', class: 'btn pics_delete_btn remove_pics' %>
+    </div>
+  <% end %>
+  <%= f.link_to_add "", :pics, id: 'pics', class: 'pics_add_btn' %>
 </div>
 <%= f.label :url, "URL" %>
 <%= f.text_field :url, class: "form-control" %>

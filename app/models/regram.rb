@@ -1,7 +1,8 @@
 class Regram < ApplicationRecord
-  mount_uploader :img, UploaderUploader
-
   belongs_to :member
 
   belongs_to :timepool
+
+  has_many :pics, dependent: :destroy
+  accepts_nested_attributes_for :pics, allow_destroy: true
 end

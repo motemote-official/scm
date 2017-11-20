@@ -1,0 +1,39 @@
+<%= render partial: 'nav', locals: { } %>
+<%= render partial: 'nav_sub', locals: { id: @rocket.id } %>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table hover rocket-table">
+      <thead>
+        <th class="center">No</th>
+        <th class="center">ID</th>
+        <th class="center">접속</th>
+        <% for i in 0..(@rocket.term - 1) do %>
+          <th class="center"><%= (@rocket.start_date + i).strftime("%m/%d") %><br /><%= i + 1 %>일차</th>
+        <% end %>
+      </thead>
+      <tbody>
+        <% @rocket.rocket_members.all.each_with_index do |r, index| %>
+          <tr class="center">
+            <td><%= index + 1 %></td>
+            <td><%= link_to "#{r.email}", edit_rocket_member_path(r.id) %></td>
+            <td><%= link_to "접속", "https://instagram.com/#{r.email}/", target: "_blank" %></td>
+            <% for i in 0..(@rocket.term - 1) do %>
+              <td>
+                <%= link_to attend_show_rocket_path(r.id) do %>
+                  <% if Attend.status_of_attendance(@rocket.start_date + i, r.id) == 0 %>
+                    &#927;
+                  <% elsif Attend.status_of_attendance(@rocket.start_date + i, r.id) == 1 %>
+                    &#9653;
+                  <% else %>
+                    &#215;
+                  <% end %>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<%= render partial: 'rockets/nav', locals: { } %>
+<%= render partial: 'rockets/nav_sub', locals: { id: @rocket.id } %>
+
+<div class="container">
+  <div class="buffer"></div>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= month_calendar do |date| %>
+        <p class="day-title text-center"><%= date.day %></p>
+        <% @timepool.each do |t| %>
+          <p>
+            <span><%= t %></span>
+            <% if RocketRegram.where(date: date, regram_at: t).take.nil? %>
+              <% if date >= Date.today %>
+                <%= link_to "+", new_rocket_rocket_regram_path(rocket_id: @rocket.id, date: date, time: t), class: "content text-center" %>
+              <% end %>
+            <% else %>
+              <%= link_to RocketMember.find(RocketRegram.where(date: date, regram_at: t).take.rocket_member_id).email, edit_rocket_regram_path(RocketRegram.where(date:date, regram_at: t).take.id), class: "content text-center" %>
+            <% end %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

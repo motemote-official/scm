@@ -6,10 +6,9 @@ Rails.application.routes.draw do
   get 'products/all' => 'products#all'
   get 'products/list' => 'products#list'
   get 'tag/:id/destroy' => 'tags#destroy', as: :tag_destroy
-  get 'attend/index'
 
   post 'regrams/tag' => 'regrams#tag'
-  post 'attend/check'
+  post 'rocket_regrams/tag' => 'rocket_regrams#tag'
 
   resources :homes
   resources :products
@@ -17,6 +16,15 @@ Rails.application.routes.draw do
   resources :regrams
   resources :tags
   resources :counts
-  resources :rockets
+  resources :rockets, shallow: true do
+    resources :rocket_regrams
+    member do
+      get 'calendar'
+      get 'attend'
+      get 'attend_show'
+      post 'check'
+    end
+  end
+  resources :rocket_members
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -17,6 +17,7 @@
 //= require html5-3.6-respond-1.1.0.min
 //= require modernizr-custom
 //= require Chart.min
+//= require jquery_nested_form
 //= require_tree .
 //= require turbolinks
 $.turbo.use('turbolinks:load');
