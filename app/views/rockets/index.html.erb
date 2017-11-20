@@ -1,0 +1,32 @@
+<%= render partial: 'nav', locals: { } %>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table hover">
+      <thead>
+        <th class="center">No</th>
+        <th class="center">일정목록</th>
+        <th class="center">시작일</th>
+        <th class="center">종료일</th>
+        <th class="center">인원</th>
+        <th class="center">수정</th>
+        <th class="center">멤버</th>
+        <th class="center">출석표</th>
+      </thead>
+      <tbody>
+        <% @rockets.each_with_index do |r, index| %>
+          <tr class="center">
+            <td><%= index + 1 %></td>
+            <td>로켓단 <%= r.unit %>기</td>
+            <td><%= r.start_date.strftime("%y년 %m월 %d일") %></td>
+            <td><%= r.end_date.strftime("%y년 %m월 %d일") %></td>
+            <td><%= r.rocket_members.present? ? r.rocket_members.count : 0 / r.volume %>
+            <td><%= link_to "수정", edit_rocket_path(r.id) %></td>
+            <td><%= link_to "멤버", rocket_path(r.id) %></td>
+            <td><%= link_to "출석표", calendar_rocket_path(r.id) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

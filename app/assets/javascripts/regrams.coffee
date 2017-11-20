@@ -40,8 +40,9 @@ $ ->
   return
 
 $ ->
-  $(document).on 'change', 'input#regram_img', (event)->
-    preview = $(".preview")
+  $(document).on 'change', '.input-file-field', (event)->
+    index = $(@).data 'index-no'
+    preview = $(".img_label img#preview#{index}")
     input = $(event.currentTarget)
     file = input[0].files[0]
     reader = new FileReader()
@@ -58,4 +59,26 @@ $ ->
   $(".btn-tag").click (e)->
     inputTag(e)
   return
+
+maxPicsCount = 10
+minPicsCount = 1
+
+$ ->
+  $addLink_pic = $('#pics')
+
+  togglePicsLink = ->
+    picsCount = $('.img_label:visible').length
+    $addLink_pic.toggle(picsCount < maxPicsCount)
+    $('.remove_pics').toggle(picsCount > minPicsCount)
+    return
+
+  $(document).on 'click', '#pics', ->
+    togglePicsLink()
+    return
+  $(document).on 'click', '.remove_pics', ->
+    togglePicsLink()
+    return
+
+  if $('.img_label')?
+    togglePicsLink()
 

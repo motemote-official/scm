@@ -1,0 +1,33 @@
+<%= f.label :date, "일정" %>
+<%= f.date_field :date, value: date.nil? ? "" : date, class: "form-control" %>
+<%= f.label :regram_at, "시간" %>
+<%= f.select :regram_at, options_for_select([17, 22, 23, 24]), {}, {class: 'form-control select-time'} %>
+<%= f.label :rocket_member_id, "ID" %>
+<%= f.text_field :rocket_member_id, value: member.nil? ? "" : member.email, class: "form-control form-input-member" %>
+<%= f.label :content, "내용", class: "label-top" %>
+<%= f.text_area :content, class: "form-control" %>
+<div class="content-btn">
+  <%= text_field_tag :rocket_user_tag, "", class: "form-control" %>
+  <span id="rocket-user-tag" class="btn btn-success btn-rocket-tag">사용자 태그 삽입</span>
+  <%= select_tag :rocket_product_tag, options_from_collection_for_select(Tag.where(category: 1).all, :id, :title, Tag.where(category: 1).last), class: "form-control" %>
+  <span id="rocket-product-tag" class="btn btn-success btn-rocket-tag">제품 태그 삽입</span>
+  <%= select_tag :rocket_instagram_tag, options_from_collection_for_select(Tag.where(category: 2).all, :id, :title, Tag.where(category: 2).last), class: "form-control" %>
+  <span id="rocket-instagram-tag" class="btn btn-success btn-rocket-tag">인스타그램 태그 삽입</span>
+  <span id="all-tag" class="btn btn-primary btn-tag">모든 태그 삽입</span>
+</div>
+<%= f.label :img, "이미지", class: "label-top" %>
+<div class="input-image">
+  <%= f.fields_for :rocket_pics do |p| %>
+    <div>
+      <%= p.file_field :img, class: "input-file-field form-control", data: {index_no: p.index} %>
+      <%= p.hidden_field :img_cache %>
+      <%= p.label :img, class: "img_label" do %>
+        <%= image_tag p.object.img.present? ? p.object.img : asset_path("link.svg"), class: "preview", id: "preview#{p.index}" %>
+      <% end %>
+      <%= p.link_to_remove '취소', class: 'btn pics_delete_btn remove_pics' %>
+  <% end %>
+    </div>
+  <%= f.link_to_add "", :rocket_pics, id: 'pics', class: 'pics_add_btn' %>
+</div>
+<%= f.label :url, "URL" %>
+<%= f.text_field :url, class: "form-control" %>

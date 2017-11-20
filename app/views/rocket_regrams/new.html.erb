@@ -1,0 +1,15 @@
+<%= render partial: 'rockets/nav', locals: { } %>
+<%= render partial: 'rockets/nav_sub', locals: { id: @rocket.id } %>
+
+<div class="container">
+  <div class="buffer"></div>
+  <div class="row">
+    <%= nested_form_for @regram, url: rocket_rocket_regrams_path(@rocket.id), html: { class: "form-group form-regram", multipart: true } do |f| %>
+      <%= render partial: 'form', locals: { f: f, regram: @regram, member: @member, date: @date, time: @time } %>
+      <div class="btn-wrapper">
+        <%= f.submit "저장", class: "btn btn-primary" %>
+        <%= link_to "메뉴", rocket_rocket_regrams_path(id: @rocket.id), class: "btn btn-warning" %>
+      </div>
+    <% end %>
+  </div>
+</div>

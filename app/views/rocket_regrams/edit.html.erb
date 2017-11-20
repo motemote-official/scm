@@ -1,0 +1,19 @@
+<%= render partial: 'rockets/nav', locals: { } %>
+<%= render partial: 'rockets/nav_sub', locals: { id: @rocket.id } %>
+
+<div class="container">
+  <div class="buffer"></div>
+  <div class="row">
+    <%= nested_form_for @regram, url: rocket_regram_path(@rocket.id), html: { class: "form-group form-regram", multipart: true } do |f| %>
+      <%= render partial: 'form', locals: { f: f, regram: @regram, member: @member, date: @date, time: @time } %>
+      <div class="btn-wrapper">
+        <a download="<%= @member.email %>_<%= @regram.date %>" href="" class="btn btn-default">그림 다운</a>
+        <span class="btn btn-default btn-rocket-copy">글 복사</span>
+        <%= f.submit "수정", class: "btn btn-primary" %>
+        <%= link_to "취소", :back, class: "btn btn-warning" %>
+        <%= link_to "스케줄", rocket_rocket_regrams_path(@rocket.id), class: "btn btn-danger" %>
+        <%= link_to "회원정보", edit_rocket_member_path(@member), class: "btn btn-info" %>
+      </div>
+    <% end %>
+  </div>
+</div>

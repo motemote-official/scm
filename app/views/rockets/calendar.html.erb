@@ -1,0 +1,33 @@
+<%= render partial: 'nav', locals: { } %>
+<%= render partial: 'nav_sub', locals: { id: @rocket.id } %>
+
+<div class="container">
+  <div class="buffer"></div>
+  <div class="row rocket-calendar">
+    <%= month_calendar do |date| %>
+      <p class="day-title text-center"><%= date.day %></p>
+      <% if date >= @rocket.start_date && date <= @rocket.end_date %>
+        <p class="center"><%= (date.to_date - @rocket.start_date.to_date).to_i %>일차</p>
+        <p class="center content">( <%= Attend.attend_members_count(date) %> / <%= @count %> )</p>
+        <div class="content no-padding">
+          <p class="center half left">출석</p>
+          <p class="center half"><%= Attend.attend_members_count(date) %></p>
+        </div>
+        <div class="content no-padding">
+          <p class="center half left">지각</p>
+          <p class="center half"><%= Attend.lated_members_count(date) %></p>
+        </div>
+        <div class="content no-padding">
+          <p class="center half left">결석</p>
+          <p class="center half"><%= @count - Attend.attend_members_count(date) - Attend.lated_members_count(date) %></p>
+        </div>
+      <% else %>
+        <p>&nbsp;</p>
+        <p class="empty">&nbsp;</p>
+        <p class="empty">&nbsp;</p>
+        <p class="empty">&nbsp;</p>
+        <p class="empty">&nbsp;</p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
