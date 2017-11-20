@@ -51,7 +51,7 @@ class RocketMembersController < ApplicationController
     respond_to do |format|
       if @rocket_member.update(rocket_member_params)
         flash[:notice] = 'RocketMember was successfully updated.'
-        format.html { redirect_to(@rocket_member) }
+        format.html { redirect_to(edit_rocket_member_path(@rocket_member)) }
         format.xml  { head :ok }
       else
         format.html { render action: 'edit' }
