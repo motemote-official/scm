@@ -97,7 +97,7 @@ class RocketsController < ApplicationController
     @member = @rocket.rocket_members.all.paginate(page: params[:page], per_page: 5)
     @member.pluck(:email).each_with_index do |m, index|
       visit "https://www.instagram.com/" + m + "/"
-      page.has_css?("article")
+      sleep 1
 
       item = []
       href = []
