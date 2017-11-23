@@ -25,7 +25,15 @@
             <td><%= @average[1][p.id] %></td>
             <td><%= @average[0][p.id] %></td>
             <td><%= p.counts.present? ? p.counts.last.count : 0 %></td>
-            <td><%= @sell[p.id] %></td>
+            <% if p.empty %>
+              <td class="yellow"><%= @sell[p.id] %></td>
+            <% else %>
+              <% if @sell[p.id] <= 30 %>
+                <td class="red"><%= link_to @sell[p.id], empty_product_path(p.id) %></td>
+              <% else %>
+                <td><%= @sell[p.id] %></td>
+              <% end %>
+            <% end %>
             <td><%= p.counts.present? ? number_with_delimiter(p.counts.last.count * p.price, delimiter: ",") : 0 %></td>
             <td><%= number_with_precision(@ratio[p.id], precision: 2) %>%</td>
           </tr>

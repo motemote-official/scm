@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171120053911) do
+ActiveRecord::Schema.define(version: 20171123080343) do
 
   create_table "attends", force: :cascade do |t|
     t.integer "rocket_member_id"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20171120053911) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "date", default: "2017-05-22"
+    t.boolean "empty", default: false
   end
 
   create_table "regrams", force: :cascade do |t|
