@@ -4,6 +4,8 @@
 <%= f.select :timepool_id, options_from_collection_for_select(Timepool.all, :id, :time, regram.timepool_id.nil? ? (time.nil? ? "" : time) : regram.timepool_id), {}, {class: 'form-control select-time'} %>
 <%= f.label :member_id, "ID" %>
 <%= f.text_field :member_id, value: member.nil? ? "" : member.email, class: "form-control" %>
+<%= f.label :product_id, "관심제품" %>
+<%= f.select :product_id, options_from_collection_for_select(Product.all, :id, :name), {}, class: "form-control" %>
 <%= f.label :content, "내용", class: "label-top" %>
 <%= f.text_area :content, class: "form-control" %>
 <div class="content-btn">

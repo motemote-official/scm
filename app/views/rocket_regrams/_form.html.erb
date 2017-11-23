@@ -4,6 +4,8 @@
 <%= f.select :regram_at, options_for_select([17, 22, 23, 24]), {}, {class: 'form-control select-time'} %>
 <%= f.label :rocket_member_id, "ID" %>
 <%= f.text_field :rocket_member_id, value: member.nil? ? "" : member.email, class: "form-control form-input-member" %>
+<%= f.label :product_id, "관심제품" %>
+<%= f.select :product_id, options_from_collection_for_select(Product.all, :id, :name), {}, class: "form-control" %>
 <%= f.label :content, "내용", class: "label-top" %>
 <%= f.text_area :content, class: "form-control" %>
 <div class="content-btn">
