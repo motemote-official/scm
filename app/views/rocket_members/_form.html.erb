@@ -12,7 +12,7 @@
 <%= f.number_field :group, class: "form-control" %>
 <%= f.label :homepage, "홈페이지" %>
 <%= f.text_field :homepage, class: "form-control" %>
-<%= f.label :rocket_id, "관심제품" %>
-<%= f.select :rocket_id, options_from_collection_for_select(Product.all, :id, :name), {}, class: "form-control" %>
+<%= f.label :product_id, "관심제품" %>
+<%= f.select :product_id, options_from_collection_for_select(Product.all, :id, :name), {}, class: "form-control" %>
 <%= f.label :application, "지원서", class: "label-top" %>
 <%= f.text_area :application, class: "form-control application-text-area" %>
