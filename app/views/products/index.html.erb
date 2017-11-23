@@ -29,7 +29,7 @@
               <td class="yellow"><%= @sell[p.id] %></td>
             <% else %>
               <% if @sell[p.id] <= 30 %>
-                <td class="red"><%= link_to @sell[p.id], empty_product_path(p.id) %></td>
+                <td class="red"><%= link_to @sell[p.id], empty_product_path(p.id), confirm: "Are You Sure?" %></td>
               <% else %>
                 <td><%= @sell[p.id] %></td>
               <% end %>
