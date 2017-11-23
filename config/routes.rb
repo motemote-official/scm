@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   post 'rocket_regrams/tag' => 'rocket_regrams#tag'
 
   resources :homes
-  resources :products
+  resources :products, shallow: true do
+    member do
+      get 'empty'
+    end
+  end
   resources :members
   resources :regrams
   resources :tags
