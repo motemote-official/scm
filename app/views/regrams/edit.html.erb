@@ -1,6 +1,9 @@
+<%= render partial: 'nav', locals: { } %>
+<%= render partial: 'nav_sub', locals: { } %>
+
 <div class="container">
+  <div class="buffer"></div>
   <div class="row">
-    <h1>리그램 상세보기</h1>
     <%= nested_form_for @regram, html: { class: "form-group form-regram", multipart: true } do |f| %>
       <%= render partial: 'form', locals: { f: f, regram: @regram, member: @member, date: @date, time: @time } %>
       <div class="btn-wrapper">

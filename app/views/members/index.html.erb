@@ -1,8 +1,8 @@
+<%= render partial: 'regrams/nav', locals: { } %>
+<%= render partial: 'regrams/nav_sub', locals: { } %>
+
 <div class="container">
-  <h1>인스타그램 > 회원 정보</h1>
-  <%= link_to "홈", root_path, class: "main-link" %>
-  <%= link_to "스케줄", regrams_path, class: "main-link" %>
-  <%= link_to "태그 관리", tags_path, class: "main-link" %>
+  <div class="buffer"></div>
   <div class="row">
     <%= form_tag(members_path, method: "GET", class: "form-grop form-search") do %>
       <div class="search-input">

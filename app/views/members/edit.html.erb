@@ -1,7 +1,10 @@
+<%= render partial: 'regrams/nav', locals: { } %>
+<%= render partial: 'regrams/nav_sub', locals: { } %>
+
 <div class="container">
+  <div class="buffer"></div>
   <div class="row">
     <div class="col-xs-12">
-      <h1>회원정보 > 상세</h1>
       <%= form_for @member, html: { class: "form-group form-member" } do |f| %>
         <%= render partial: 'form', locals: { f: f } %>
         <div class="btn-wrapper">
