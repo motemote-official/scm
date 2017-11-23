@@ -5,4 +5,6 @@ class Regram < ApplicationRecord
 
   has_many :pics, dependent: :destroy
   accepts_nested_attributes_for :pics, allow_destroy: true
+
+  mount_uploader :img, UploaderUploader
 end
