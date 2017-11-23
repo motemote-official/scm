@@ -1,0 +1,9 @@
+<%= link_to root_path do %>
+  <h2 class="main-title">motemote</h2>
+<% end %>
+
+<div class="nav">
+  <%= link_to "스케줄", regrams_path, class: "main-link #{params[:controller] == "regrams" && "active"}" %>
+  <%= link_to "회원정보", members_path, class: "main-link #{params[:controller] == "members" && "active"}" %>
+  <%= link_to "태그관리", tags_path, class: "main-link #{params[:controller] == "tags" && "active"}" %>
+</div>

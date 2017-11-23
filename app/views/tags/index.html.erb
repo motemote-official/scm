@@ -1,8 +1,8 @@
+<%= render partial: 'regrams/nav', locals: { } %>
+<%= render partial: 'regrams/nav_sub', locals: { } %>
+
 <div class="container">
-  <h1>인스타그램 > 태그관리</h1>
-  <%= link_to "홈", root_path, class: "main-link" %>
-  <%= link_to "스케줄", regrams_path, class: "main-link" %>
-  <%= link_to "회원 정보", members_path, class: "main-link" %>
+  <div class="buffer"></div>
   <div class="row">
     <div class="btn-wrapper">
       <%= link_to "신규 등록", new_tag_path, class: "btn btn-primary" %>
