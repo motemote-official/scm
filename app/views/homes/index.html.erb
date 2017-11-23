@@ -1,16 +1,14 @@
-<div class="container">
-  <div class="row">
-    <h1>모트모트</h1>
-    <%= link_to "모트모트 재고/판매 추이", products_path, class: "main-link" %>
-    <br><br>
-    <%= link_to "모트모트 인스타그램", regrams_path, class: "main-link" %>
-    <br><br>
-    <%= link_to "모트모트 로켓단", rockets_path, class: "main-link" %>
-    <br><br>
-    <% if user_signed_in? %>
-      <%= link_to "로그아웃", destroy_user_session_path, method: :delete, class: "main-link" %>
-    <% else %>
-      <%= link_to "로그인", new_user_session_path, class: "main-link" %>
-    <% end %>
-  </div>
+<%= link_to root_path do %>
+  <h2 class="main-title">motemote</h2>
+<% end %>
+
+<div class="nav">
+  <%= link_to "재고/판매", products_path, class: "main-link" %>
+  <%= link_to "인스타그램", regrams_path, class: "main-link" %>
+  <%= link_to "로켓단", rockets_path, class: "main-link" %>
+  <% if user_signed_in? %>
+    <%= link_to "로그아웃", destroy_user_session_path, method: :delete, class: "main-link" %>
+  <% else %>
+    <%= link_to "로그인", new_user_session_path, class: "main-link" %>
+  <% end %>
 </div>
