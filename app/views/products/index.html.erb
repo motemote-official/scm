@@ -4,20 +4,20 @@
   <div class="col-md-12">
     <table class="table hover">
       <thead>
-        <th>품목</th>
-        <th>상품코드</th>
-        <th>상품명</th>
-        <th>지지지난 7일간 평균판매량</th>
-        <th>지지난 7일간 평균판매량</th>
-        <th>지난 7일간 평균판매량</th>
-        <th>재고</th>
-        <th>판매가능일 수</th>
-        <th>재고가치</th>
-        <th>매출의 비중</th>
+        <th class="center">품목</th>
+        <th class="center">상품코드</th>
+        <th class="center">상품명</th>
+        <th class="center">지지지난 7일간 평균판매량</th>
+        <th class="center">지지난 7일간 평균판매량</th>
+        <th class="center">지난 7일간 평균판매량</th>
+        <th class="center">재고</th>
+        <th class="center">판매가능일 수</th>
+        <th class="center">재고가치</th>
+        <th class="center">매출의 비중</th>
       </thead>
       <tbody>
         <% @products.each_with_index do |p, index| %>
-          <tr>
+          <tr class="center">
             <td><%= index + 1 %></td>
             <td><%= p.code %></td>
             <td><%= p.name %></td>
@@ -28,7 +28,7 @@
             <% if p.empty %>
               <td class="yellow"><%= @sell[p.id] %></td>
             <% else %>
-              <% if @sell[p.id] <= 30 %>
+              <% if @sell[p.id].to_i <= 30 %>
                 <td class="red"><%= link_to @sell[p.id], empty_product_path(p.id), confirm: "Are You Sure?" %></td>
               <% else %>
                 <td><%= @sell[p.id] %></td>
@@ -38,7 +38,7 @@
             <td><%= number_with_precision(@ratio[p.id], precision: 2) %>%</td>
           </tr>
         <% end %>
-        <tr>
+        <tr class="center">
           <td colspan="3" class="text-center">총합</td>
           <td><%= number_with_delimiter(@total[2], delimiter: ",") %></td>
           <td><%= number_with_delimiter(@total[1], delimiter: ",") %></td>
