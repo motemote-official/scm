@@ -151,7 +151,11 @@ class ProductsController < ApplicationController
 
   def empty
     @product = Product.find(params[:id])
-    @product.update(empty: true)
+    if @product.empty
+      @product.update(empty: false)
+    else
+      @product.update(empty: true)
+    end
 
     respond_to do |format|
       format.html { redirect_to products_path }
