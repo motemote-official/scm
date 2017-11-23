@@ -24,9 +24,12 @@
       <%= p.label :img, class: "img_label" do %>
         <%= image_tag p.object.img.present? ? p.object.img : asset_path("link.svg"), class: "preview", id: "preview#{p.index}" %>
       <% end %>
+      <% if params[:action] == "edit" && p.object.img.present? %>
+        <a download href="<%= p.object.img.url %>" class="btn btn-default">다운로드</a>
+      <% end %>
       <%= p.link_to_remove '취소', class: 'btn pics_delete_btn remove_pics' %>
-  <% end %>
     </div>
+  <% end %>
   <%= f.link_to_add "", :rocket_pics, id: 'pics', class: 'pics_add_btn' %>
 </div>
 <%= f.label :url, "URL" %>

@@ -34,10 +34,25 @@ $ ->
     return
 
   $(".attend-btn").on "click", ->
-    $(@).parent("div").children("span.attend-btn").removeClass("selected")
-    val = $(@).attr("id").split("-")[1]
-    $("input#status").val(val)
-    $(@).addClass("selected")
+    status = $(@).attr('id').split('-')[2]
+    date1 = $("#attend_date_1i").val()
+    date2 = $("#attend_date_2i").val()
+    date3 = $("#attend_date_3i").val()
+    id = $(@).attr('id').split('-')[0]
+    rocket_id = $("#rocket_id").val()
+    $.ajax({
+      method: "POST",
+      url: "/rockets/" + id + "/check",
+      data: { status: status, date1: date1, date2: date2, date3: date3, rocket_id: rocket_id },
+      dataType: "json",
+      success: (data) ->
+        $("div.attend-btn-wrapper.wrapper-" + data.id + " span").removeClass("status")
+        $("span#" + data.id + "-attend-" + data.status).addClass("status")
+        return
+      ,
+      error: ->
+        alert("Failed")
+        return
+    })
     return
   return
-

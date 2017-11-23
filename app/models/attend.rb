@@ -1,5 +1,5 @@
 class Attend < ApplicationRecord
-  enum status: %w(attendance late)
+  enum status: %w(attendance late absent)
 
   belongs_to :rocket_member
 

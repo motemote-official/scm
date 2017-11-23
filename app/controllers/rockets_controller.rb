@@ -94,9 +94,10 @@ class RocketsController < ApplicationController
 
     @img = []
     @url = []
-    @member = @rocket.rocket_members.all.paginate(page: params[:page], per_page: 3)
+    @member = @rocket.rocket_members.all.paginate(page: params[:page], per_page: 5)
     @member.pluck(:email).each_with_index do |m, index|
       visit "https://www.instagram.com/" + m + "/"
+      page.has_css?("article")
 
       item = []
       href = []
@@ -129,13 +130,13 @@ class RocketsController < ApplicationController
 
   def attend_show
     @rocket = Rocket.find(params[:id])
-    @date = params[:date].nil? ? Date.today : params[:date]
+    @date = params[:date].nil? ? Date.today : params[:date].to_date
 
     Capybara.default_driver = :poltergeist
 
     @img = []
     @url = []
-    @member = RocketMember.find(params[:id])
+    @member = RocketMember.find(params[:member_id])
     visit "https://www.instagram.com/" + @member.email + "/"
 
     item = []
@@ -168,22 +169,21 @@ class RocketsController < ApplicationController
   end
 
   def check
-    date = params[:attend]
-    @date = Date.new date["date(1i)"].to_i, date["date(2i)"].to_i, date["date(3i)"].to_i
+    #date = params[:attend]
+    #@date = Date.new date["date(1i)"].to_i, date["date(2i)"].to_i, date["date(3i)"].to_i
+    @date = Date.new params[:date1].to_i, params[:date2].to_i, params[:date3].to_i
     @rocket_member = RocketMember.find(params[:id])
+
     if @rocket_member.attends.where(date: @date).present?
       @attend = @rocket_member.attends.where(date: @date).take
       @attend.update(status: params[:status].to_i)
     else
-      @attend = @rocket_member.attends.new(rocket_id: params[:rocket_id],
-                                           status: params[:status].to_i,
-                                           date: @date)
-      @attend.save
+      @attend = @rocket_member.attends.create(rocket_id: params[:rocket_id],
+                                              status: params[:status].to_i,
+                                              date: @date)
     end
 
-    respond_to do |format|
-      format.html { redirect_to request.referrer }
-    end
+    render json: {id: params[:id], status: params[:status]}
   end
 
   def regram_index
