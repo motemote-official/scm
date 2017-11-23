@@ -1,5 +1,5 @@
 <%= f.label :rocket_id, "기수" %>
-<%= f.select :rocket_id, options_from_collection_for_select(Rocket.all, :id, :unit), {}, class: "form-control" %>
+<%= f.select :rocket_id, options_from_collection_for_select(Rocket.all.order('id DESC'), :id, :unit), {}, class: "form-control" %>
 <%= f.label :email, "Instagram" %>
 <%= f.text_field :email, requied: true, class: "form-control" %>
 <%= f.label :name, "이름" %>
