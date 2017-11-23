@@ -11,17 +11,17 @@
           <%= link_to "접속", "https://www.instagram.com/#{@member.email}/", target: "_blank", class: "attend-user-link" %>
         </div>
         <div class="attend-check-wrapper">
-          <%= form_tag(check_rocket_path(@member.id), method: 'POST', class: "flex attend-check-form") do %>
+          <%= form_tag("", class: "flex attend-check-form") do %>
             <div class="attend-check-btn-wrapper">
-              <%= date_select("attend", "date", order: [:year, :month, :day]) %>
-              <div>
-                <span id="attend-0" class="attend-btn <%= Attend.status_of_attendance(@date, @member.id) == 0 && "status" %>">출석</span>
-                <span id="attend-1" class="attend-btn <%= Attend.status_of_attendance(@date, @member.id) == 1 && "status" %>">지각</span>
-                <span id="attend-2" class="attend-btn <%= Attend.status_of_attendance(@date, @member.id) == 2 && "status" %> last">불출석</span>
+              <%= date_select("attend", "date", default: {year: @date.year, month: @date.month, day: @date.day}, order: [:year, :month, :day]) %>
+              <div class="attend-btn-wrapper wrapper-<%= @member.id %>">
+                <span id="<%= @member.id %>-attend-0" class="attend-btn <%= Attend.status_of_attendance(@date, @member.id) == 0 && "status" %>">출석</span>
+                <span id="<%= @member.id %>-attend-1" class="attend-btn <%= Attend.status_of_attendance(@date, @member.id) == 1 && "status" %>">지각</span>
+                <span id="<%= @member.id %>-attend-2" class="attend-btn <%= Attend.status_of_attendance(@date, @member.id) == 2 && "status" %> last">불출석</span>
               </div>
             </div>
-            <%= hidden_field_tag :status %>
-            <%= submit_tag "저장", class: "attend-check-submit" %>
+            <%= hidden_field_tag :rocket_id, @member.rocket_id %>
+            <%= hidden_field_tag :status, "", require: true %>
           <% end %>
         </div>
       </div>

@@ -20,7 +20,7 @@
             <td><%= link_to "접속", "https://instagram.com/#{r.email}/", target: "_blank" %></td>
             <% for i in 0..(@rocket.term - 1) do %>
               <td>
-                <%= link_to attend_show_rocket_path(r.id) do %>
+                <%= link_to attend_show_rocket_path(r.rocket_id, member_id: r.id, date: @rocket.start_date + i) do %>
                   <% if Attend.status_of_attendance(@rocket.start_date + i, r.id) == 0 %>
                     &#927;
                   <% elsif Attend.status_of_attendance(@rocket.start_date + i, r.id) == 1 %>

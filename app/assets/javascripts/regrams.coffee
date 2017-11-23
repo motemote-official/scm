@@ -20,7 +20,6 @@ inputTag = (e) ->
     data: { type: id, val: val, val1: val1, val2: val2, val3: val3 },
     dataType: "json",
     success: (data) ->
-      console.log(data.text)
       $("#regram_content").val($("#regram_content").val() + data.text)
       return
     ,
