@@ -65,7 +65,7 @@ class RocketMembersController < ApplicationController
     @rocket_member.destroy
 
     respond_to do |format|
-      format.html { redirect_to(rocket_members_url) }
+      format.html { redirect_to(rocket_path(params[:rocket_id])) }
       format.xml  { head :ok }
     end
   end
