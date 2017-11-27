@@ -10,13 +10,13 @@ class Count < ApplicationRecord
         sum = 0
         for i in 1..7 do
           date = p.counts.last.date
-          sum += p.counts.where(date: (date.to_date - i + 1).to_s).take.buffer
-          sum += p.counts.where(date: (date.to_date - i).to_s).take.count
-          sum -= p.counts.where(date: (date.to_date - i + 1).to_s).take.count
+          sum = sum + p.counts.where(date: (date.to_date - i + 1).to_s).take.buffer + p.counts.where(date: (date.to_date - i).to_s).take.count - p.counts.where(date: (date.to_date - i + 1).to_s).take.count
         end
         avg = sum/7 # 일주일 평균 판매량
-        if self.count/avg > 30 # 판매 가능일 수 30일 이상일 경우
-          p.update(empty: false)
+        if avg > 0
+          if self.count/avg > 30 # 판매 가능일 수 30일 이상일 경우
+            p.update(empty: false)
+          end
         end
       end
     end
