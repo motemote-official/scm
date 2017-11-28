@@ -14,7 +14,7 @@
           <div class="attend-check-wrapper">
             <%= form_tag("", class: "flex attend-check-form") do %>
               <div class="attend-check-btn-wrapper">
-                <%= date_select :attend, :date, order: [:year, :month, :day] %>
+                <%= date_select :attend, :date, order: [:year, :month, :day], default: Date.today-1 %>
                 <div class="attend-btn-wrapper wrapper-<%= m.id %>">
                   <span id="<%= m.id %>-attend-0" class="attend-btn <%= Attend.status_of_attendance(@date, m.id) == 0 && "status" %>">출석</span>
                   <span id="<%= m.id %>-attend-1" class="attend-btn <%= Attend.status_of_attendance(@date, m.id) == 1 && "status" %>">지각</span>
