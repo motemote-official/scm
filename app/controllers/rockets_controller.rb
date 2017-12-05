@@ -234,32 +234,6 @@ class RocketsController < ApplicationController
     render json: {id: params[:id], status: params[:status]}
   end
 
-  def regram_index
-    @regrams = Regram.all
-    @today = Date.today
-    @dayofweek = @today.wday
-    @timepool = [17, 22, 23, 24]
-    @rocket= Rocket.find(params[:id])
-
-    respond_to do |format|
-      format.html { render 'rockets/regrams/index.html.erb' }
-      format.xml  { render xml: @regramss }
-    end
-  end
-
-  def regram_new
-    @regram = RocketRegram.new
-    @regram.rocket_pics.build
-    @rocket = Rocket.find(params[:id])
-    @date = params[:date]
-    @time = params[:time]
-
-    respond_to do |format|
-      format.html { render 'rockets/regrams/new.html.erb' }
-      format.xml  { render xml: @regram }
-    end
-  end
-
   private
 
   def rocket_params

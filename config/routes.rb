@@ -21,7 +21,11 @@ Rails.application.routes.draw do
   resources :tags
   resources :counts
   resources :rockets, shallow: true do
-    resources :rocket_regrams
+    resources :rocket_regrams do
+      collection do
+        get 'list'
+      end
+    end
     member do
       get 'calendar'
       get 'attend'
