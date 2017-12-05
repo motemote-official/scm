@@ -1,0 +1,28 @@
+<%= render partial: 'rockets/nav', locals: { } %>
+<%= render partial: 'rockets/nav_sub', locals: { id: @rocket.id } %>
+
+<div class="container">
+  <div class="buffer"></div>
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table table-hover">
+        <thead>
+          <th class="center">No</th>
+          <th class="center">일정</th>
+          <th class="center">시간</th>
+          <th class="center">멤버</th>
+        </thead>
+        <tbody>
+          <% @regrams.each do |r| %>
+            <tr class="center" onclick="location.href='../../../rocket_regrams/<%= r.id %>/edit'">
+              <td><%= r.id %></td>
+              <td><%= r.date %></td>
+              <td><%= r.regram_at %></td>
+              <td><%= RocketMember.find(r.id).email %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
