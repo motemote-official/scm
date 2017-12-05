@@ -26,6 +26,6 @@ class Attend < ApplicationRecord
   end
 
   def self.score(start_date, end_date, member)
-    self.where("rocket_member_id == ? AND date >= ? AND date < ? AND status == 0", member, start_date, end_date).count + self.where("rocket_member_id == ? AND date >= ? AND date < ? AND status == 1", member, start_date, end_date).count * 0.5
+    self.where("rocket_member_id == ? AND date >= ? AND date < ? AND status == ?", member, start_date, end_date, 0).count + self.where("rocket_member_id == ? AND date >= ? AND date < ? AND status == ?", member, start_date, end_date, 1).count * 0.5
   end
 end
