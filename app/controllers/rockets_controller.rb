@@ -40,6 +40,7 @@ class RocketsController < ApplicationController
 
   def show
     @rocket = Rocket.find(params[:id])
+    @start_date = @rocket.start_date.to_date
 
     respond_to do |format|
       format.html # show.html.erb
@@ -180,14 +181,10 @@ class RocketsController < ApplicationController
     @rocket.rocket_members.all.each do |m|
       if m.attends.where(date: Date.today - 1).present?
         unless m.attends.where(date: Date.today - 1).take.status == "attendance"
-          p "???"
           ids << m.id
-          p "???"
         end
       else
-        p "!!!"
         ids << m.id
-        p "!!!"
       end
     end
     p ids

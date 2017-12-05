@@ -8,6 +8,10 @@
         <th class="center">No</th>
         <th class="center">ID</th>
         <th class="center">접속</th>
+        <th class="center">출석점수</th>
+        <th class="center">10일</th>
+        <th class="center">20일</th>
+        <th class="center">30일</th>
         <% for i in 0..(@rocket.term - 1) do %>
           <th class="center"><%= (@rocket.start_date + i).strftime("%m/%d") %><br /><%= i + 1 %>일차</th>
         <% end %>
@@ -18,6 +22,10 @@
             <td><%= index + 1 %></td>
             <td><%= link_to "#{r.email}", edit_rocket_member_path(r.id) %></td>
             <td><%= link_to "접속", "https://instagram.com/#{r.email}/", target: "_blank" %></td>
+            <td><%= r.attends.where(status: "attendance").count + r.attends.where(status: "late").count * 0.5 %></td>
+            <td><%= Attend.score(@start_date, @start_date + 10, r.id) %></td>
+            <td><%= Attend.score(@start_date + 10, @start_date + 20, r.id) %></td>
+            <td><%= Attend.score(@start_date + 20, @start_date + 30, r.id) %></td>
             <% for i in 0..(@rocket.term - 1) do %>
               <td>
                 <%= link_to attend_show_rocket_path(r.rocket_id, member_id: r.id, date: @rocket.start_date + i) do %>
