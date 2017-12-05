@@ -88,7 +88,7 @@ class RocketsController < ApplicationController
 
   def attend
     @rocket = Rocket.find(params[:id])
-    @date = params[:date].nil? ? Date.today : params[:date]
+    @date = params[:date].nil? ? (Date.today - 1) : params[:date]
 
     Capybara.default_driver = :poltergeist
 
@@ -130,7 +130,7 @@ class RocketsController < ApplicationController
 
   def attend_show
     @rocket = Rocket.find(params[:id])
-    @date = params[:date].nil? ? Date.today : params[:date].to_date
+    @date = params[:date].nil? ? (Date.today - 1) : params[:date].to_date
 
     Capybara.default_driver = :poltergeist
 
@@ -166,6 +166,57 @@ class RocketsController < ApplicationController
       format.xml  { render xml: @model_class_names }
     end
 
+  end
+
+  def absent
+    @rocket = Rocket.find(params[:id])
+    @date = params[:date].nil? ? (Date.today-1) : params[:date]
+
+    Capybara.default_driver = :poltergeist
+
+    @img = []
+    @url = []
+    ids = []
+    @rocket.rocket_members.all.each do |m|
+      if m.attends.where(date: Date.today - 1).present?
+        unless m.attends.where(date: Date.today - 1).take.status == "attendance"
+          p "???"
+          ids << m.id
+          p "???"
+        end
+      else
+        p "!!!"
+        ids << m.id
+        p "!!!"
+      end
+    end
+    p ids
+    @member = RocketMember.where(id: ids).all.paginate(page: params[:page], per_page: 4)
+    @member.pluck(:email).each_with_index do |m, index|
+      visit "https://www.instagram.com/" + m + "/"
+      sleep 1
+
+      item = []
+      href = []
+      all(:css, 'img').each do |i|
+        if item.count < 5
+          item << i['src']
+        end
+
+        url = i.find(:xpath, '../../..')['href']
+        href << url
+      end
+      item -= [item[0]]
+      href -= [href[0]]
+
+      @img << item
+      @url << href
+    end
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render xml: @model_class_names }
+    end
   end
 
   def check
