@@ -1,5 +1,5 @@
 <%= f.label :rocket_id, "기수" %>
-<%= f.select :rocket_id, options_from_collection_for_select(Rocket.all.order('id DESC'), :id, :unit), {}, class: "form-control" %>
+<%= f.select :rocket_id, options_from_collection_for_select(Rocket.all.order('id DESC'), :id, :unit, rocket_member.rocket.present? ? rocket_member.rocket.id : Rocket.last.id), {}, class: "form-control" %>
 <%= f.label :email, "Instagram" %>
 <%= f.text_field :email, requied: true, class: "form-control" %>
 <%= f.label :name, "이름" %>
@@ -9,7 +9,7 @@
 <%= f.label :follower, "팔로워" %>
 <%= f.number_field :follower, class: "form-control" %>
 <%= f.label :group, "그룹" %>
-<%= f.number_field :group, class: "form-control" %>
+<%= f.number_field :group, class: "form-control", value: rocket_member.group.present? ? rocket_member.group : 1, min: 1 %>
 <%= f.label :homepage, "홈페이지" %>
 <%= f.text_field :homepage, class: "form-control" %>
 <%= f.label :product_id, "관심제품" %>
