@@ -3,7 +3,7 @@
 <div class="row" style="margin-top: 30px">
   <div class="col-xs-12">
     <%= form_for @rocket_member, html: { class: "form-group form-member" } do |f| %>
-      <%= render partial: 'form', locals: { f: f } %>
+      <%= render partial: 'form', locals: { f: f, rocket_member: @rocket_member } %>
       <div class="btn-wrapper">
         <%= f.submit "등록", class: "btn btn-primary" %>
         <%= link_to "취소", rockets_path, class: "btn btn-warning" %>

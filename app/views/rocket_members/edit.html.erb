@@ -3,7 +3,7 @@
 <div class="row" style="margin-top: 30px">
   <div class="col-xs-12">
     <%= form_for @rocket_member, html: { class: "form-group form-member" } do |f| %>
-      <%= render partial: 'form', locals: { f: f } %>
+      <%= render partial: 'form', locals: { f: f, rocket_member: @rocket_member } %>
       <div class="btn-wrapper">
         <%= link_to "접속", "https://instagram.com/#{@rocket_member.email}/", target: "_blank", class: "btn btn-info" %>
         <%= f.submit "수정", class: "btn btn-primary" %>

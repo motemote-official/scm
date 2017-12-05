@@ -58,6 +58,9 @@ table.rocket-table {
   th, td {
     width: 50px;
   }
+  td.rowspan {
+    vertical-align: middle;
+  }
 }
 
 .sub-nav-rocket {

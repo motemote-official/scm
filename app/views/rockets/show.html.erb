@@ -5,6 +5,7 @@
   <div class="col-md-12">
     <table class="table hover rocket-table">
       <thead>
+        <th class="center">Group</th>
         <th class="center">No</th>
         <th class="center">ID</th>
         <th class="center">접속</th>
@@ -17,29 +18,56 @@
         <% end %>
       </thead>
       <tbody>
-        <% @rocket.rocket_members.all.each_with_index do |r, index| %>
-          <tr class="center">
-            <td><%= index + 1 %></td>
-            <td><%= link_to "#{r.email}", edit_rocket_member_path(r.id) %></td>
-            <td><%= link_to "접속", "https://instagram.com/#{r.email}/", target: "_blank" %></td>
-            <td><%= r.attends.where(status: "attendance").count + r.attends.where(status: "late").count * 0.5 %></td>
-            <td><%= Attend.score(@start_date, @start_date + 10, r.id) %></td>
-            <td><%= Attend.score(@start_date + 10, @start_date + 20, r.id) %></td>
-            <td><%= Attend.score(@start_date + 20, @start_date + 30, r.id) %></td>
-            <% for i in 0..(@rocket.term - 1) do %>
-              <td>
-                <%= link_to attend_show_rocket_path(r.rocket_id, member_id: r.id, date: @rocket.start_date + i) do %>
-                  <% if Attend.status_of_attendance(@rocket.start_date + i, r.id) == 0 %>
-                    &#927;
-                  <% elsif Attend.status_of_attendance(@rocket.start_date + i, r.id) == 1 %>
-                    &#9653;
-                  <% else %>
-                    &#215;
+        <% @rocket.rocket_members.pluck(:group).uniq.each do |g| %>
+          <% @rocket.rocket_members.where(group: g).first(1).each_with_index do |r, index| %>
+            <tr class="center">
+              <td class="rowspan" rowspan="<%= @rocket.rocket_members.where(group: g).count %>"><%= r.group %></td>
+              <td><%= index + 1 %></td>
+              <td><%= link_to "#{r.email}", edit_rocket_member_path(r.id) %></td>
+              <td><%= link_to "접속", "https://instagram.com/#{r.email}/", target: "_blank" %></td>
+              <td><%= r.attends.where(status: "attendance").count + r.attends.where(status: "late").count * 0.5 %></td>
+              <td><%= Attend.score(@start_date, @start_date + 10, r.id) %></td>
+              <td><%= Attend.score(@start_date + 10, @start_date + 20, r.id) %></td>
+              <td><%= Attend.score(@start_date + 20, @start_date + 30, r.id) %></td>
+              <% for i in 0..(@rocket.term - 1) do %>
+                <td>
+                  <%= link_to attend_show_rocket_path(r.rocket_id, member_id: r.id, date: @rocket.start_date + i) do %>
+                    <% if Attend.status_of_attendance(@rocket.start_date + i, r.id) == 0 %>
+                      &#927;
+                    <% elsif Attend.status_of_attendance(@rocket.start_date + i, r.id) == 1 %>
+                      &#9653;
+                    <% else %>
+                      &#215;
+                    <% end %>
                   <% end %>
-                <% end %>
-              </td>
-            <% end %>
-          </tr>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+          <% @rocket.rocket_members.where(group: g).drop(1).each_with_index do |r, index| %>
+            <tr class="center">
+              <td><%= index + 2 %></td>
+              <td><%= link_to "#{r.email}", edit_rocket_member_path(r.id) %></td>
+              <td><%= link_to "접속", "https://instagram.com/#{r.email}/", target: "_blank" %></td>
+              <td><%= r.attends.where(status: "attendance").count + r.attends.where(status: "late").count * 0.5 %></td>
+              <td><%= Attend.score(@start_date, @start_date + 10, r.id) %></td>
+              <td><%= Attend.score(@start_date + 10, @start_date + 20, r.id) %></td>
+              <td><%= Attend.score(@start_date + 20, @start_date + 30, r.id) %></td>
+              <% for i in 0..(@rocket.term - 1) do %>
+                <td>
+                  <%= link_to attend_show_rocket_path(r.rocket_id, member_id: r.id, date: @rocket.start_date + i) do %>
+                    <% if Attend.status_of_attendance(@rocket.start_date + i, r.id) == 0 %>
+                      &#927;
+                    <% elsif Attend.status_of_attendance(@rocket.start_date + i, r.id) == 1 %>
+                      &#9653;
+                    <% else %>
+                      &#215;
+                    <% end %>
+                  <% end %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
