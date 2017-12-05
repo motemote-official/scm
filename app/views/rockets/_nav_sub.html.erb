@@ -2,6 +2,7 @@
   <%= link_to "일자별 관리", calendar_rocket_path(id), class: "main-link #{ params[:action] == "calendar" && "active" }" %>
   <%= link_to "ID별 관리", rocket_path(id), class: "main-link #{ params[:controller] == "rockets" && params[:action] == "show" && "active" }" %>
   <%= link_to "인스타 관리", attend_rocket_path(id: id), class: "main-link #{ params[:controller] == "rockets" && (params[:action] == "attend" || params[:action] == "attend_show") && "active" }" %>
+  <%= link_to "불출석 관리", absent_rocket_path(id: id), class: "main-link #{ params[:controller] == "rockets" && params[:action] == "absent" && "active" }" %>
   <%= link_to "리그램 관리", rocket_rocket_regrams_path(rocket_id: id), class: "main-link #{ params[:controller] == "rocket_regrams" && (params[:action] == "index" || params[:action] == "new" || params[:action] == "edit") && "active" }" %>
   <%= select_tag :rocket_id, options_from_collection_for_select(Rocket.all, :id, :unit), class: "form-control sub-nav-rocket" %>
   <span class="btn btn-primary rocket-link">이동</span>

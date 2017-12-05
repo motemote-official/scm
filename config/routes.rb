@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       get 'calendar'
       get 'attend'
       get 'attend_show'
+      get 'absent'
       post 'check'
     end
   end
