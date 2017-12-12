@@ -10,4 +10,31 @@
       </div>
     <% end %>
   </div>
+  <div class="col-xs-12">
+    <table class="table table-hover table-mission">
+      <thead>
+        <th class="center">No</th>
+        <th class="center">미션</th>
+        <th class="center">날짜</th>
+        <th class="center">삭제</th>
+      </thead>
+      <tbody>
+        <% @missions.each_with_index do |m, index| %>
+          <tr class="center" onclick="location.href='../../missions/<%= m.id %>/edit'">
+            <td><%= index + 1 %></td>
+            <td><%= m.content %></td>
+            <td><%= m.date %></td>
+            <td><%= link_to "삭제", mission_path(m.id), method: 'DELETE', class: "btn btn-default", style: "padding: 0 10px", data: {confirm: "삭제하시겠습니까?"} %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+      <div class="btn-wrapper">
+    <% if @count < @rocket.mission %>
+        <%= link_to "미션생성", new_rocket_mission_path(@rocket), class: "new-mission-btn btn btn-primary" %>
+    <% else %>
+      <p>미션을 최대로 생성하였습니다. ( 생성된 미션 수가 로켓단 미션 수와 같습니다. )</p>
+    <% end %>
+      </div>
+  </div>
 </div>

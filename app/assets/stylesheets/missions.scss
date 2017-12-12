@@ -1,0 +1,15 @@
+// Place all the styles related to the missions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+table.table-mission {
+  width: 1080px;
+  margin: 30px auto;
+}
+.btn-wrapper {
+  width: 1080px;
+  margin: 0 auto;
+  .new-mission-btn {
+    width: 100px;
+    margin-left: 0;
+  }
+}

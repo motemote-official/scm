@@ -1,0 +1,20 @@
+<tr class="center">
+  <% if first %>
+    <td class="rowspan" rowspan="<%= rocket.rocket_members.where(group: g).count %>" style="vertical-align: middle"><%= r.group %></td>
+  <% end %>
+  <td><%= rocket.rocket_members.pluck(:id).index(r.id) + 1 %></td>
+  <td><%= link_to "#{r.email}", edit_rocket_member_path(r.id) %></td>
+  <td><%= link_to "접속", "https://instagram.com/#{r.email}/", target: "_blank" %></td>
+  <td><%= r.mission_checks.count %>
+  <% rocket.missions.each do |m| %>
+    <td>
+      <%= link_to new_rocket_mission_check_path(mission_id: m.id, rocket_id: rocket.id, rocket_member_id: r.id) do %>
+        <% if m.mission_checks.where(rocket_member_id: r.id).present? %>
+          &#927;
+        <% else %>
+          &#215;
+        <% end %>
+      <% end %>
+    </td>
+  <% end %>
+</tr>

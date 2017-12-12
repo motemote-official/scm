@@ -1,0 +1,40 @@
+<%= render partial: 'rockets/nav', locals: { } %>
+<%= render partial: 'rockets/nav_sub', locals: { id: @rocket.id } %>
+
+<div class="container">
+  <div class="buffer"></div>
+  <div class="row">
+    <% @member.each_with_index do |m, index| %>
+      <div class="attend-list">
+        <div class="attend-list-left">
+          <div class="attend-user-wrapper">
+            <span class="attend-user-id"><%= m.email %></span>
+            <%= link_to "접속", "https://www.instagram.com/#{m.email}/", target: "_blank", class: "attend-user-link" %>
+          </div>
+          <div class="attend-check-wrapper">
+            <%= form_tag("", class: "flex attend-check-form") do %>
+              <div class="attend-check-btn-wrapper mission-check-btn-wrapper">
+                <%= select_tag :mission, options_from_collection_for_select(@rocket.missions.all, :id, :content, @mission.id), id: "rocket-#{@rocket.id}-mission-#{@mission.id}-member-#{m.id}", class: "form-control mission-type" %>
+                <div class="attend-btn-wrapper" id="mission-check-member-<%= m.id %>">
+                  <%= render partial: 'create', locals: { rocket: @rocket, mission: @mission, m: m } %>
+                </div>
+                <%= hidden_field_tag :rocket_id, m.rocket_id %>
+                <%= hidden_field_tag :mission_id, @mission.id, id: "mission_id_#{@mission.id}" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="attend-list-right">
+          <% @img[index].each_with_index do |i, j| %>
+            <%= link_to @url[index][j], target: :_blank do %>
+              <%= image_tag i, class: "attend-image" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="text-center" style="margin: 10px 0 30px 0;">
+    <%= will_paginate @member %>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="nav sub_nav">
+  <% if params[:action] == "new" %>
+    <%= link_to "미션생성", new_rocket_mission_path(rocket), class: "main-link active" %>
+  <% end %>
+  <% if params[:action] == "edit" %>
+    <%= link_to "미션수정", edit_mission_path(mission), class: "main-link active" %>
+  <% end %>
+</div>

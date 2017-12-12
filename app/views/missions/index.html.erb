@@ -1,0 +1,29 @@
+<%= render partial: 'rockets/nav', locals: { } %>
+<%= render partial: 'rockets/nav_sub', locals: { id: @rocket.id } %>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-hover table-mission-index">
+      <thead>
+        <th class="center">Group</th>
+        <th class="center">No</th>
+        <th class="center">ID</th>
+        <th class="center">접속</th>
+        <th class="center">미션점수</th>
+        <% @rocket.missions.each_with_index do |m, index| %>
+          <th class="center"><%= m.date.strftime("%m/%d") %><br /><%= index + 1 %>회차</th>
+        <% end %>
+      </thead>
+      <tbody>
+        <% @rocket.rocket_members.pluck(:group).uniq.each do |g| %>
+          <% @rocket.rocket_members.where(group: g).first(1).each_with_index do |r, index| %>
+            <%= render partial: 'tr', locals: { g: g, r: r, index: index, rocket: @rocket, first: true } %>
+          <% end %>
+          <% @rocket.rocket_members.where(group: g).drop(1).each_with_index do |r, index| %>
+            <%= render partial: 'tr', locals: { g: g, r: r, index: index, rocket: @rocket, first: false } %>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+$('#mission-check-member-<%= @rocket_member.id %>').html(
+ "<%= escape_javascript(render partial: 'create', locals: {rocket: @rocket, mission: @next_mission, m: @rocket_member}) %>"
+);
+$('#mission_id_<%= @prev_mission.id %>').val("<%= @next_mission.id %>");
+$('#mission_id_<%= @prev_mission.id %>').attr('id', 'mission_id_<%= @next_mission.id %>');
+$('select#rocket-<%= @rocket.id %>-mission-<%= @prev_mission.id %>-member-<%= @rocket_member.id %>').attr('id', 'select#rocket-<%= @rocket.id %>-mission-<%= @next_mission.id %>-member-<%= @rocket_member.id %>');

@@ -60,6 +60,8 @@ class RocketsController < ApplicationController
 
   def edit
     @rocket = Rocket.find(params[:id])
+    @missions = @rocket.missions.all.reverse
+    @count = @rocket.missions.count
   end
 
   def update
@@ -234,9 +236,19 @@ class RocketsController < ApplicationController
     render json: {id: params[:id], status: params[:status]}
   end
 
+  def mission
+    @rocket = Rocket.find(params[:id])
+    @start_date = @rocket.start_date.to_date
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render xml: @rocket }
+    end
+  end
+
   private
 
   def rocket_params
-    params.require(:rocket).permit(:unit, :term, :start_date, :end_date, :volume)
+    params.require(:rocket).permit(:unit, :term, :start_date, :end_date, :volume, :mission)
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171123080343) do
+ActiveRecord::Schema.define(version: 20171207013122) do
 
   create_table "attends", force: :cascade do |t|
     t.integer "rocket_member_id"
@@ -62,6 +62,24 @@ ActiveRecord::Schema.define(version: 20171123080343) do
     t.integer "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "mission_checks", force: :cascade do |t|
+    t.integer "mission_id"
+    t.integer "rocket_member_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mission_id"], name: "index_mission_checks_on_mission_id"
+    t.index ["rocket_member_id"], name: "index_mission_checks_on_rocket_member_id"
+  end
+
+  create_table "missions", force: :cascade do |t|
+    t.string "content"
+    t.date "date"
+    t.integer "rocket_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rocket_id"], name: "index_missions_on_rocket_id"
   end
 
   create_table "pics", force: :cascade do |t|
@@ -146,6 +164,7 @@ ActiveRecord::Schema.define(version: 20171123080343) do
     t.integer "volume"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "mission", default: 0
   end
 
   create_table "tags", force: :cascade do |t|
