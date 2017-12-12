@@ -117,14 +117,14 @@ table.rocket-table {
             margin-bottom: 10px;
             height: 40px;
           }
-          .attend-btn {
+          .attend-btn, .mission-btn {
             background-color: #aaa;
             color: #fff;
             padding: 12px 20px;
             display: inline-block;
             cursor: pointer;
           }
-          .attend-btn.status {
+          .attend-btn.status, .mission-btn.status {
             background-color: #555;
           }
           .attend-btn.selected {

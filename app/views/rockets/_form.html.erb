@@ -9,3 +9,5 @@
 <%= f.hidden_field :end_date %>
 <%= f.label :volume, "모집인원" %>
 <%= f.number_field :volume, required: true, class: "form-control" %>
+<%= f.label :mission, "미션" %>
+<%= f.number_field :mission, required: true, class: "form-control", min: 0 %>

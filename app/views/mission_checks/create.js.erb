@@ -1,0 +1,3 @@
+$('#mission-check-member-<%= @rocket_member.id %>').html(
+ "<%= escape_javascript(render partial: 'create', locals: {rocket: @rocket, mission: @mission, m: @rocket_member}) %>"
+);

@@ -21,6 +21,12 @@ Rails.application.routes.draw do
   resources :tags
   resources :counts
   resources :rockets, shallow: true do
+    resources :mission_checks do
+      collection do
+        post 'change'
+      end
+    end
+    resources :missions
     resources :rocket_regrams do
       collection do
         get 'list'
@@ -31,6 +37,7 @@ Rails.application.routes.draw do
       get 'attend'
       get 'attend_show'
       get 'absent'
+      get 'mission'
       post 'check'
     end
   end
