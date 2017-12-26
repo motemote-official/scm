@@ -118,7 +118,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.update(product_params)
         flash[:notice] = 'Product was successfully updated.'
-        format.html { redirect_to products_path }
+        format.html { redirect_to products_list_path }
         format.xml  { head :ok }
       else
         format.html { render action: 'edit' }
