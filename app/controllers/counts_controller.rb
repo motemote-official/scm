@@ -20,7 +20,7 @@ class CountsController < ApplicationController
     count = scm.parser.css("table.tb-comm tbody tr").count
 
     for i in 1..count do
-      @data[scm.parser.css("table.tb-comm tbody tr[#{i}] td[2]").text.to_sym] = scm.parser.css("table.tb-comm tbody tr[#{i}] td[7]").text.tr(',','').to_i
+      @data[scm.parser.css("table.tb-comm tbody tr[#{i}] td[2]").text.to_sym] = scm.parser.css("table.tb-comm tbody tr[#{i}] td[9]").text.tr(',','').to_i
     end
 
     @products = Product.all.order(:name)
