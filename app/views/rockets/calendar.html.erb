@@ -7,7 +7,7 @@
     <%= month_calendar do |date| %>
       <p class="day-title text-center"><%= date.day %></p>
       <% if date >= @rocket.start_date && date <= @rocket.end_date %>
-        <p class="center"><%= (date.to_date - @rocket.start_date.to_date).to_i %>일차</p>
+        <p class="center"><%= (date.to_date - @rocket.start_date.to_date + 1).to_i %>일차</p>
         <p class="center content">( <%= Attend.attend_members_count(date) %> / <%= @count %> )</p>
         <div class="content no-padding">
           <p class="center half left">출석</p>
