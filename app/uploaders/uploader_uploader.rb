@@ -48,8 +48,6 @@ class UploaderUploader < CarrierWave::Uploader::Base
 
   def watermark
     manipulate! do |img|
-      p model.user_name
-      p model.count_day
 
       # user id watermark
       if model.user_name.present?
