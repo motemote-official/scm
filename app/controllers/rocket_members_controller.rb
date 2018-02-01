@@ -9,11 +9,15 @@ class RocketMembersController < ApplicationController
   end
 
   def new
-    @rocket_member = RocketMember.new
+    if Rocket.take.nil?
+      redirect_to new_rocket_path
+    else
+      @rocket_member = RocketMember.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render xml: @rocket_member }
+      respond_to do |format|
+        format.html # new.html.erb
+        format.xml  { render xml: @rocket_member }
+      end
     end
   end
 
