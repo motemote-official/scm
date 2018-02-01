@@ -41,4 +41,21 @@ $ ->
     document.execCommand('copy')
     element.remove()
     return
+
+  $("#rocket_regram_rocket_member_id").change ->
+    $("#rocket_user_name").val($(@).val())
+    return
+
+  $("#rocket_regram_date").change ->
+    regram_day = $(@).val()
+    start_day = $("#rocket_start_date").val()
+    count_day = (new Date(regram_day) - new Date(start_day))/1000/60/60/24
+
+    if count_day >= 0
+      $("#rocket_count_day").val(count_day)
+    else
+      alert("로켓단 시작일 보다 이전 날짜를 선택하였습니다.")
+      $("#rocket_regram_date").val($("#rocket_start_date").val())
+    return
+
   return

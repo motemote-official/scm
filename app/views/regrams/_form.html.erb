@@ -23,6 +23,7 @@
     <div>
       <%= p.file_field :img, class: "input-file-field form-control", data: {index_no: p.index} %>
       <%= p.hidden_field :img_cache %>
+      <%= p.hidden_field :user_name, value: member.nil? ? "" : member.email %>
       <%= p.label :img, class: "img_label" do %>
         <%= image_tag p.object.img.present? ? p.object.img.url : asset_path("link.svg"), class: "preview", id: "preview#{p.index}" %>
       <% end %>

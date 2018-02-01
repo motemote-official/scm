@@ -75,7 +75,7 @@ class RegramsController < ApplicationController
       else
         format.html { render action: 'new' }
         format.xml  { render xml: @regram.errors, status: :unprocessable_entity }
-        puts @regram.errors.full_messages
+        p @regram.errors.full_messages
       end
     end
   end
@@ -132,6 +132,7 @@ class RegramsController < ApplicationController
   private
 
   def regram_params
-    params.require(:regram).permit(:date, :url, :content, :member_id, :product_id, :timepool_id, pics_attributes: [:id, :img, :img_cache, :_destroy])
+    params.require(:regram).permit(:date, :url, :content, :member_id, :product_id, :timepool_id,
+                                   pics_attributes: [:user_name, :id, :img, :img_cache, :_destroy])
   end
 end

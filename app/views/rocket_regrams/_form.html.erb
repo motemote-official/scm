@@ -23,6 +23,9 @@
     <div>
       <%= p.file_field :img, class: "input-file-field form-control", data: {index_no: p.index} %>
       <%= p.hidden_field :img_cache %>
+      <%= p.hidden_field :user_name, value: member.nil? ? "" : member.email, id: "rocket_user_name" %>
+      <%= p.hidden_field :start_date, value: start_date, id: "rocket_start_date" %>
+      <%= p.hidden_field :count_day, value: count_day.nil? ? "" : count_day, id: "rocket_count_day" %>
       <%= p.label :img, class: "img_label" do %>
         <%= image_tag p.object.img.present? ? p.object.img : asset_path("link.svg"), class: "preview", id: "preview#{p.index}" %>
       <% end %>
