@@ -8,6 +8,9 @@
 
 User.create(email: "admin@motemote.kr", password: "motemote1004!!")
 
+Product.create(name: "태스크 매니저 - 31 DAYS - 컬러칩 - 그리너리", code: "M00100012", kind: "planner", price: 2000)
+Product.create(name: "태스크 매니저 - 31 DAYS - 컬러칩 - 로즈쿼츠", code: "M00100010", kind: "planner", price: 2000)
+Product.create(name: "태스크 매니저 - 31 DAYS - 컬러칩 - 세레니티", code: "M00100011", kind: "planner", price: 2000)
 Product.create(name: "랜드스케이프 노트북 - 오리지널 - 룰드", code: "2003-0000-0038", kind: "note", price: 1500)
 Product.create(name: "랜드스케이프 노트북 - 오리지널 - 스퀘어드", code: "2003-0000-0041", kind: "note", price: 1500)
 Product.create(name: "포트레이트 노트북 - 오리지널 -  스퀘어드", code: "2003-0000-0043", kind: "note", price: 1500)
@@ -36,14 +39,48 @@ Product.create(name: "노트북 퓨어 - 오리지널 - 코넬", code: "2003-000
 Product.create(name: "스프링 북 - 컬러칩 - 룰드 - 로즈쿼츠", code: "2003-0000-0083", kind: "note", price: 3500)
 Product.create(name: "스프링 북 - 컬러칩 - 스퀘어드 - 로즈쿼츠", code: "2003-0000-0084", kind: "note", price: 3500)
 Product.create(name: "스프링 북 - 컬러칩 - 코넬 - 로즈쿼츠", code: "2003-0000-0085", kind: "note", price: 3500)
-Product.create(name: "태스크 매니저 - 31 DAYS - 컬러칩 - 로즈쿼츠", code: "2003-0000-0086", kind: "planner", price: 2000)
-Product.create(name: "태스크 매니저 - 31 DAYS - 컬러칩 - 세레니티", code: "2003-0000-0087", kind: "planner", price: 2000)
-Product.create(name: "태스크 매니저 - 31 DAYS - 컬러칩 - 그리너리", code: "2003-0000-0088", kind: "planner", price: 2000)
 Product.create(name: "텐미닛 플래너 - 100 DAYS - 컬러칩 - 그리너리", code: "2003-0000-0089", kind: "planner", price: 6000)
 Product.create(name: "HQ PVC 커버 - 100 DAYS", code: "2003-0000-0092", kind: "accessory", price: 1500)
 Product.create(name: "HQ PVC 커버 - 100 DAYS - SET", code: "2003-0000-0093", kind: "accessory", price: 3500)
 Product.create(name: "텐미닛 플래너 - 100 DAYS - 오리지널 - 화이트", code: "2003-0000-0094", kind: "planner", price: 5500)
 Product.create(name: "태스크 매니저 - 100 DAYS - 오리지널 - 화이트", code: "2003-0000-0095", kind: "planner", price: 5500)
+
+#Product.create(name: "랜드스케이프 노트북 - 오리지널 - 룰드", code: "2003-0000-0038", kind: "note", price: 1500)
+#Product.create(name: "랜드스케이프 노트북 - 오리지널 - 스퀘어드", code: "2003-0000-0041", kind: "note", price: 1500)
+#Product.create(name: "포트레이트 노트북 - 오리지널 -  스퀘어드", code: "2003-0000-0043", kind: "note", price: 1500)
+#Product.create(name: "포트레이트 노트북 - 오리지널 - 룰드", code: "2003-0000-0046", kind: "note", price: 1500)
+#Product.create(name: "텐미닛 플래너 - 31 DAYS - 오리지널 - 화이트", code: "2003-0000-0048", kind: "planner", price: 1500)
+#Product.create(name: "태스크 매니저 - 31 DAYS - 오리지널 - 화이트", code: "2003-0000-0053", kind: "planner", price: 1500)
+#Product.create(name: "텐미닛 플래너 - 100 DAYS - 컬러칩 - 로즈쿼츠", code: "2003-0000-0058", kind: "planner", price: 6000)
+#Product.create(name: "텐미닛 플래너 - 100 DAYS - 컬러칩 - 세레니티", code: "2003-0000-0059", kind: "planner", price: 6000)
+#Product.create(name: "라이팅 컨테이너 - 오리지널 - 룰드", code: "2003-0000-0061", kind: "note", price: 6000)
+#Product.create(name: "라이팅 컨테이너 - 오리지널 - 닷티드", code: "2003-0000-0062", kind: "note", price: 6000)
+#Product.create(name: "라이팅 컨테이너 - 오리지널 - 스퀘어드", code: "2003-0000-0063", kind: "note", price: 6000)
+#Product.create(name: "텐미닛 플래너 - 31 DAYS - 컬러칩 - 로즈쿼츠", code: "2003-0000-0067", kind: "planner", price: 2000)
+#Product.create(name: "텐미닛 플래너 - 31 DAYS - 컬러칩 - 세레니티", code: "2003-0000-0069", kind: "planner", price: 2000)
+#Product.create(name: "텐미닛 플래너 - 31 DAYS - 컬러칩 - 그리너리", code: "2003-0000-0071", kind: "planner", price: 2000)
+#Product.create(name: "HQ PVC 커버 - 라이팅 컨테이너", code: "2003-0000-0072", kind: "accessory", price: 1500)
+#Product.create(name: "HQ PVC 커버 - 라이팅 컨테이너 - SET", code: "2003-0000-0073", kind: "accessory", price: 3500)
+#Product.create(name: "HQ PVC 커버 - 31 DAYS", code: "2003-0000-0074", kind: "accessory", price: 1500)
+#Product.create(name: "HQ PVC 커버 - 31 DAYS - SET", code: "2003-0000-0075", kind: "accessory", price: 3500)
+#Product.create(name: "페이퍼폴더 - VOL1", code: "2003-0000-0076", kind: "accessory", price: 3500)
+#Product.create(name: "페이퍼폴더 - NO1", code: "2003-0000-0077", kind: "accessory", price: 1500)
+#Product.create(name: "페이퍼폴더 - NO2", code: "2003-0000-0078", kind: "accessory", price: 1500)
+#Product.create(name: "페이퍼폴더 - NO3", code: "2003-0000-0079", kind: "accessory", price: 1500)
+#Product.create(name: "노트북 퓨어 - 오리지널 - 룰드", code: "2003-0000-0080", kind: "note", price: 1000)
+#Product.create(name: "노트북 퓨어 - 오리지널 - 스퀘어드", code: "2003-0000-0081", kind: "note", price: 1000)
+#Product.create(name: "노트북 퓨어 - 오리지널 - 코넬", code: "2003-0000-0082", kind: "note", price: 1000)
+#Product.create(name: "스프링 북 - 컬러칩 - 룰드 - 로즈쿼츠", code: "2003-0000-0083", kind: "note", price: 3500)
+#Product.create(name: "스프링 북 - 컬러칩 - 스퀘어드 - 로즈쿼츠", code: "2003-0000-0084", kind: "note", price: 3500)
+#Product.create(name: "스프링 북 - 컬러칩 - 코넬 - 로즈쿼츠", code: "2003-0000-0085", kind: "note", price: 3500)
+#Product.create(name: "태스크 매니저 - 31 DAYS - 컬러칩 - 로즈쿼츠", code: "2003-0000-0086", kind: "planner", price: 2000)
+#Product.create(name: "태스크 매니저 - 31 DAYS - 컬러칩 - 세레니티", code: "2003-0000-0087", kind: "planner", price: 2000)
+#Product.create(name: "태스크 매니저 - 31 DAYS - 컬러칩 - 그리너리", code: "2003-0000-0088", kind: "planner", price: 2000)
+#Product.create(name: "텐미닛 플래너 - 100 DAYS - 컬러칩 - 그리너리", code: "2003-0000-0089", kind: "planner", price: 6000)
+#Product.create(name: "HQ PVC 커버 - 100 DAYS", code: "2003-0000-0092", kind: "accessory", price: 1500)
+#Product.create(name: "HQ PVC 커버 - 100 DAYS - SET", code: "2003-0000-0093", kind: "accessory", price: 3500)
+#Product.create(name: "텐미닛 플래너 - 100 DAYS - 오리지널 - 화이트", code: "2003-0000-0094", kind: "planner", price: 5500)
+#Product.create(name: "태스크 매니저 - 100 DAYS - 오리지널 - 화이트", code: "2003-0000-0095", kind: "planner", price: 5500)
 
 #arr = [
   #[655,636,618,598,586,586,586,586,546,235,216,191,191,191,115,115,64,44,39,39,39,19,18,17,75,2115,2115,2115,2048,2024,2017,2003,1986,1986,1986,1925,1092,1874,1834,1821,1821,1821,1783,1767,1751,1736,1721,1721,1721,1650,1633,1620,1602,1576,1576,1576,1527,1510,1498,1468,1462,1462,1462,1399,1374,1371,1351,1341,1341,1341,1304,1284,1268,1257,1243,1243,1243,1197,1178,1164,1153,1135,1135,1135,1118,1135,1104,1095,1083,1083,1083,1061,1046,1027,1014,1006,1006,1006,989,986,972,963],
@@ -113,7 +150,7 @@ Timepool.create([
   { time: "24" }
 ])
 
-#Tag.create([
+##Tag.create([
   #{title: "텐미닛플래너", content: "플래너 #텐미닛플래너", category: 1},
   #{title: "태스크매니저", content: "플래너 #태스크매니저", category: 1},
   #{title: "랜드스케이프", content: "가로노트 #랜드스케이프노트북", category: 1},
@@ -124,9 +161,9 @@ Timepool.create([
   #{title: "인스타태그1", content: "#모트모트 #motemote #공부 #공스타그램 #공부스타그램 #공스타 #열공 #합격 #공부자극 #공부기록 #공부인증 #스터디플래너 #플래너 #공책 #노트 #필기 #study #studygram #studyblr #studyspo #planner #notes #勉強 #勉強垢 #勉強垢さんと繋がりたい #受験生 #大人の勉強垢", category: 2}
 #])
 
-Rocket.create(unit: 1, term: 31, start_date: Date.today, end_date: Date.today + 31, volume: 30)
+#Rocket.create(unit: 1, term: 31, start_date: Date.today, end_date: Date.today + 31, volume: 30)
 
-RocketMember.create(email: "lina_flsk", name: "김강린", identity: "초6", follower: 182, group: 1, homepage: "linaflsk", rocket_id: 1)
-RocketMember.create(email: "eun__st", name: "김도은", identity: "중1", follower: 4, group: 1, homepage: "dsde040422", rocket_id: 1)
+#RocketMember.create(email: "lina_flsk", name: "김강린", identity: "초6", follower: 182, group: 1, homepage: "linaflsk", rocket_id: 1)
+#RocketMember.create(email: "eun__st", name: "김도은", identity: "중1", follower: 4, group: 1, homepage: "dsde040422", rocket_id: 1)
 
 puts "Seed Success!!"

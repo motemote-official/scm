@@ -27,6 +27,8 @@ class RocketRegramsController < ApplicationController
     @regram.rocket_pics.build
     @date = params[:date]
     @time = params[:time]
+    @start_date = @rocket.start_date
+    @count_day = @date.to_date.mjd - @start_date.to_date.mjd
 
     respond_to do |format|
       format.html # new.html.erb
@@ -58,6 +60,8 @@ class RocketRegramsController < ApplicationController
     @date = @regram.date
     @time = @regram.regram_at
     @rocket = Rocket.find(@regram.rocket_id)
+    @start_date = @rocket.start_date
+    @count_day = @date.to_date.mjd - @start_date.to_date.mjd
   end
 
   def update
@@ -105,6 +109,7 @@ class RocketRegramsController < ApplicationController
   private
 
   def rocket_regram_params
-    params.require(:rocket_regram).permit(:rocket_id, :date, :url, :content, :rocket_member_id, :product_id, :regram_at, rocket_pics_attributes: [:id, :img, :img_cache, :_destroy])
+    params.require(:rocket_regram).permit(:rocket_id, :date, :url, :content, :rocket_member_id, :product_id, :regram_at,
+                                          rocket_pics_attributes: [:user_name, :count_day, :id, :img, :img_cache, :_destroy])
   end
 end
