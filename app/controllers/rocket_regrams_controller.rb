@@ -76,7 +76,7 @@ class RocketRegramsController < ApplicationController
       else
         format.html { render action: 'edit' }
         format.xml  { render xml: @regram.errors, status: :unprocessable_entity }
-        puts @regram.errors.full_messages
+        p @regram.errors.full_messages
       end
     end
   end
@@ -110,6 +110,6 @@ class RocketRegramsController < ApplicationController
 
   def rocket_regram_params
     params.require(:rocket_regram).permit(:rocket_id, :date, :url, :content, :rocket_member_id, :product_id, :regram_at,
-                                          rocket_pics_attributes: [:user_name, :count_day, :id, :img, :img_cache, :_destroy])
+                                          rocket_pics_attributes: [:id, :user_name, :count_day, :start_date, :img, :img_cache, :_destroy])
   end
 end
