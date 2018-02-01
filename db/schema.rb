@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171207013122) do
+ActiveRecord::Schema.define(version: 20180201173618) do
 
   create_table "attends", force: :cascade do |t|
     t.integer "rocket_member_id"
@@ -87,6 +87,8 @@ ActiveRecord::Schema.define(version: 20171207013122) do
     t.integer "regram_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "user_name"
+    t.integer "count_day"
     t.index ["regram_id"], name: "index_pics_on_regram_id"
   end
 
@@ -137,6 +139,8 @@ ActiveRecord::Schema.define(version: 20171207013122) do
     t.integer "rocket_regram_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "user_name"
+    t.integer "count_day"
     t.index ["rocket_regram_id"], name: "index_rocket_pics_on_rocket_regram_id"
   end
 
