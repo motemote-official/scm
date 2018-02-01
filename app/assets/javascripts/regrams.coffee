@@ -80,4 +80,11 @@ $ ->
 
   if $('.img_label')?
     togglePicsLink()
+    return
 
+$ ->
+  $("#regram_member_id").change ->
+    $("#user_name").val($(@).val())
+    return
+
+  return
