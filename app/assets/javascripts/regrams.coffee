@@ -83,7 +83,7 @@ $ ->
     return
 
 $ ->
-  $("#regram_member_id").change ->
+  $(document).on 'change', '#regram_member_id', ->
     $("#user_name").val($(@).val())
     return
 

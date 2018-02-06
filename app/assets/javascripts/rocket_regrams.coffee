@@ -42,7 +42,7 @@ $ ->
     element.remove()
     return
 
-  $("#rocket_regram_rocket_member_id").change ->
+  $(document).on 'change', '#rocket_regram_rocket_member_id', ->
     $("#rocket_user_name").val($(@).val())
     return
 
