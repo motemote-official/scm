@@ -4,7 +4,7 @@
 <div class="container">
   <div class="buffer"></div>
   <div class="row">
-    <%= nested_form_for @regram, url: rocket_regram_path(@rocket.id), html: { class: "form-group form-regram", multipart: true } do |f| %>
+    <%= nested_form_for @regram, url: rocket_regram_path(@regram.id), html: { class: "form-group form-regram", multipart: true } do |f| %>
       <%= render partial: 'form', locals: { f: f, regram: @regram, member: @member, date: @date, time: @time, start_date: @start_date, count_day: @count_day } %>
       <div class="btn-wrapper">
         <span class="btn btn-default btn-rocket-copy">글 복사</span>
