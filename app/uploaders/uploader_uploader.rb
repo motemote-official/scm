@@ -70,24 +70,42 @@ class UploaderUploader < CarrierWave::Uploader::Base
           cmd.font "Helvetica-Bold"
           cmd.fill "white"
         end
-      end
 
-      img.combine_options do |cmd|
-        cmd.gravity "southeast"
-        cmd.draw "image Over #{user_name_width(user_name) + 60},0 0,0 '#{Rails.root}/app/assets/images/watermark_bottom.png'"
-      end
+        img.combine_options do |cmd|
+          cmd.gravity "southeast"
+          cmd.draw "image Over #{user_name_width(user_name) + 60},0 0,0 '#{Rails.root}/app/assets/images/watermark_bottom.png'"
+        end
 
-      img.combine_options do |cmd|
-        cmd.draw "rectangle #{img.width - user_name_width(user_name) - 60},#{img.height - 88} #{img.width},#{img.height}"
-        cmd.fill "rgba(256, 102, 102, 0.85)"
-      end
+        img.combine_options do |cmd|
+          cmd.draw "rectangle #{img.width - user_name_width(user_name) - 60},#{img.height - 88} #{img.width},#{img.height}"
+          cmd.fill "rgba(256, 102, 102, 0.85)"
+        end
 
-      img.combine_options do |cmd|
-        cmd.gravity "southeast"
-        cmd.draw "text 33,20 '#{user_name}'"
-        cmd.pointsize "45"
-        cmd.font "Helvetica-Bold"
-        cmd.fill "white"
+        img.combine_options do |cmd|
+          cmd.gravity "southeast"
+          cmd.draw "text 33,20 '#{user_name}'"
+          cmd.pointsize "45"
+          cmd.font "Helvetica-Bold"
+          cmd.fill "white"
+        end
+      else
+        img.combine_options do |cmd|
+          cmd.gravity "southeast"
+          cmd.draw "image Over #{user_name_width(user_name) + 60},0 0,0 '#{Rails.root}/app/assets/images/watermark1.png'"
+        end
+
+        img.combine_options do |cmd|
+          cmd.draw "rectangle #{img.width - user_name_width(user_name) - 60},#{img.height - 88} #{img.width},#{img.height}"
+          cmd.fill "rgba(0, 0, 0, 0.7)"
+        end
+
+        img.combine_options do |cmd|
+          cmd.gravity "southeast"
+          cmd.draw "text 33,20 '#{user_name}'"
+          cmd.pointsize "45"
+          cmd.font "Helvetica-Bold"
+          cmd.fill "white"
+        end
       end
     end
   end
