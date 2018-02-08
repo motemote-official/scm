@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180201173618) do
+ActiveRecord::Schema.define(version: 20180208015128) do
 
   create_table "attends", force: :cascade do |t|
     t.integer "rocket_member_id"
@@ -41,6 +41,20 @@ ActiveRecord::Schema.define(version: 20180201173618) do
     t.boolean "goods", default: false
     t.string "description"
     t.index ["product_id"], name: "index_counts_on_product_id"
+  end
+
+  create_table "facebooks", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fb_pics", force: :cascade do |t|
+    t.string "img"
+    t.string "user_name"
+    t.integer "facebook_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["facebook_id"], name: "index_fb_pics_on_facebook_id"
   end
 
   create_table "homes", force: :cascade do |t|

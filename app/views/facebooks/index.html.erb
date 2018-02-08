@@ -1,0 +1,34 @@
+<%= render partial: 'regrams/nav', locals: { } %>
+<%= render partial: 'regrams/nav_sub', locals: { } %>
+
+<div class="container">
+  <div class="buffer"></div>
+  <div class="row">
+    <div class="btn-wrapper">
+      <%= link_to "신규 등록", new_facebook_path, class: "btn btn-primary" %>
+    </div>
+
+    <table class="table table-hover table-regram-index">
+      <colgroup>
+        <col span="1" style="width: 15%;">
+        <col span="1" style="width: 50%;">
+        <col span="1" style="width: 35%;">
+      </colgroup>
+      <thead>
+        <th class="text-center">No</th>
+        <th class="text-center">등록날짜</th>
+        <th class="text-center">최종수정일</th>
+      </thead>
+      <tbody>
+        <% @facebooks.each_with_index do |f, index| %>
+          <tr onclick="location.href='../../facebooks/<%= f.id %>/edit'">
+            <td class="text-center"><%= index + 1 %></td>
+            <td class="text-center"><%= f.created_at.strftime("%Y-%m-%d") %></td>
+            <td class="text-center"><%= f.updated_at.strftime("%Y-%m-%d") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @facebooks %>
+  </div>
+</div>

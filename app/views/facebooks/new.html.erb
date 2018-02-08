@@ -1,0 +1,15 @@
+<%= render partial: 'regrams/nav', locals: { } %>
+<%= render partial: 'regrams/nav_sub', locals: { } %>
+
+<div class="container">
+  <div class="buffer"></div>
+  <div class="row">
+    <%= nested_form_for @facebook, html: { class: "form-group form-regram form-facebook", multipart: true } do |f| %>
+      <%= render partial: 'form', locals: { f: f } %>
+      <div class="btn-wrapper">
+        <%= f.submit "등록", class: "btn btn-primary" %>
+        <%= link_to "메뉴", facebooks_path, class: "btn btn-warning"  %>
+      </div>
+    <% end %>
+  </div>
+</div>
