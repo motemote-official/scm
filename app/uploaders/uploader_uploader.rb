@@ -30,18 +30,18 @@ class UploaderUploader < CarrierWave::Uploader::Base
     end
 
     # a..z & 0..9 & ., _ 38개 문자 width
-    width = [14, 15, 15, 15, 15, 9, 16, 14, 4, 6,
-             14, 5, 23, 14, 16, 16, 15, 10, 13, 9,
-             15, 17, 23, 15, 16, 14, 10, 14, 14, 14,
-             15, 15, 15, 15, 15, 15, 4, 18]
+    width = [20, 21, 19, 21, 21, 13, 20, 20, 7, 9,
+             19, 6, 32, 19, 21, 21, 21, 13, 19, 12,
+             20, 21, 30, 20, 21, 19, 20, 13, 20, 20,
+             20, 21, 19, 20, 18, 20, 7, 24]
 
     total_width = 0
     for i in 0..37 do
       total_width += count[i] * width[i]
     end
 
-    # 문자 간 여백 "2"
-    total_width += ((name.length - 1) * 2)
+    # 문자 간 여백 "2.3"
+    total_width += ((name.length - 1) * 3)
 
     return total_width
   end
@@ -65,44 +65,44 @@ class UploaderUploader < CarrierWave::Uploader::Base
 
         img.combine_options do |cmd|
           cmd.gravity "northwest"
-          cmd.draw "text 20,17 'Day #{model.count_day.to_s.rjust(2, "0")}'"
-          cmd.pointsize "30"
+          cmd.draw "text 55,23 'Day #{model.count_day.to_s.rjust(2, "0")}'"
+          cmd.pointsize "40"
           cmd.font "Helvetica-Bold"
           cmd.fill "white"
         end
 
         img.combine_options do |cmd|
           cmd.gravity "southeast"
-          cmd.draw "image Over #{user_name_width(user_name) + 40},0 0,0 '#{Rails.root}/app/assets/images/watermark_bottom.png'"
+          cmd.draw "image Over #{user_name_width(user_name) + 20},0 0,0 '#{Rails.root}/app/assets/images/watermark_bottom.png'"
         end
 
         img.combine_options do |cmd|
-          cmd.draw "rectangle #{img.width - user_name_width(user_name) - 40},#{img.height - 60} #{img.width},#{img.height}"
+          cmd.draw "rectangle #{img.width - user_name_width(user_name) - 20},#{img.height - 80} #{img.width},#{img.height}"
           cmd.fill "rgba(256, 102, 102, 0.85)"
         end
 
         img.combine_options do |cmd|
           cmd.gravity "southeast"
-          cmd.draw "text 20,13 '#{user_name}'"
-          cmd.pointsize "30"
+          cmd.draw "text 23,18 '#{user_name}'"
+          cmd.pointsize "40"
           cmd.font "Helvetica-Bold"
           cmd.fill "white"
         end
       else
         img.combine_options do |cmd|
           cmd.gravity "southeast"
-          cmd.draw "image Over #{user_name_width(user_name) + 40},0 0,0 '#{Rails.root}/app/assets/images/watermark1.png'"
+          cmd.draw "image Over #{user_name_width(user_name) + 30},0 0,0 '#{Rails.root}/app/assets/images/watermark1.png'"
         end
 
         img.combine_options do |cmd|
-          cmd.draw "rectangle #{img.width - user_name_width(user_name) - 40},#{img.height - 60} #{img.width},#{img.height}"
+          cmd.draw "rectangle #{img.width - user_name_width(user_name) - 30},#{img.height - 80} #{img.width},#{img.height}"
           cmd.fill "rgba(0, 0, 0, 0.7)"
         end
 
         img.combine_options do |cmd|
           cmd.gravity "southeast"
-          cmd.draw "text 20,13 '#{user_name}'"
-          cmd.pointsize "30"
+          cmd.draw "text 23,18 '#{user_name}'"
+          cmd.pointsize "40"
           cmd.font "Helvetica-Bold"
           cmd.fill "white"
         end
