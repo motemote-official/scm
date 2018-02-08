@@ -59,7 +59,7 @@ $ ->
     inputTag(e)
   return
 
-maxPicsCount = 10
+maxPicsCount = 20
 minPicsCount = 1
 
 $ ->
