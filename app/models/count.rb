@@ -1,11 +1,11 @@
 class Count < ApplicationRecord
-  after_create :is_empty, if: ->(obj) {obj.goods == true}
+  after_create :is_empty, if: ->(obj) {obj.emtpy == true}
 
   belongs_to :product
 
   def is_empty
     p = Product.find(self.product_id)
-    if p.counts.where(date: Date.today - 8).present? # 등록된지 7일 이상일 경우
+    if p.counts.where(date: Date.today - 7).present? # 등록된지 7일 이상일 경우
       sum = 0
       for i in 1..7 do
         date = p.counts.last.date
