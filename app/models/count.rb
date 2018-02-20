@@ -1,5 +1,5 @@
 class Count < ApplicationRecord
-  after_create :is_empty, if: ->(obj) {obj.product.emtpy == true}
+  after_create :is_empty, if: ->(obj) {obj.product.empty == true}
 
   belongs_to :product
 
