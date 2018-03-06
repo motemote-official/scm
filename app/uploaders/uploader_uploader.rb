@@ -14,6 +14,7 @@ class UploaderUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  process resize_to_fit: [1080, nil]
   process :watermark
 
   def user_name_width(name)
@@ -40,8 +41,8 @@ class UploaderUploader < CarrierWave::Uploader::Base
       total_width += count[i] * width[i]
     end
 
-    # 문자 간 여백 "2.3"
-    total_width += ((name.length - 1) * 3)
+    # 문자 간 여백 "6"
+    total_width += ((name.length - 1) * 7)
 
     return total_width
   end
@@ -65,7 +66,7 @@ class UploaderUploader < CarrierWave::Uploader::Base
 
         img.combine_options do |cmd|
           cmd.gravity "northwest"
-          cmd.draw "text 55,23 'Day #{model.count_day.to_s.rjust(2, "0")}'"
+          cmd.draw "text 26,23 'Day #{model.count_day.to_s.rjust(2, "0")}'"
           cmd.pointsize "40"
           cmd.font "Helvetica-Bold"
           cmd.fill "white"
@@ -84,6 +85,7 @@ class UploaderUploader < CarrierWave::Uploader::Base
         img.combine_options do |cmd|
           cmd.gravity "southeast"
           cmd.draw "text 23,18 '#{user_name}'"
+          cmd.kerning "4"
           cmd.pointsize "40"
           cmd.font "Helvetica-Bold"
           cmd.fill "white"
@@ -102,6 +104,7 @@ class UploaderUploader < CarrierWave::Uploader::Base
         img.combine_options do |cmd|
           cmd.gravity "southeast"
           cmd.draw "text 23,18 '#{user_name}'"
+          cmd.kerning "4"
           cmd.pointsize "40"
           cmd.font "Helvetica-Bold"
           cmd.fill "white"

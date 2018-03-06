@@ -13,7 +13,8 @@
   <% else %>
     <%= link_to "로켓단 일정 생성", new_rocket_path, class: "main-link" %>
   <% end %>
-  <%= link_to "로켓단 등록", new_rocket_member_path, class: "main-link #{ params[:controller] == "rocket_members" && (params[:action] == "new" || params[:action] == "edit") && "active" }" %>
+  <%= link_to "로켓단 멤버 등록", new_rocket_member_path, class: "main-link #{ params[:controller] == "rocket_members" && (params[:action] == "new" || params[:action] == "edit") && "active" }" %>
+  <%= link_to "로켓단 모집 선정", "", class: "main-link" %>
   <% if (params[:controller] == "rockets" && (params[:action] == "show" || params[:action] == "calendar")) || params[:controller] == "attend" && (params[:action] == "index" || params[:action] == "show") %>
     <%= link_to "출석 관리", "", class: "main-link active" %>
   <% end %>
