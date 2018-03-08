@@ -27,6 +27,7 @@ gem 'watir-rails'
 gem 'chromedriver-helper'
 gem 'phantomjs', :require => 'phantomjs/poltergeist'
 gem "mini_magick"
+gem 'roo'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'

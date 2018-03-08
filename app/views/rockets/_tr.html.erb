@@ -1,8 +1,8 @@
 <tr class="center">
   <% if first %>
-    <td class="rowspan" rowspan="<%= rocket.rocket_members.where(group: g).count %>"><%= r.group %></td>
+    <td class="rowspan" rowspan="<%= rocket.rocket_members.pass.where(group: g).count %>"><%= r.group %></td>
   <% end %>
-  <td><%= rocket.rocket_members.pluck(:id).index(r.id) + 1 %></td>
+  <td><%= rocket.rocket_members.pass.order(:group).pluck(:id).index(r.id) + 1 %></td>
   <td><%= link_to "#{r.email}", edit_rocket_member_path(r.id) %></td>
   <td><%= link_to "접속", "https://instagram.com/#{r.email}/", target: "_blank" %></td>
   <td><%= r.attends.where(status: "attendance").count + r.attends.where(status: "late").count * 0.5 %></td>

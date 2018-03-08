@@ -9,7 +9,7 @@
 <%= f.label :follower, "팔로워" %>
 <%= f.number_field :follower, class: "form-control" %>
 <%= f.label :group, "그룹" %>
-<%= f.number_field :group, class: "form-control", value: rocket_member.group.present? ? rocket_member.group : 1, min: 1 %>
+<%= f.number_field :group, class: "form-control", value: rocket_member.group.present? ? rocket_member.group : 0, min: 0 %>
 <%= f.label :homepage, "홈페이지" %>
 <%= f.text_field :homepage, class: "form-control" %>
 <%= f.label :product_id, "관심제품" %>
