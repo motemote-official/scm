@@ -20,7 +20,7 @@
             <td>로켓단 <%= r.unit %>기</td>
             <td><%= r.start_date.strftime("%y년 %m월 %d일") %></td>
             <td><%= r.end_date.strftime("%y년 %m월 %d일") %></td>
-            <td><%= r.rocket_members.present? ? r.rocket_members.count : 0 / r.volume %>
+            <td><%= r.rocket_members.present? ? r.rocket_members.pass.size : 0 %> / <%= r.volume %></td>
             <td><%= link_to "수정", edit_rocket_path(r.id) %></td>
             <td><%= link_to "멤버", rocket_path(r.id) %></td>
             <td><%= link_to "출석표", calendar_rocket_path(r.id) %></td>
