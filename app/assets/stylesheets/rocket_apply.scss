@@ -1,0 +1,12 @@
+// Place all the styles related to the rocket_apply controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.apply-follower { font-size: 20px; font-weight: bold; margin-bottom: 20px; }
+.apply-btn { background-color: #aaa; color: #fff; padding: 12px 20px; display: inline-block; cursor: pointer; }
+.apply-btn:last-child { padding: 12 14px; }
+.apply-follower { color: #555; }
+.apply-btn.active { background-color: #000; }
+.apply-btn:hover { background-color: #555; }
+.table-apply tr { cursor: pointer; }
+.table-apply td, th { text-align: center; }
+.table-apply-td.active { background-color: #000 !important; color: #fff !important; }

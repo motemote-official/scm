@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180208015128) do
+ActiveRecord::Schema.define(version: 20180306080746) do
 
   create_table "attends", force: :cascade do |t|
     t.integer "rocket_member_id"
@@ -144,6 +144,7 @@ ActiveRecord::Schema.define(version: 20180208015128) do
     t.text "application"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "pass", default: 0
     t.index ["product_id"], name: "index_rocket_members_on_product_id"
     t.index ["rocket_id"], name: "index_rocket_members_on_rocket_id"
   end

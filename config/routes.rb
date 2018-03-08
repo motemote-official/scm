@@ -39,9 +39,16 @@ Rails.application.routes.draw do
       get 'absent'
       get 'mission'
       post 'check'
+      post 'upload_csv'
     end
   end
   resources :rocket_members
+  resources :rocket_apply do
+    member do
+      get 'excel'
+      post 'pass'
+    end
+  end
   resources :facebooks
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

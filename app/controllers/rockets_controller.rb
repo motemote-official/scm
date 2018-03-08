@@ -50,7 +50,7 @@ class RocketsController < ApplicationController
 
   def calendar
     @rocket = Rocket.find(params[:id])
-    @count = @rocket.rocket_members.count
+    @count = @rocket.rocket_members.pass.count
 
     respond_to do |format|
       format.html # calendar.html.erb
@@ -180,7 +180,7 @@ class RocketsController < ApplicationController
     @img = []
     @url = []
     ids = []
-    @rocket.rocket_members.all.each do |m|
+    @rocket.rocket_members.pass.all.each do |m|
       if m.attends.where(date: Date.today - 1).present?
         unless m.attends.where(date: Date.today - 1).take.status == "attendance"
           ids << m.id
@@ -242,6 +242,28 @@ class RocketsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
+      format.xml  { render xml: @rocket }
+    end
+  end
+
+  def upload_csv
+    @rocket = Rocket.find(params[:id])
+    file = Roo::Spreadsheet.open(params[:file])
+    count = file.sheet(0).column(1).drop(1).count
+    ids = file.sheet(0).column(5).drop(1)
+    identities = file.sheet(0).column(2).drop(1)
+    applications = file.sheet(0).column(4).drop(1)
+
+    for i in 0..(count-1) do
+      RocketMember.create(email: ids[i],
+                          identity: identities[i],
+                          application: applications[i],
+                          group: 0,
+                          rocket_id: @rocket.id)
+    end
+
+    respond_to do |format|
+      format.html { redirect_to edit_rocket_path(@rocket.id) }
       format.xml  { render xml: @rocket }
     end
   end

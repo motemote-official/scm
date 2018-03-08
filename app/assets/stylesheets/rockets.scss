@@ -12,6 +12,15 @@
     color: #777;
   }
 }
+.rocket-title {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.rocket-wrapper {
+  width: 1080px;
+  margin: 30px auto;
+}
 .rocket-calendar {
   ul.calendar {
     div.no-padding {
@@ -153,4 +162,8 @@ table.rocket-table {
     width: 194px;
     height: 194px;
   }
+}
+.table-apply-index {
+  width: 1080px;
+  margin: 30px auto !important;
 }

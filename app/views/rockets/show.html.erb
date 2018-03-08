@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="col-md-12">
-    <table class="table table-hover rocket-table">
+    <table class="table rocket-table">
       <thead>
         <th class="center">Group</th>
         <th class="center">No</th>
@@ -18,11 +18,11 @@
         <% end %>
       </thead>
       <tbody>
-        <% @rocket.rocket_members.pluck(:group).uniq.each do |g| %>
-          <% @rocket.rocket_members.where(group: g).first(1).each_with_index do |r, index| %>
+        <% @rocket.rocket_members.pass.pluck(:group).uniq.each do |g| %>
+          <% @rocket.rocket_members.pass.where(group: g).first(1).each_with_index do |r, index| %>
             <%= render partial: 'tr', locals: { r: r, index: index, g: g, rocket: @rocket, first: true, start_date: @start_date } %>
           <% end %>
-          <% @rocket.rocket_members.where(group: g).drop(1).each_with_index do |r, index| %>
+          <% @rocket.rocket_members.pass.where(group: g).drop(1).each_with_index do |r, index| %>
             <%= render partial: 'tr', locals: { r: r, index: index, g: g, rocket: @rocket, first: false, start_date: @start_date } %>
           <% end %>
         <% end %>
