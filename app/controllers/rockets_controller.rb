@@ -97,7 +97,7 @@ class RocketsController < ApplicationController
 
     @img = []
     @url = []
-    @member = @rocket.rocket_members.all.paginate(page: params[:page], per_page: 4)
+    @member = @rocket.rocket_members.pass.all.paginate(page: params[:page], per_page: 5)
     @member.pluck(:email).each_with_index do |m, index|
       visit "https://www.instagram.com/" + m + "/"
       sleep 1

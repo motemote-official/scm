@@ -18,7 +18,7 @@
         <% end %>
       </thead>
       <tbody>
-        <% @rocket.rocket_members.pass.pluck(:group).uniq.each do |g| %>
+        <% @rocket.rocket_members.pass.pluck(:group).uniq.sort.each do |g| %>
           <% @rocket.rocket_members.pass.where(group: g).first(1).each_with_index do |r, index| %>
             <%= render partial: 'tr', locals: { r: r, index: index, g: g, rocket: @rocket, first: true, start_date: @start_date } %>
           <% end %>

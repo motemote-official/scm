@@ -15,11 +15,11 @@
         <% end %>
       </thead>
       <tbody>
-        <% @rocket.rocket_members.pluck(:group).uniq.each do |g| %>
-          <% @rocket.rocket_members.where(group: g).first(1).each_with_index do |r, index| %>
+        <% @rocket.rocket_members.pass.pluck(:group).uniq.sort.each do |g| %>
+          <% @rocket.rocket_members.pass.where(group: g).first(1).each_with_index do |r, index| %>
             <%= render partial: 'tr', locals: { g: g, r: r, index: index, rocket: @rocket, first: true } %>
           <% end %>
-          <% @rocket.rocket_members.where(group: g).drop(1).each_with_index do |r, index| %>
+          <% @rocket.rocket_members.pass.where(group: g).drop(1).each_with_index do |r, index| %>
             <%= render partial: 'tr', locals: { g: g, r: r, index: index, rocket: @rocket, first: false } %>
           <% end %>
         <% end %>
