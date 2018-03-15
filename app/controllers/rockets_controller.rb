@@ -102,8 +102,6 @@ class RocketsController < ApplicationController
       rocket_member_ids += @rocket.rocket_members.pass.where(group: g).all.pluck(:id).sort
     end
 
-    p rocket_member_ids
-
     @member = RocketMember.find(rocket_member_ids).paginate(page: params[:page], per_page: 4)
     @member.pluck(:email).each_with_index do |m, index|
       visit "https://www.instagram.com/" + m + "/"
