@@ -80,6 +80,10 @@ class RocketApplyController < ApplicationController
 
   def excel
     @rocket = Rocket.find(params[:id])
-    @member = @rocket.rocket_members.all.paginate(page: params[:page], per_page: 20)
+    if params[:instagram].nil?
+      @member = @rocket.rocket_members.all.paginate(page: params[:page], per_page: 20)
+    else
+      @member = @rocket.rocket_members.where("email like ?", "%#{params[:instagram]}%").paginate(page: params[:page], per_page: 20)
+    end
   end
 end

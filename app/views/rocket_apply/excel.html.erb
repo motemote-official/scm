@@ -4,6 +4,10 @@
 <div class="container">
   <div class="buffer"></div>
   <div class="row">
+    <%= form_tag(excel_rocket_apply_path, method: "get") do %>
+      <%= text_field_tag :instagram %>
+      <%= submit_tag "검색" %>
+    <% end %>
     <table class="table table-hover table-apply">
       <thead>
         <th>NO</th>
