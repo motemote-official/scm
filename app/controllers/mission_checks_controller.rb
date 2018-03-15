@@ -12,7 +12,7 @@ class MissionChecksController < ApplicationController
       @member = RocketMember.where(id: params[:rocket_member_id]).first(1).paginate(page: params[:page], per_page: 4)
       @date = Mission.find(params[:mission_id]).date
     else
-      @member = @rocket.rocket_members.all.paginate(page: params[:page], per_page: 4)
+      @member = @rocket.rocket_members.pass.all.paginate(page: params[:page], per_page: 4)
     end
 
     Capybara.default_driver = :poltergeist
