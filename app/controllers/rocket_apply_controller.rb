@@ -17,7 +17,11 @@ class RocketApplyController < ApplicationController
   def show
     @rocket = Rocket.find(params[:id])
     @date = params[:date].nil? ? (Date.today - 1) : params[:date]
-    @identity = @rocket.rocket_members.all.pluck(:identity).uniq
+    if params[:type].nil?
+      @identity = @rocket.rocket_members.all.pluck(:identity).uniq
+    else
+      @identity = @rocket.rocket_members.where(pass: params[:type]).all.pluck(:identity).uniq
+    end
 
     Capybara.default_driver = :poltergeist
 
