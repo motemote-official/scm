@@ -17,6 +17,7 @@ class RocketApplyController < ApplicationController
   def show
     @rocket = Rocket.find(params[:id])
     @date = params[:date].nil? ? (Date.today - 1) : params[:date]
+    @identity = @rocket.rocket_members.all.pluck(:identity).uniq
 
     Capybara.default_driver = :poltergeist
 
@@ -27,12 +28,18 @@ class RocketApplyController < ApplicationController
     per_page = 5
 
     if params[:type] == "pass"
-      @member = @rocket.rocket_members.pass.all.paginate(page: params[:page], per_page: per_page)
+      @member = @rocket.rocket_members.pass.all
     elsif params[:type] == "hold"
-      @member = @rocket.rocket_members.hold.all.paginate(page: params[:page], per_page: per_page)
+      @member = @rocket.rocket_members.hold.all
     else
-      @member = @rocket.rocket_members.all.paginate(page: params[:page], per_page: per_page)
+      @member = @rocket.rocket_members.all
     end
+
+    unless params[:identity].nil?
+      @member = @member.where(identity: params[:identity]).all
+    end
+
+    @member = @member.paginate(page: params[:page], per_page: per_page)
 
     @member.pluck(:email).each_with_index do |m, index|
       visit "https://www.instagram.com/" + m + "/"
@@ -58,11 +65,6 @@ class RocketApplyController < ApplicationController
       else
         @followers << 0
       end
-    end
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render xml: @model_class_names }
     end
 
     respond_to do |format|

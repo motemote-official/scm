@@ -194,7 +194,7 @@ class RocketsController < ApplicationController
         ids << m.id
       end
     end
-    p ids
+
     @member = RocketMember.where(id: ids).all.paginate(page: params[:page], per_page: 4)
     @member.pluck(:email).each_with_index do |m, index|
       visit "https://www.instagram.com/" + m + "/"
@@ -224,19 +224,13 @@ class RocketsController < ApplicationController
   end
 
   def check
-    #date = params[:attend]
-    #@date = Date.new date["date(1i)"].to_i, date["date(2i)"].to_i, date["date(3i)"].to_i
     @date = Date.new params[:date1].to_i, params[:date2].to_i, params[:date3].to_i
     @rocket_member = RocketMember.find(params[:id])
 
-    if @rocket_member.attends.where(date: @date).present?
-      @attend = @rocket_member.attends.where(date: @date).take
-      @attend.update(status: params[:status].to_i)
-    else
-      @attend = @rocket_member.attends.create(rocket_id: params[:rocket_id],
-                                              status: params[:status].to_i,
-                                              date: @date)
-    end
+    @rocket_member.attends.where(date: @date).destroy_all
+    @attend = @rocket_member.attends.create(rocket_id: params[:rocket_id],
+                                            status: params[:status].to_i,
+                                            date: @date)
 
     render json: {id: params[:id], status: params[:status]}
   end

@@ -3,22 +3,29 @@
 
 <div class="container">
   <div class="buffer"></div>
+  <%= form_tag rocket_apply_path, method: "GET", class: "identity-filter-form" do %>
+    <%= select_tag :identity, options_for_select(@identity, params[:identity]), class: "identity-filter" %>
+    <%= hidden_field_tag :type, params[:type] %>
+    <%= submit_tag "필터" %>
+  <% end %>
   <div class="row">
     <% @member.each_with_index do |m, index| %>
       <div class="attend-list">
         <div class="attend-list-left">
           <div class="attend-user-wrapper">
-            <span class="attend-user-id"><%= m.email %></span>
+            <span class="attend-user-id" style="margin-bottom: 10px;"><%= m.email %></span>
             <%= link_to "접속", "https://www.instagram.com/#{m.email}/", target: "_blank", class: "attend-user-link" %>
           </div>
           <div class="attend-check-wrapper">
             <%= form_tag("", class: "flex attend-check-form") do %>
               <div class="attend-check-btn-wrapper">
                 <p class="apply-follower"> Followers : <%= @followers[index] %>명</p>
+                <p class="apply-follower"> 신분 : <%= m.identity %></p>
                 <div class="attend-btn-wrapper wrapper-<%= m.id %>">
                   <span id="<%= m.id %>-apply-pass" class="apply-btn <%= m.pass == "pass" ? "active" : "" %>">합격</span>
                   <span id="<%= m.id %>-apply-hold" class="apply-btn <%= m.pass == "hold" ? "active" : "" %>">보류</span>
                   <span id="<%= m.id %>-apply-fail" class="apply-btn <%= m.pass == "fail" ? "active" : "" %>">불합격</span>
+                  <%= link_to "지원서", edit_rocket_member_path(m.id), class: "apply-link" %>
                 </div>
                 <%= hidden_field_tag :rocket_id, m.rocket_id %>
                 <%= hidden_field_tag :status, "", require: true %>
