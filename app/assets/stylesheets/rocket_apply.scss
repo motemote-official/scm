@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .apply-follower { font-size: 15px; font-weight: bold; margin-bottom: 10px; color: #555; }
-.apply-btn { background-color: #aaa; color: #fff; padding: 12px 20px; display: inline-block; cursor: pointer; }
+.apply-btn { background-color: #aaa; color: #fff; padding: 12px 18px; display: inline-block; cursor: pointer; }
 .apply-btn:last-child { padding: 12 14px; }
 .apply-btn.active { background-color: #000; }
 .apply-btn:hover { background-color: #555; }
@@ -11,4 +11,4 @@
 .table-apply-td.active { background-color: #000 !important; color: #fff !important; }
 .identity-filter-form { margin: 10px; }
 .identity-filter { height: 30px; }
-.apply-link { box-sizing: border-box; border: 1px solid #555; height: 44px; width: 50px; line-height: 42px; text-align: center; display: inline-block; color: #555; }
+.apply-link { box-sizing: border-box; border: 1px solid #555; height: 44px; width: 46px; line-height: 42px; text-align: center; display: inline-block; color: #555; }
