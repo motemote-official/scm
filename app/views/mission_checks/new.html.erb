@@ -14,7 +14,7 @@
           <div class="attend-check-wrapper">
             <%= form_tag("", class: "flex attend-check-form") do %>
               <div class="attend-check-btn-wrapper mission-check-btn-wrapper">
-                <%= select_tag :mission, options_from_collection_for_select(@rocket.missions.all, :id, :content, @mission.id), id: "rocket-#{@rocket.id}-mission-#{@mission.id}-member-#{m.id}", class: "form-control mission-type" %>
+                <%= select_tag :mission, options_from_collection_for_select(@rocket.missions.all, :id, :content, params[:mission_id].nil? ? @mission.id : params[:mission_id]), id: "rocket-#{@rocket.id}-mission-#{@mission.id}-member-#{m.id}", class: "form-control mission-type" %>
                 <div class="attend-btn-wrapper" id="mission-check-member-<%= m.id %>">
                   <%= render partial: 'create', locals: { rocket: @rocket, mission: @mission, m: m } %>
                 </div>
