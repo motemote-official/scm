@@ -1,4 +1,4 @@
-<div class="nav sub_nav">
+<div class="sub-nav">
   <% if params[:controller] == "regrams" && params[:action] != "index" %>
     <%= link_to "리그램등록", new_regram_path, class: "main-link #{params[:action] == "new" && "active"}" %>
   <% end %>

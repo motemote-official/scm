@@ -1,7 +1,7 @@
 <%= render partial: 'rockets/nav', locals: { } %>
 <%= render partial: 'rockets/nav_sub', locals: { id: @rocket.id } %>
 
-<div class="container">
+<div class="container fixed-sub">
   <div class="buffer"></div>
   <div class="row">
     <% @member.each_with_index do |m, index| %>

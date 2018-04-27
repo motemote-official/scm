@@ -1,21 +1,23 @@
 <%= render partial: 'nav', locals: { } %>
 <%= render partial: 'nav_sub', locals: { id: @rocket.id } %>
 
-<div class="row">
+<div class="row fixed-sub">
   <div class="col-md-12">
-    <table class="table rocket-table">
+    <table class="table rocket-table table-hover floating-thead" style="margin: 13px 0 0 0;">
       <thead>
-        <th class="center">Group</th>
-        <th class="center">No</th>
-        <th class="center">ID</th>
-        <th class="center">접속</th>
-        <th class="center">출석점수</th>
-        <th class="center">10일</th>
-        <th class="center">20일</th>
-        <th class="center">30일</th>
-        <% for i in 0..(@rocket.term - 1) do %>
-          <th class="center"><%= (@rocket.start_date + i).strftime("%m/%d") %><br /><%= i + 1 %>일차</th>
-        <% end %>
+        <tr>
+          <th class="center">Group</th>
+          <th class="center">No</th>
+          <th class="center">ID</th>
+          <th class="center">접속</th>
+          <th class="center">출석점수</th>
+          <th class="center">10일</th>
+          <th class="center">20일</th>
+          <th class="center">30일</th>
+          <% for i in 0..(@rocket.term - 1) do %>
+            <th class="center"><%= (@rocket.start_date + i).strftime("%m/%d") %><br /><%= i + 1 %>일차</th>
+          <% end %>
+        </tr>
       </thead>
       <tbody>
         <% @rocket.rocket_members.pass.pluck(:group).uniq.sort.each do |g| %>
@@ -30,3 +32,33 @@
     </table>
   </div>
 </div>
+<script>
+  $(function () {
+    $('table.floating-thead').each(function() {
+      if( $(this).css('border-collapse') == 'collapse') {
+        $(this).css('border-collapse','separate').css('border-spacing',0);
+      }
+      $(this).prepend( $(this).find('thead:first').clone().hide().css('top', 182).css('position','fixed') );
+    });
+    $(window).scroll(function() {
+      var scrollTop = $(window).scrollTop(),
+      scrollLeft = $(window).scrollLeft();
+      $('table.floating-thead').each(function(i) {
+        var thead = $(this).find('thead:last'),
+        clone = $(this).find('thead:first'),
+        top = $(this).offset().top,
+        bottom = top + $(this).height() - thead.height();
+
+        if( scrollTop + 197 < top || scrollTop > bottom ) {
+          clone.hide();
+          return true;
+        }
+        if( clone.is('visible') ) return true;
+          clone.find('th').each(function(i) {
+          $(this).width( thead.find('th').eq(i).width() );
+        });
+        clone.css("margin-left", -scrollLeft ).width( thead.width() ).show();
+      });
+    });
+  });
+</script>

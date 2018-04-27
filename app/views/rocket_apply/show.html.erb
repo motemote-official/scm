@@ -1,7 +1,7 @@
 <%= render partial: 'rockets/nav', locals: { } %>
 <%= render partial: 'rockets/nav_sub', locals: { id: @rocket.id } %>
 
-<div class="container">
+<div class="container fixed-sub">
   <div class="buffer"></div>
   <%= form_tag rocket_apply_path, method: "GET", class: "identity-filter-form" do %>
     <%= select_tag :identity, options_for_select(@identity, params[:identity]), class: "identity-filter" %>

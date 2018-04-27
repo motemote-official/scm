@@ -1,169 +1,66 @@
-// Place all the styles related to the rockets controller here.
 // They will automatically be included in application.css.
+// Place all the styles related to the rockets controller here.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.center {
-  text-align: center !important;
-}
-.half {
-  border: none;
-}
-.sub_nav {
-  a {
-    color: #777;
-  }
-}
-.rocket-title {
-  font-size: 15px;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-.rocket-wrapper {
-  width: 1080px;
-  margin: 30px auto;
-}
+.center { text-align: center !important; }
+.half { border: none; }
+.rocket-title { font-size: 15px; font-weight: bold; margin-bottom: 15px; }
+.rocket-wrapper { width: 1080px; margin: 30px auto; }
 .rocket-calendar {
   ul.calendar {
-    div.no-padding {
-      padding: 0;
-    }
-    p.empty {
-      height: 31px;
-    }
-    p.flex {
-      padding: 0;
-    }
-    p.half {
-      display: inline-block;
-      width: 48%;
-    }
+    div.no-padding { padding: 0; }
+    p.empty { height: 31px; }
+    p.flex { padding: 0; }
+    p.half { display: inline-block; width: 48%; }
     li.past {
-      p.content, div.content {
-        border-top: 1px solid #ccc;
-      }
-      p.half.left {
-        border-right: 1px solid #ccc;
-      }
+      p.content, div.content { border-top: 1px solid #ccc; }
+      p.half.left { border-right: 1px solid #ccc; }
     }
     li.today {
-      p.content, div.content {
-        border-top: 1px solid #82A8F8;
-      }
-      p.half.left {
-        border-right: 1px solid #82A8F8;
-      }
+      p.content, div.content { border-top: 1px solid #82A8F8; }
+      p.half.left { border-right: 1px solid #82A8F8; }
     }
     li.future {
-      p.content, div.content {
-        border-top: 1px solid #06E7C8;
-      }
-      p.half.left {
-        border-right: 1px solid #06E7C8;
-      }
+      p.content, div.content { border-top: 1px solid #06E7C8; }
+      p.half.left { border-right: 1px solid #06E7C8; }
     }
   }
 }
-table.rocket-table {
-  min-width: 3000px;
-  th, td {
-    width: 50px;
-  }
-  td.rowspan {
-    vertical-align: middle;
-  }
+table.rocket-table { min-width: 3000px;
+  th, td { width: 50px; }
+  td.rowspan { vertical-align: middle; }
+  td.check { padding: 0 8px; }
+  td.check a { font-size: 20px; line-height: 2; }
+}
+table.floating-thead {
+  thead tr th { background-color: #fff; }
 }
 
-.sub-nav-rocket {
-  display: inline-block;
-  width: 100px;
-  margin-left: 20px;
-}
+.sub-nav-rocket { display: inline-block; width: 100px; margin-left: 20px; }
+.flex { display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; }
 
-.flex {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-}
+.inline-flex { display: -ms-inline-flexbox; display: -webkit-inline-flex; display: inline-flex; }
 
-.inline-flex {
-  display: -ms-inline-flexbox;
-  display: -webkit-inline-flex;
-  display: inline-flex;
-}
-
-.attend-list {
-  width: 1130px;
-  border: 1px solid #ddd;
-  .attend-list-left {
-    display: inline-block;
-    width: 320px;
-    border-right: 1px solid #ddd;
-    padding: 29px 20px;
+.attend-list { width: 1130px; border: 1px solid #ddd;
+  .attend-list-left { display: inline-block; width: 320px; border-right: 1px solid #ddd; padding: 29px 20px;
     .attend-user-wrapper {
-      .attend-user-id {
-        display: inline-block;
-        border: 1px solid #aaa;
-        padding: 10px 10px;
-        width: 200px;
-        margin-bottom: 20px;
-        margin-right: 5px;
-      }
-      .attend-user-link {
-        background-color: #000;
-        color: #fff;
-        cursor: pointer;
-        padding: 13px 20px;
-      }
+      .attend-user-id { display: inline-block; border: 1px solid #aaa; padding: 10px 10px; width: 200px; margin-bottom: 20px; margin-right: 5px; }
+      .attend-user-link { background-color: #000; color: #fff; cursor: pointer; padding: 13px 20px; }
     }
     .attend-check-wrapper {
       .attend-check-form {
-        .attend-check-btn-wrapper {
-          margin-right: 7px;
-          select {
-            border: 1px solid #aaa;
-            background-color: #fff;
-            margin-bottom: 10px;
-            height: 40px;
-          }
-          .attend-btn, .mission-btn {
-            background-color: #aaa;
-            color: #fff;
-            padding: 12px 20px;
-            display: inline-block;
-            cursor: pointer;
-          }
-          .attend-btn.status, .mission-btn.status {
-            background-color: #555;
-          }
-          .attend-btn.selected {
-            background-color: #000;
-          }
-          .attend-btn.last {
-            padding: 12px 14px;
-          }
+        .attend-check-btn-wrapper { margin-right: 7px;
+          select { border: 1px solid #aaa; background-color: #fff; margin-bottom: 10px; height: 40px; }
+          .attend-btn, .mission-btn { background-color: #aaa; color: #fff; padding: 12px 20px; display: inline-block; cursor: pointer; }
+          .attend-btn.status, .mission-btn.status { background-color: #555; }
+          .attend-btn.selected { background-color: #000; }
+          .attend-btn.last { padding: 12px 14px; }
         }
       }
-      .attend-check-submit {
-        border: none;
-        background-color: #000;
-        color: #fff;
-        padding: 0 20px;
-      }
+      .attend-check-submit { border: none; background-color: #000; color: #fff; padding: 0 20px; }
     }
   }
 }
-.attend-list-right {
-  display: inline-block;
-  padding: 10px;
-  position: absolute;
-  width: 808px;
-  .attend-image {
-    width: 194px;
-    height: 194px;
-  }
+.attend-list-right { display: inline-block; padding: 10px; position: absolute; width: 808px;
+  .attend-image { width: 194px; height: 194px; }
 }
-.table-apply-index {
-  width: 1080px;
-  margin: 30px auto !important;
-}
+.table-apply-index { width: 1080px; margin: 30px auto !important; }
