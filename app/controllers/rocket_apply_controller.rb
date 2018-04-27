@@ -65,7 +65,7 @@ class RocketApplyController < ApplicationController
       @img << item
       @url << href
       if first("body main article header section ul li:nth-child(2)").present?
-        @followers << find("body main article header section ul li:nth-child(2)").text().split(" ")[0]
+        @followers << find("body main article header section ul li:nth-child(2)").text().split(" ")[1]
       else
         @followers << 0
       end
