@@ -10,7 +10,7 @@
   <td><%= Attend.score(start_date + 10, start_date + 20, r.id) %></td>
   <td><%= Attend.score(start_date + 20, start_date + 30, r.id) %></td>
   <% for i in 0..(rocket.term - 1) do %>
-    <td>
+    <td class="check">
       <%= link_to attend_show_rocket_path(r.rocket_id, member_id: r.id, date: rocket.start_date + i) do %>
         <% if Attend.status_of_attendance(rocket.start_date + i, r.id) == 0 %>
           &#927;

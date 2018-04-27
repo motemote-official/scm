@@ -1,7 +1,7 @@
 <%= render partial: 'rockets/nav', locals: { } %>
 <%= render partial: 'nav_sub', locals: { rocket: @rocket } %>
 
-<div class="row" style="margin-top: 30px">
+<div class="row fixed-sub">
   <div class="col-xs-12">
     <%= form_for @mission, url: rocket_missions_path, html: { class: "form-group form-member" } do |f| %>
       <%= render partial: 'form', locals: { f: f } %>

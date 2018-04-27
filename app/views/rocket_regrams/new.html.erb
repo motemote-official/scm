@@ -1,7 +1,7 @@
 <%= render partial: 'rockets/nav', locals: { } %>
 <%= render partial: 'rockets/nav_sub', locals: { id: @rocket.id } %>
 
-<div class="container">
+<div class="container fixed-sub">
   <div class="buffer"></div>
   <div class="row">
     <%= nested_form_for @regram, url: rocket_rocket_regrams_path(@rocket.id), html: { class: "form-group form-regram", multipart: true } do |f| %>

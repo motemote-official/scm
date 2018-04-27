@@ -1,74 +1,19 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.margin-top {
-  margin: 30px 0 0 0;
+.margin-top { margin: 30px 0 0 0; }
+.main-link { margin: 0 0 0 20px; color: #000; }
+.main-link.active { font-weight: bold; font-size: 15px; text-decoration-line: underline; }
+.name { display: inline-block; width: 300px; }
+
+td.red { background-color: #FEA0A0; }
+td.green { background-color: #82FFED; }
+td.yellow { background-color: #ffff44; }
+form.edit-count-form { display: inline-block; }
+table { margin: 0 20px 0 20px; }
+table.edit-count { margin: 30px 0 0 0px;
+  td.td-label { width: 80px; text-align: center; }
+  td input, td select { width: 300px; padding: 5px 10px; margin-bottom: 5px; }
 }
-.main-title {
-  text-align: center;
-  text-decoration: none;
-  font-weight: bold;
-  color: #000;
-  margin: 30px 0 10px;
-  font-family: NotoSansCJKkr;
-  font-size: 35px;
-  font-weight: bold;
-  line-height: 1.33;
-}
-.nav {
-  width: 100%;
-  padding: 10px 0;
-  text-align: center;
-}
-.sub-nav {
-  width: 100%;
-  padding: 10px 0;
-  text-align: center;
-}
-.main-link {
-  margin: 0 0 0 20px;
-  color: #000;
-}
-.main-link.active {
-  font-weight: bold;
-  font-size: 15px;
-  text-decoration-line: underline;
-}
-.name {
-  display: inline-block;
-  width: 300px;
-}
-td.red {
-  background-color: #FEA0A0;
-}
-td.green {
-  background-color: #82FFED;
-}
-td.yellow {
-  background-color: #ffff44;
-}
-form.edit-count-form {
-  display: inline-block;
-}
-table {
-  margin: 0 20px 0 20px;
-}
-table.edit-count {
-  margin: 30px 0 0 0px;
-  td.td-label {
-    width: 80px;
-    text-align: center;
-  }
-  td input, td select {
-    width: 300px;
-    padding: 5px 10px;
-    margin-bottom: 5px;
-  }
-}
-.button {
-  margin: 10px 0 0 0px;
-  padding: 5px 25px !important;
-}
-.row {
-  padding: 0 20px !important;
-}
+.button { margin: 10px 0 0 0px; padding: 5px 25px !important; }
+.row { padding: 0 20px !important; }

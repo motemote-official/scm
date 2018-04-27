@@ -1,5 +1,5 @@
 <% if params[:controller] != "rocket_apply" %>
-  <div class="nav sub_nav">
+  <div class="sub-nav">
     <%= link_to "일자별 관리", calendar_rocket_path(id), class: "main-link #{ params[:action] == "calendar" && "active" }" %>
     <%= link_to "ID별 관리", rocket_path(id), class: "main-link #{ params[:controller] == "rockets" && params[:action] == "show" && "active" }" %>
     <%= link_to "인스타 확인", attend_rocket_path(id: id), class: "main-link #{ params[:controller] == "rockets" && (params[:action] == "attend" || params[:action] == "attend_show") && "active" }" %>
@@ -12,7 +12,7 @@
     <span class="btn btn-primary rocket-link">이동</span>
   </div>
 <% else %>
-  <div class="nav sub_nav">
+  <div class="sub-nav">
     <%= link_to "엑셀 리스트", excel_rocket_apply_path(params[:id]), class: "main-link #{ params[:action] == "excel" && "active" }" %>
     <%= link_to "전체 리스트", rocket_apply_path(params[:id]), class: "main-link #{ params[:action] == "show" && "active" }" %>
     <%= link_to "보류 리스트", rocket_apply_path(params[:id], type: "hold"), class: "main-link #{ params[:action] == "show" && params[:type] == "hold" && "active" }" %>
