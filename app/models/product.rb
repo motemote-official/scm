@@ -3,7 +3,7 @@ class Product < ApplicationRecord
   require 'json'
   require 'date'
 
-  has_many :counts
+  has_many :counts, dependent: :destroy
 
   def self.whenever_create
     mechanize = Mechanize.new
