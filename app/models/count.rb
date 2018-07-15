@@ -13,7 +13,7 @@ class Count < ApplicationRecord
       end
       avg = sum/7 # 일주일 평균 판매량
       if avg > 0
-        if self.count/avg > 30 # 판매 가능일 수 30일 이상일 경우
+        if self.count/avg > 60 # 판매 가능일 수 30일 이상일 경우
           p.update(empty: false)
         end
       end
