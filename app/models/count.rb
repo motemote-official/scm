@@ -5,7 +5,7 @@ class Count < ApplicationRecord
 
   def is_empty
     p = Product.find(self.product_id)
-    if p.counts.where(date: Date.today - 7).present? # 등록된지 7일 이상일 경우
+    if !p.counts.where(date: Date.today - 7).take.nil? # 등록된지 7일 이상일 경우
       sum = 0
       for i in 1..7 do
         date = p.counts.last.date
