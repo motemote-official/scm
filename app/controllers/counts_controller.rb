@@ -33,7 +33,7 @@ class CountsController < ApplicationController
 
   def create
     Product.all.each do |p|
-      if Count.where(product_id: p.id).where(date: (Date.today.in_time_zone("Seoul") - 1).to_s).take.present?
+      if !Count.where(product_id: p.id).where(date: (Date.today.in_time_zone("Seoul") - 1).to_s).take.nil?
         if params[:"#{p.id}"].to_i > Count.where(product_id: p.id).where(date: (Date.today.in_time_zone("Seoul") - 1).to_s).take.count
           Count.create(count: params[:"#{p.id}"], product_id: p.id, date: Date.today.in_time_zone("Seoul"), goods: true)
         else
