@@ -12,7 +12,7 @@ class Count < ApplicationRecord
 
       for i in 1..7 do
         # p.counts = nil 확인
-        if p.counts.where(date: (date.to_date - i).to_s).take.nil?
+        if p.counts.where(date: (date.to_date - i).to_s).take.nil? || p.counts.where(date: (date.to_date - i + 1).to_s).take.nil?
           is_nil = true
         else
           date = p.counts.last.date
