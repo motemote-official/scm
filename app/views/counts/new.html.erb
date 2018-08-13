@@ -14,7 +14,7 @@
             <tr>
               <td><%= p.code %></td>
               <td><%= p.name %></td>
-              <td><%= number_field_tag "#{p.id}", "#{@data[:"#{p.code}"]}" %></td>
+              <td><%= number_field_tag "#{p.id}", "#{@data[:"#{p.code}"].nil? ? 0 : @data[:"#{p.code}"]}" %></td>
             </tr>
           <% end %>
         </tbody>
