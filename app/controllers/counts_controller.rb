@@ -40,7 +40,7 @@ class CountsController < ApplicationController
           Count.create(count: params[:"#{p.id}"], product_id: p.id, date: Date.today.in_time_zone("Seoul"), goods: false)
         end
       else
-        Count.create(count: params[:"#{p.id}"], product_id: p.id, date: Date.today.in_time_zone("Seoul"), goods: true)
+        Count.create(count: params[:"#{p.id}"], product_id: p.id, date: Date.today.in_time_zone("Seoul"), goods: false)
       end
     end
 
