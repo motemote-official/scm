@@ -28,14 +28,18 @@ class Product < ApplicationRecord
     Product.all.each do |p|
       count = @data[:"#{p.code}"]
 
-      if Count.where(product_id: p.id).where(date: (Date.today.in_time_zone("Seoul") - 1).to_s).take.present?
-        if count > Count.where(product_id: p.id).where(date: (Date.today.in_time_zone("Seoul") - 1).to_s).take.count
-          Count.create(count: count.nil? ? 0 : count, product_id: p.id, date: Date.today.in_time_zone("Seoul"), goods: true)
+      if count.nil?
+        Count.create(count: 0, product_id: p.id, date: Date.today.in_time_zone("Seoul"), goods: false)
+      else
+        if Count.where(product_id: p.id).where(date: (Date.today.in_time_zone("Seoul") - 1).to_s).take.present?
+          if count > Count.where(product_id: p.id).where(date: (Date.today.in_time_zone("Seoul") - 1).to_s).take.count
+            Count.create(count: count.nil? ? 0 : count, product_id: p.id, date: Date.today.in_time_zone("Seoul"), goods: true)
+          else
+            Count.create(count: count.nil? ? 0 : count, product_id: p.id, date: Date.today.in_time_zone("Seoul"), goods: false)
+          end
         else
           Count.create(count: count.nil? ? 0 : count, product_id: p.id, date: Date.today.in_time_zone("Seoul"), goods: false)
         end
-      else
-        Count.create(count: count.nil? ? 0 : count, product_id: p.id, date: Date.today.in_time_zone("Seoul"), goods: false)
       end
     end
   end
