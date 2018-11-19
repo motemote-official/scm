@@ -8,7 +8,7 @@ class CountsController < ApplicationController
     login = mechanize.get('https://wms.nosnos.kr/wms/user/login')
 
     #look for the wanted form
-    form = login.form_with(action: "http://sr01.srwms.com/wms/user/login_chk")
+    form = login.form_with(action: "https://wms.nosnos.kr/wms/user/login_chk")
     form.field_with(name: "company_code").value = ENV['SCM_COMPANY_CODE']
     form.field_with(name: "id").value = ENV['SCM_ID']
     form.field_with(name: "password").value = ENV['SCM_PASSWORD']
