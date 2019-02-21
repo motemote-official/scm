@@ -47,5 +47,12 @@
       <td>
         <%= f.text_field(:filename, required: true)%>
     </tr>
+    <tr>
+      <td class="td-label">
+        <%= f.label(:image, "썸네일") %>
+      </td>
+      <td>
+        <%= f.file_field(:image, required: true, accept: 'image/png, image/gif, image/jpeg')%>
+    </tr>
   </tbody>
 </table>

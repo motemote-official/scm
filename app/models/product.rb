@@ -5,6 +5,8 @@ class Product < ApplicationRecord
 
   has_many :counts, dependent: :destroy
 
+  mount_uploader :image, UploaderUploader
+
   def self.whenever_create
     mechanize = Mechanize.new
     login = mechanize.get('https://wms.nosnos.kr/wms/user/login')

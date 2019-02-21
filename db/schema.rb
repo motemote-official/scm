@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180306080746) do
+ActiveRecord::Schema.define(version: 20190221070628) do
 
   create_table "attends", force: :cascade do |t|
     t.integer "rocket_member_id"
@@ -110,12 +110,13 @@ ActiveRecord::Schema.define(version: 20180306080746) do
     t.string "name"
     t.string "code"
     t.string "kind"
-    t.string "filename"
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "date", default: "2017-05-22"
     t.boolean "empty", default: false
+    t.string "filename"
+    t.string "image"
   end
 
   create_table "regrams", force: :cascade do |t|

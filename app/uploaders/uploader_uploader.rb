@@ -1,15 +1,18 @@
 class UploaderUploader < CarrierWave::Uploader::Base
-
+  
+  # 이미지를 조정할 수 있는 툴 설정
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
   # -*- coding: utf-8 -*
   require 'iconv' 
 
+  # 이미지를 저장할 장소의 종류를 설정
   # Choose what kind of storage to use for this uploader:
   # storage :file
   storage :fog
 
+  #이미지가 저장되는 위치
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
@@ -17,7 +20,7 @@ class UploaderUploader < CarrierWave::Uploader::Base
   end
 
   process resize_to_fit: [1080, nil]
-  process :watermark
+  #process :watermark
 
   def user_name_width(name)
     str = "a".."z"
@@ -119,6 +122,7 @@ class UploaderUploader < CarrierWave::Uploader::Base
     end
   end
 
+  # 요청한 이미지가 없을 때 대체해서 사용하는 default 이미지 설정
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
   #   # For Rails 3.1+ asset pipeline compatibility:
@@ -127,32 +131,44 @@ class UploaderUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
+  # 이미지를 저장할 사이즈 조정
   # Process files as they are uploaded:
-
   # process scale: [200, 300]
   #
   # def scale(width, height)
   #   # do something
   # end
 
+  # 여러가지 이미지의 버전 설정
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process resize_to_fit: [50, 50]
-  # end
-  #version :with_watermark do
-    #process :watermark
-  #end
+  # 썸네일 버전
+  version :thumb do 
+    process resize_to_fit: [50, 50]
+  end
+  # 워터마크 버전
+  version :with_watermark do
+    process :watermark
+  end
 
+  # 저장될 파일들의 확장자 설정
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  # def extension_whitelist
+  def extension_whitelist
   #   %w(jpg jpeg gif png)
-  # end
+    %w(png)
+  end
 
+  # 저장되는 파일의 이름 설정
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  def filename
+  #  "something.jpg" if original_filename
+    if model.filename.present?
+      "#{model.filename}.jpg"
+    else
+      "something.jpg"
+    end
+    
+  end
 
 end
