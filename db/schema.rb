@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 20180306080746) do
     t.string "name"
     t.string "code"
     t.string "kind"
+    t.string "filename"
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -40,5 +40,12 @@
         <%= f.date_field(:date, required: true) %>
       </td>
     </tr>
+    <tr>
+      <td class="td-label">
+        <%= f.label(:filename, "파일명") %>
+      </td>
+      <td>
+        <%= f.text_field(:filename, required: true)%>
+    </tr>
   </tbody>
 </table>

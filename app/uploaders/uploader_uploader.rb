@@ -3,6 +3,8 @@ class UploaderUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
+  # -*- coding: utf-8 -*
+  require 'iconv' 
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
@@ -19,7 +21,7 @@ class UploaderUploader < CarrierWave::Uploader::Base
 
   def user_name_width(name)
     str = "a".."z"
-    mark = (0..9).to_a + [".", "_"]
+    mark = (0..9).to_a + [".", "_", "#"]
     count = []
 
     str.each do |s|
@@ -30,16 +32,19 @@ class UploaderUploader < CarrierWave::Uploader::Base
       count << name.count(m.to_s)
     end
 
-    # a..z & 0..9 & ., _ 38개 문자 width
+    # a..z & 0..9 & ., _, # 38개 문자 width
     width = [20, 21, 19, 21, 21, 13, 20, 20, 7, 9,
              19, 6, 32, 19, 21, 21, 21, 13, 19, 12,
              20, 21, 30, 20, 21, 19, 20, 13, 20, 20,
-             20, 21, 19, 20, 18, 20, 7, 24]
+             20, 21, 19, 20, 18, 20, 7, 24, 24]
 
     total_width = 0
     for i in 0..37 do
       total_width += count[i] * width[i]
     end
+
+    # 영어, 숫자, 기호가 아닐 경우(한글 넓이 20으로 가정)
+    total_width += (name.length - count.sum) * 20
 
     # 문자 간 여백 "6"
     total_width += ((name.length - 1) * 7)
@@ -104,6 +109,7 @@ class UploaderUploader < CarrierWave::Uploader::Base
         img.combine_options do |cmd|
           cmd.gravity "southeast"
           cmd.draw "text 23,18 '#{user_name}'"
+          #Iconv.iconv("EUC-KR", "UTF-8", mystring)
           cmd.kerning "4"
           cmd.pointsize "40"
           cmd.font "Helvetica-Bold"
