@@ -6,6 +6,7 @@
       <thead>
         <th>품목</th>
         <th>상품코드</th>
+        <th>썸네일</th>
         <th>상품명</th>
         <th>출시일</th>
         <th>수정</th>
@@ -15,6 +16,7 @@
           <tr>
             <td><%= index + 1 %></td>
             <td><%= p.code %></td>
+            <td><%= image_tag("#{p.image.thumb}") %>
             <td><%= p.name %></td>
             <td><%= p.date %></td>
             <td><%= link_to "수정", edit_product_path(p) %></td>

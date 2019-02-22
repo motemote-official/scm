@@ -40,5 +40,19 @@
         <%= f.date_field(:date, required: true) %>
       </td>
     </tr>
+    <tr>
+      <td class="td-label">
+        <%= f.label(:filename, "파일명") %>
+      </td>
+      <td>
+        <%= f.text_field(:filename, required: true)%>
+    </tr>
+    <tr>
+      <td class="td-label">
+        <%= f.label(:image, "썸네일") %>
+      </td>
+      <td>
+        <%= f.file_field(:image, required: true, accept: 'image/png, image/gif, image/jpeg')%>
+    </tr>
   </tbody>
 </table>
