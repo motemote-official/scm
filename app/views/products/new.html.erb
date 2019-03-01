@@ -5,6 +5,7 @@
     <div class="col-md-8 col-md-offset-2 text-center">
       <%= form_for @product, html: {class: "edit-count-form text-center"} do |f| %>
         <%= render partial: 'form', locals: { f: f } %>
+        <%= render partial: 'detail', locals: { f: f} %>
         <%= submit_tag("등록", class: "btn btn-primary button") %>
         <%= link_to "뒤로", :back, class: "btn btn-warning button" %>
       <% end %>

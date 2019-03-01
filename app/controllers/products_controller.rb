@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  require "mini_magick"
+
   def index
     @products = Product.all.order(:name)
 
@@ -149,6 +151,20 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  # require 'imgkit'
+  def pre_view
+    # html = 'http://' + request.domain + ':3000/products/pre_view'
+    # kit = IMGKit.new(html, :quality => 80) # 이미지의 화질 및 용량 결정(80%)
+    # f = File.new(Rails.root.join('app','assets','images','preview.png'), 'wb')
+    # img = kit.to_img(:png)
+    # send_data(img.to_jpg, :type=>"image/jpeg", :disposition=>'inline')
+    # f.write(img)
+    # f.close
+    # kit = IMGKit.new(File.new(Rails.root.join('app', 'views', 'products', 'pre_view.html.erb')), :quality => 50)    
+    # file = kit.to_file('preview.png')
+    render 'pre_view'
+  end
+
   def empty
     @product = Product.find(params[:id])
     if @product.empty
@@ -163,9 +179,21 @@ class ProductsController < ApplicationController
     end
   end
 
+  def imagecrop
+    @file = params[:image_file]
+    # image = MiniMagick::Image.open(@file)
+    # image.crop "260x112!+0+0"
+    # image.write 'image.jpg'
+    # system("open image.jpg")
+    @crop_width = params[:width]
+    @crop_height = params[:height]
+    redirect_to action: 'list'
+  end
+
+
   private
 
   def product_params
-    params.require(:product).permit(:name, :code, :kind, :price, :date, :filename, :image)
+    params.require(:product).permit(:name, :code, :kind, :price, :date, :filename, :image, :product_detail)
   end
 end

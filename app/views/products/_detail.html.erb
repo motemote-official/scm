@@ -1,0 +1,23 @@
+<script> 
+    function pre_view() 
+    { 
+        var newWindow; 
+        newWindow = window.open('pre_view', 'introwin', 'width=450,height=315,resizable=yo,scrollbars=no'); 
+    } 
+</script> 
+
+<table class="edit-count">
+    <tbody>
+        <tr>
+            <td class="td-label">
+                <%= f.label(:product_detail, "제품 상세")%>
+            </td>
+            <td class="td-label">
+                <form name="form"> 
+                    <%= f.text_area(:product_detail, required: false, size: "40x20")%>
+                    <input type="button" name="view" value="미리보기" onclick=pre_view()> 
+                </form> 
+            </td>
+        </tr>
+    </tbody>
+</table>

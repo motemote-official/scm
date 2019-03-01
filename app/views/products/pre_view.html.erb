@@ -1,0 +1,32 @@
+<script type="text/javascript">
+    document.write(window.opener.document.getElementById('product_product_detail').value); 
+</script>
+
+
+<div id="status" style="text-align:right; position:fixed; top:10px; right:10px; z-index:10"></div>
+
+<script>
+    $(document).mousemove(function(e){
+        var scroll_sum = parseInt(e.pageY) + parseInt($(document).scrollTop());
+        $(window).scroll(function(){
+            scroll_sum = parseInt(e.pageY) + parseInt($(document).scrollTop());
+            $('#status').html(e.pageX+', '+scroll_sum);
+        });
+        if ($(document).scrollTop()>0){
+            $('#status').html(e.pageX+', '+scroll_sum);
+        }
+        else {
+            $('#status').html(e.pageX+', '+e.pageY);
+        }
+    })
+</script>
+<!-- >
+<div id="status">
+</div>
+    $(document).ready(function(){
+
+$(document).mousemove(function(e){
+                $('#status').html(e.pageX +', '+ e.pageY);
+            }); 
+        })
+        -->
