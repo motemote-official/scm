@@ -1,6 +1,6 @@
 <%= render partial: 'nav', locals: { } %>
 
-<div class="row fixed">
+<div class="row fixed" style="width:65%;">
   <div class="col-md-12">
     <table class="table hover">
       <thead>
@@ -16,7 +16,7 @@
           <tr>
             <td><%= index + 1 %></td>
             <td><%= p.code %></td>
-            <td><%= image_tag("#{p.image.thumb}") %>
+            <td><%= image_tag("#{p.image.thumb}") %></td>
             <td><%= p.name %></td>
             <td><%= p.date %></td>
             <td><%= link_to "수정", edit_product_path(p) %></td>
@@ -26,3 +26,102 @@
     </table>
   </div>
 </div>
+
+
+<div style="width:30%; position:absolute; top:200px; right:10px; text-align:center; border:1px solid;">
+  <h1>이미지 크롭</h1>
+  <%= form_tag("/products/imagecrop", method: "post", name: "crop_info") do %>
+    <%= csrf_meta_tag %>
+    <p>파일 첨부</p>
+    <input type="file" name="image_file" accept="image/*" style="width:200px; text-align:center;" required/>
+    <p>가로 길이</p>
+    <input type="number" name="width" style="width:200px; height:20px; text-align:center;" required/>
+    <p>세로 경계값</p>
+    <input type="text" name="height" style="width:200px; height:20px; text-align:center;" required/><br><br>
+    <input type="submit" name="crop_button" value="변환하기" style="width:100px;">
+  <% end %>
+</div>
+
+<!--
+<table border="0" cellspacing="0" cellpadding="0" style="width:300;">
+  <tr>
+    <td colspan="2" align="left" bgcolor="#FFFFFF">
+      <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="25">
+            <table id="addTable" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" border="0">
+              <tr>
+                <td><input type="number" name="addText" style="width:300px; height:20px;"></td>
+                <td align="left"></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5" bgcolor="#FFFFFF" height="25" align="center">
+            <input name="addButton" type="button" style="cursor:hand" onClick="insRow()" value="추가">
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table border="0" cellspacing="0" cellpadding="0" style="width:300px; text-align:center;">
+  <tr>
+    <td height="50">
+    </td>
+  </tr>
+  <tr align="right">
+    <td>
+      <input type="button" name="button" value="변환하기" style="width:100px;" onClick="frmCheck();">
+    </td>
+  </tr>
+</table>
+</form>
+</div>
+
+
+<script type="text/javascript">
+var oTbl;
+//Row 추가
+function insRow() {
+  oTbl = document.getElementById("addTable");
+  var oRow = oTbl.insertRow();
+  oRow.onmouseover=function(){oTbl.clickedRowIndex=this.rowIndex}; //clickedRowIndex - 클릭한 Row의 위치를 확인;
+  var oCell = oRow.insertCell();
+
+  //삽입될 Form Tag
+  var frmTag = "<input type=number name=addText style=width:300px; height:20px;> ";
+  frmTag += "<input type=button value='삭제' onClick='removeRow()' style='cursor:hand'>";
+  oCell.innerHTML = frmTag;
+}
+//Row 삭제
+function removeRow() {
+  oTbl.deleteRow(oTbl.clickedRowIndex);
+}
+
+function frmCheck(){
+  var frm = document.form;
+  
+  for( var i = 0; i <= frm.elements.length - 1; i++ ){
+    if( frm.elements[i].name == "addText" )
+    {
+      if( !frm.elements[i].value ){
+        alert("텍스트박스에 값을 입력하세요!");
+        frm.elements[i].focus();
+	      return;
+      }
+    }
+  }
+}
+</script>
+
+
+<div class="row fixed" style="width:35%;">
+  <div>이미지 크롭</div>
+  <form action='' method='POST'>
+    <input id="width" type="number" name="width" value="0">
+    <input>
+    <button>댓글 작성</button>
+  </form>
+</div> -->

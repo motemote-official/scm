@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   get 'products/raw' => 'products#raw'
   get 'products/all' => 'products#all'
   get 'products/list' => 'products#list'
+  get 'products/pre_view' => 'products#pre_view'
+  get 'products/:id/pre_view' => 'products#pre_view'
   get 'tag/:id/destroy' => 'tags#destroy', as: :tag_destroy
 
+  post 'products/imagecrop' => 'products#imagecrop'
   post 'regrams/tag' => 'regrams#tag'
   post 'rocket_regrams/tag' => 'rocket_regrams#tag'
 

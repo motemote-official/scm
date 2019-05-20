@@ -279,6 +279,7 @@ GEM
     i18n (1.5.3)
       concurrent-ruby (~> 1.0)
     iconv (1.0.8)
+    imgkit (1.6.1)
     io-like (0.3.0)
     ipaddress (0.8.3)
     jbuilder (2.8.0)
@@ -291,7 +292,7 @@ GEM
     jquery-turbolinks (2.1.0)
       railties (>= 3.1.0)
       turbolinks
-    json (2.1.0)
+    json (2.2.0)
     jwt (2.1.0)
     libv8 (3.16.14.19)
     listen (3.1.5)
@@ -490,6 +491,7 @@ GEM
     whenever (0.10.0)
       chronic (>= 0.6.3)
     will_paginate (3.1.6)
+    wkhtmltoimage-binary (0.12.5)
     xml-simple (1.1.5)
     xmlrpc (0.3.0)
     xpath (3.2.0)
@@ -509,6 +511,7 @@ DEPENDENCIES
   figaro
   fog
   iconv
+  imgkit
   jbuilder (~> 2.5)
   jquery-rails
   jquery-turbolinks
@@ -539,6 +542,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   whenever
   will_paginate
+  wkhtmltoimage-binary
 
 BUNDLED WITH
    1.16.4

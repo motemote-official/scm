@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 20190221070628) do
     t.boolean "empty", default: false
     t.string "filename"
     t.string "image"
+    t.string "product_detail"
   end
 
   create_table "regrams", force: :cascade do |t|

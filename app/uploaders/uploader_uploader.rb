@@ -20,7 +20,7 @@ class UploaderUploader < CarrierWave::Uploader::Base
   end
 
   process resize_to_fit: [1080, nil]
-  #process :watermark
+  process :watermark
 
   def user_name_width(name)
     str = "a".."z"
@@ -56,6 +56,8 @@ class UploaderUploader < CarrierWave::Uploader::Base
   end
 
   def watermark
+    # if model.class.name != "Product"
+    
     manipulate! do |img|
 
       # user id watermark
@@ -121,6 +123,7 @@ class UploaderUploader < CarrierWave::Uploader::Base
       end
     end
   end
+  end
 
   # 요청한 이미지가 없을 때 대체해서 사용하는 default 이미지 설정
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -142,33 +145,33 @@ class UploaderUploader < CarrierWave::Uploader::Base
   # 여러가지 이미지의 버전 설정
   # Create different versions of your uploaded files:
   # 썸네일 버전
-  version :thumb do 
-    process resize_to_fit: [50, 50]
-  end
+  # version :thumb do 
+  #   process resize_to_fit: [50, 50]
+  # end
   # 워터마크 버전
-  version :with_watermark do
-    process :watermark
-  end
+  # version :with_watermark do
+  #   process :watermark
+  # end
 
   # 저장될 파일들의 확장자 설정
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  def extension_whitelist
+  # def extension_whitelist
   #   %w(jpg jpeg gif png)
-    %w(png)
-  end
+  #   %w(jpeg jpg png)
+  # end
 
   # 저장되는 파일의 이름 설정
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  def filename
-  #  "something.jpg" if original_filename
-    if model.filename.present?
-      "#{model.filename}.jpg"
-    else
-      "something.jpg"
-    end
+  # def filename
+  #   "something.jpg" if original_filename
+  #   if model.filename.present?
+  #     "#{model.filename}.png"
+  #   else
+  #     "something.png"
+  #   end
     
-  end
+  # end
 
 end

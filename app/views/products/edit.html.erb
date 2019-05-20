@@ -4,6 +4,7 @@
       <h1>입고 수량 입력</h1>
       <%= form_for @product, class: "edit-count-form" do |f| %>
         <%= render partial: 'form', locals: { f: f } %>
+        <%= render partial: 'detail', locals: { f: f }%>
         <%= submit_tag("수정", class: "btn btn-primary button", style: "margin-left: 110px;") %>
         <%= link_to "뒤로", :back, class: "btn btn-warning button" %>
       <% end %>
