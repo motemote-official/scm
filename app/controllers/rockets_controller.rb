@@ -267,6 +267,16 @@ class RocketsController < ApplicationController
     end
   end
 
+  def reset_apply
+    @rocket = Rocket.find(params[:id])
+    @rocket.rocket_members.destroy_all
+
+    respond_to do |format|
+      format.html { redirect_to edit_rocket_path(@rocket.id) }
+      format.xml  { render xml: @rocket }
+    end
+  end
+
   private
 
   def rocket_params

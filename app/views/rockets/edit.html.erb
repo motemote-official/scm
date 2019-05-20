@@ -14,10 +14,13 @@
   <div class="col-xs-12">
     <div class="rocket-wrapper">
       <p class="rocket-title">로켓단 지원자 등록</p>
-      <%= form_tag upload_csv_rocket_path(@rocket.id), method: 'post', multipart: true do %>
-        <%= file_field_tag :file %>
-        <%= submit_tag "파일등록", class: "btn btn-primary" %>
+      <% if @rocket.rocket_members.count == 0 %>
+        <%= form_tag upload_csv_rocket_path(@rocket.id), method: 'post', multipart: true, class: 'rocket-apply-form' do %>
+          <%= file_field_tag :file %>
+          <%= submit_tag "파일등록", class: "btn btn-primary" %>
+        <% end %>
       <% end %>
+      <%= link_to "신청초기화", reset_apply_rocket_path, method: 'post', class: 'btn btn-danger' %>
     </div>
   </div>
   <div class="col-xs-12">

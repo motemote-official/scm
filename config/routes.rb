@@ -43,6 +43,7 @@ Rails.application.routes.draw do
       get 'mission'
       post 'check'
       post 'upload_csv'
+      post 'reset_apply'
     end
   end
   resources :rocket_members
