@@ -123,7 +123,7 @@ class UploaderUploader < CarrierWave::Uploader::Base
       end
     end
   end
-  end
+end
 
   # 요청한 이미지가 없을 때 대체해서 사용하는 default 이미지 설정
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -174,4 +174,3 @@ class UploaderUploader < CarrierWave::Uploader::Base
     
   # end
 
-end
