@@ -249,9 +249,12 @@ class RocketsController < ApplicationController
     @rocket = Rocket.find(params[:id])
     file = Roo::Spreadsheet.open(params[:file])
     count = file.sheet(0).column(1).drop(1).count
-    ids = file.sheet(0).column(5).drop(1)
-    identities = file.sheet(0).column(2).drop(1)
-    applications = file.sheet(0).column(4).drop(1)
+    #ids = file.sheet(0).column(5).drop(1)
+    ids = file.sheet(0).column(3).drop(1)
+    #identities = file.sheet(0).column(2).drop(1)
+    identities = file.sheet(0).column(1).drop(1)
+    #applications = file.sheet(0).column(4).drop(1)
+    applications = file.sheet(0).column(2).drop(1)
 
     for i in 0..(count-1) do
       RocketMember.create(email: ids[i],
